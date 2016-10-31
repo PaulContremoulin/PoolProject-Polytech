@@ -3,7 +3,7 @@ class Conf {
    
   static private $databases = array(
 
-    'hostname' => 'localhost', //mysql.hostinger.fr
+    'hostname' => 'mysql.hostinger.fr',
 
     'database' => 'u972922602_pool',
 
