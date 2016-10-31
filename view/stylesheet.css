@@ -1,0 +1,137 @@
+/*Paul Contremoulin CSS*/
+
+	/*@*/
+
+@font-face {
+    font-family: 'aaarghnormal';
+    src: url('../src/fonts/aaargh/Aaargh-webfont.eot');
+    src: url('../src/fonts/aaargh/Aaargh-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../src/fonts/aaargh/Aaargh-webfont.woff') format('woff'),
+         url('../src/fonts/aaargh/Aaargh-webfont.ttf') format('truetype'),
+         url('../src/fonts/aaargh/Aaargh-webfont.svg#aaarghnormal') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+	/*balises*/
+
+html{
+	/*background-image: url("../src/images/imageFlou.jpg");*/
+	background-color: #4da6ff;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+
+body{
+	width: 70em;
+	margin: auto;
+	position: top;
+	font-family: "aaarghnormal", Verdana;
+}
+
+	/* class */
+header{
+	/*background: url("../src/images/header.jpg");*/
+	background-color: #797d86;
+	background-size: 100%;
+	background-position: top left;
+}
+
+header h1{
+	font-size: 2.5em;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding-top: 1.5%;
+	padding-left: 3%;
+}
+
+header h2{
+	font-size: 1.62em;
+	margin-top: 0px;
+	margin-bottom: 8%;
+	padding-left: 3%;
+
+}
+
+header nav ul{	
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding-bottom: 0%;
+	padding-top: 0%;
+	padding-left: 0%;
+	list-style-type: none;
+	display : flex;
+	background-color: rgba(0, 0, 0, 0.8);
+	border-bottom: 0.5em solid rgba(200, 0, 0, 0.6);
+}
+
+header nav ul li {
+	text-align: center;
+
+	padding-bottom: 0.4em;
+	padding-top: 0.7em;
+	padding-right: 0em;
+
+}
+
+#active {
+	background-color: rgba(200, 0, 0, 0.6);
+}
+
+header nav ul li a:hover{
+	background-color: rgba(200, 0, 0, 0.6);
+}
+
+header nav ul li a{
+	font-size: 1em;
+	color: white;
+	text-decoration: none;
+	padding-bottom: 0.4em;
+	padding-top: 0.7em;
+	padding-left: 3.5em;
+	padding-right: 3.5em;
+}
+
+section{
+	display: flex;
+	background-color: rgba(0, 0, 0, 0.4);
+
+	/*background-color: rgba(0, 0, 0, 0.5);*/
+}
+
+article{
+	font-size: 0.8em;
+	color: white;
+	background-color: rgba(0, 0, 0, 0.8);
+	margin-top: 1em;
+	margin-bottom: 1em;
+	margin-left: 0em;
+	margin-right: 5%;
+	padding-bottom: 20em;
+	padding-top: 0.5em;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+}
+
+footer {
+	background-color: rgba(0, 0, 0, 0.2);
+	text-align: center;
+	color: white;
+}
+
+footer p{
+	margin-top: 0em;
+	margin-bottom: 0em;
+	margin-left: 0em;
+	margin-right: 0em;
+	padding-top: 0.5em;
+	background-color: black;
+	opacity: 0.6;
+}
+
+/*
+header img{
+	width: 100%;
+}
+*/
