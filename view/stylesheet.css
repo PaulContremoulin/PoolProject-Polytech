@@ -18,7 +18,7 @@
 
 html{
 	/*background-image: url("../src/images/imageFlou.jpg");*/
-	background-color: #4da6ff;
+	background-color: #ffffff;
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 }
@@ -33,7 +33,7 @@ body{
 	/* class */
 header{
 	/*background: url("../src/images/header.jpg");*/
-	background-color: #797d86;
+	background-color: rgba(77, 184, 255, 0.8);
 	background-size: 100%;
 	background-position: top left;
 }
