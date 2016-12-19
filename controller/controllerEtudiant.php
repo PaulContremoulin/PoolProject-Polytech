@@ -59,8 +59,8 @@ switch ($action) {
                     $pwdEtudiant = Security::chiffrer($pwdEtudiant);
 
                     $new_account = array(
-                         "id_etudiant" => $ineEtudiant
-                         "pwd_etud" => $pwdEtudiant
+                         "id_etudiant" => $ineEtudiant,
+                         "pwd_etud" => $pwdEtudiant,
                          "nom_etud" => $nameEtudiant,
                          "prenom_etud" =>  $prenomEtudiant,
                          "mail_etud" => $mailEtudiant,
