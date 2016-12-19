@@ -46,7 +46,7 @@ class ModelSection extends Model {
 
         if($temoin_s != $s){
           $sections[$s] = array();
-          $sections[$s][0] = $ligne['libelle_section']
+          $sections[$s][0] = $ligne['libelle_section'];
           $sections[$s][1] = array();
           $sections[$s][2] = array();
           $temoin_s = $s;
