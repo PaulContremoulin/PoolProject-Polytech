@@ -51,7 +51,7 @@ switch ($action) {
         $prenomEtudiant = $_POST["prenomEtudiant"];
         $mailEtudiant = $_POST["mailEtudiant"];
         $confirmPwd = $_POST["confirmPwd"];
-        $promoEtud = $_POST["promoEtudiant"];
+        $promoEtudiant = $_POST["promoEtudiant"];
 
         if(!modelEtudiant::mailExist($mailEtudiant)){
             if(modelEtudiant::isMailFormat($mailEtudiant)){
@@ -64,7 +64,7 @@ switch ($action) {
                          "nom_etud" => $nameEtudiant,
                          "prenom_etud" =>  $prenomEtudiant,
                          "mail_etud" => $mailEtudiant,
-                         "id_promo" => $promoEtud,
+                         "id_promo" => $promoEtudiant,
                     );
 
                     ModelEtudiant::insert($new_account);
