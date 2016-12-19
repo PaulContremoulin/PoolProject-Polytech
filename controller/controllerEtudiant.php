@@ -53,6 +53,14 @@ switch ($action) {
         $confirmPwd = $_POST["confirmPwd"];
         $promoEtudiant = $_POST["promoEtudiant"];
 
+        print($_POST["ineEtudiant"]);
+        print($_POST["pwdEtudiant"]);
+        print($_POST["nameEtudiant"]);
+        print($_POST["prenomEtudiant"]);
+        print($_POST["mailEtudiant"]);
+        print($_POST["confirmPwd"]);
+        print($_POST["promoEtudiant"]);
+
         if(!modelEtudiant::mailExist($mailEtudiant)){
             if(modelEtudiant::isMailFormat($mailEtudiant)){
                 if($pwdEtudiant == $confirmPwd){
