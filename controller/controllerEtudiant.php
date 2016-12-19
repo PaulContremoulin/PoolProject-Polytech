@@ -35,7 +35,7 @@ switch ($action) {
 
     case "inscription":
 
-        $sections = Section::listeSections();
+        $sections = ModelSection::listeSections();
 
         $pagetitle = "Inscription";
         $view = "inscription";
