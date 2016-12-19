@@ -26,7 +26,7 @@ class ModelSection extends Model {
   }
 
   public static function listeSections(){
-    $sql =  "SELECT id_promo, annee, id_section, libelle_section ".
+    $sql =  "SELECT id_promo, annee, Section.id_section AS id_section, libelle_section ".
             "FROM ".static::$table.", Promo ".
             "WHERE Section.id_section = Promo.id_section ".
             "ORDER BY Section.id_section ASC;";
@@ -35,8 +35,9 @@ class ModelSection extends Model {
       $req_prep = Model::$pdo->prepare($sql);
       $req_prep->execute();
 
-      $temoin_s = -1;
-      $id = 0;
+      $temoin_s = "id_sec";
+      $ids = -1;
+      $idp = 0;
       $sections = array();
 
       while($ligne = $req_prep->fetch(PDO::FETCH_ASSOC)){
@@ -45,17 +46,20 @@ class ModelSection extends Model {
         $p = $ligne['id_promo'];
 
         if($temoin_s != $s){
-          $sections[$s] = array();
-          $sections[$s][0] = $ligne['libelle_section'];
-          $sections[$s][1] = array();
-          $sections[$s][2] = array();
+          $ids++;
+          $sections[$ids] = array();
+          $sections[$ids][0] = array();
+          $sections[$ids][0][0] = $s;
+          $sections[$ids][0][1] = $ligne['libelle_section'];
+          $sections[$ids][1] = array();
+          $sections[$ids][2] = array();
           $temoin_s = $s;
-          $id = 0;
+          $idp = 0;
         }
 
-        $sections[$s][1][$id] = $p;
-        $sections[$s][2][$id] = $ligne['annee'];
-        $id++;
+        $sections[$ids][1][$idp] = $p;
+        $sections[$ids][2][$idp] = $ligne['annee'];
+        $idp++;
       }
 
       return $sections;

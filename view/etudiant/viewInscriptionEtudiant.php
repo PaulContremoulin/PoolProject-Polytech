@@ -24,9 +24,9 @@
 		    	<select name="section" id="section"> <!-- onchange="changePromo(tab, this.value);" -->
 		    		<?php
 		    		//$nbr = count($sections);
-		    		foreach ($sections as $id_section => $libelle_section) {
+		    		foreach ($sections as $id_section => $values) {
 		    		?>
-		    		<option value="<?php echo($id_section); ?>"><?php echo($libelle_section[0]); ?></option>
+		    		<option value="<?php echo($values[0][0]); ?>"><?php echo($values[0][1]); ?></option>
 		    		<?php
 		    		}
 		    		?>
