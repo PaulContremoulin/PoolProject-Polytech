@@ -2,51 +2,53 @@
 
 require_once ("model.php"); 
 
-class ModelUser extends Model {
+class ModelEtudiant extends Model {
 
-  private $mailUser;
-  private $nameUser;
-  private $pwdUser;
-  private $isAdmin;
+  private $id_etudiant;
+  private $pwd_etud;
+  private $nom_etud;
+  private $prenom_etud;
+  private $mail_etud;
+  private $id_promo;
 
-  protected static $table = 'User';
-  protected static $primary = 'mailUser';
+  protected static $table = 'Etudiant';
+  protected static $primary = 'id_etudiant';
    
   //un getter      
   public function getMail() {
-       return $this->mailUser;  
+       return $this->mail_mail;  
   }
   
   public function getPwd() {
-       return $this->pwdUser;  
+       return $this->pwd_etud;  
   }
  
   public function getName() {
-       return $this->nameUser;  
+       return $this->nom_etud;  
   }
 
-  public function getIsAdmin() {
-       return $this->isAdmin;  
-  }
-
-  public function __construct($mail = NULL, $pwd = NULL, $name = NULL, $admin = NULL) {
-    if (!is_null($mail) && !is_null($pwd) && !is_null($name) && !is_null($admin)) {
-      $this->mailUser = $mail;
-      $this->pwdUser = $pwd;
-      $this->nameUser = $name;
-      $this->isAdmin = $admin;
+  public function __construct($ine = NULL, $pwd = NULL, $nom = NULL, $prenom = NULL, $mail = NULL, $promo = NULL) {
+    if (!is_null($ine) && !is_null($pwd) && !is_null($nom) && !is_null($prenom) && !is_null($mail) && !is_null($promo)) {
+      $this->id_etudiant = $ine;
+      $this->pwd_etud = $pwd;
+      $this->nom_etud = $nom;
+      $this->prenom_etud = $prenom;
+      $this->mail_etud = $mail;
+      $this->id_promo = $promo;
+      /*
       $this->tabAtt = array (
 					"mail"  => $this->mailUser,
 					"name" => $this->nameUser,
 					"pwd" => $this->pwdUser,
 				);
+      */
     }
   }
 
 	public static function checkPassword($login,$mot_de_passe_crypte){
 
     $check = false;
-	  $sql = "SELECT * FROM User WHERE mailUser = :user AND pwdUser = :pwd";
+	  $sql = "SELECT * FROM Etudiant WHERE mail_etud = :user AND pwd_etud = :pwd";
 
 	  try{
 
@@ -67,7 +69,7 @@ class ModelUser extends Model {
 	}
 
   public static function mailExist($mail){
-    $sql = "SELECT mailUser FROM User WHERE mailUser= :mail;";
+    $sql = "SELECT mail_etud FROM Etudiant WHERE mail_etud= :mail;";
     $req_prep = Model::$pdo->prepare($sql);
     $req_prep->execute(array(':mail'=>$mail));
     return ($req_prep->rowCount()!=0);
