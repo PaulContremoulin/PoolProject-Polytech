@@ -21,7 +21,7 @@
 				<label for="confirmPwd"><h4> Confirmez le mot de passe : </h4></label>
 		    	<input type="password" name="confirmPwd" id="confirmPwd"  required/>
 		    	<label for="section"><h4> Section : </h4></label>
-		    	<select name="section" id="section"> <!-- onchange="changePromo(tab, this.value);" -->
+		    	<h4><select name="section" id="section"> <!-- onchange="changePromo(tab, this.value);" -->
 		    		<option value="vide">- - - Votre section - - -</option>
 		    		<?php
 		    		//$nbr = count($sections);
@@ -31,7 +31,7 @@
 		    		<?php
 		    		}
 		    		?>
-		    	</select>
+		    	</select></h4>
 		    	<input id="submit" class="btn btn-large" type="submit" value="Je m'inscris" />
 			</fieldset> 
 		</form>
