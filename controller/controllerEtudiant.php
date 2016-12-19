@@ -1,6 +1,7 @@
 <?php
 
-require_once("{$ROOT}{$DS}model{$DS}modelUser.php");
+require_once("{$ROOT}{$DS}model{$DS}modelEtudiant.php");
+require_once("{$ROOT}{$DS}model{$DS}modelSection.php");
 
 $action = $_GET['action'];// recupère l'action passée dans l'URL
 
@@ -15,19 +16,16 @@ switch ($action) {
         print_r($login);
         print_r($password);
         $cryptedPwd = Security::chiffrer($password);
-        print_r(cryptedPwd);
-        $checkAccount = ModelUser::checkPassword($login,$cryptedPwd);
+        print_r($cryptedPwd);
+        $checkAccount = ModelEtudiant::checkPassword($login,$cryptedPwd);
         print_r($checkAccount);
         if($checkAccount == true){
 
-            $account = ModelUser::select($login);
+            $account = ModelEtudiant::select($login);
 
             $_SESSION['login']=$login;
             $_SESSION['nom'] = $account->getName();
-            $_SESSION['admin'] = $account->getIsAdmin();
-
-            $controller="accueil";
-            $_GET['action'] = "default";
+            $_SESSION['admin'] = 0;
         }
         $controller="accueil";
         $_GET['action'] = "default";
@@ -37,6 +35,8 @@ switch ($action) {
 
     case "inscription":
 
+        $sections = Section::listeSections();
+
         $pagetitle = "Inscription";
         $view = "inscription";
 
@@ -44,24 +44,30 @@ switch ($action) {
         break; 
 
     case "creation":
-        $mailUser = $_POST["mailUser"];
-        $nameUser = $_POST["nameUser"];
-        $pwdUser = $_POST["pwdUser"];
-        $confirmPwd = $_POST["confirmPwd"];
 
-        if(!modelUser::mailExist($mailUser)){
-            if(modelUser::isMailFormat($mailUser)){
-                if($pwdUser == $confirmPwd){
-                    $pwdUser = Security::chiffrer($pwdUser);
+        $ineEtudiant = $_POST["ineEtudiant"];
+        $pwdEtudiant = $_POST["pwdEtudiant"];
+        $nameEtudiant = $_POST["nameEtudiant"];
+        $prenomEtudiant = $_POST["prenomEtudiant"];
+        $mailEtudiant = $_POST["mailEtudiant"];
+        $confirmPwd = $_POST["confirmPwd"];
+        $promoEtud = $_POST["promoEtud"];
+
+        if(!modelEtudiant::mailExist($mailEtudiant)){
+            if(modelEtudiant::isMailFormat($mailEtudiant)){
+                if($pwdEtudiant == $confirmPwd){
+                    $pwdEtudiant = Security::chiffrer($pwdEtudiant);
 
                     $new_account = array(
-                         "mailUser" =>  $mailUser,
-                         "pwdUser" => $pwdUser,
-                         "nameUser" => $nameUser,
-                         "isAdmin" => 0,
+                         "id_etudiant" => $ineEtudiant
+                         "pwd_etud" => $pwdEtudiant
+                         "nom_etud" => $nameEtudiant,
+                         "prenom_etud" =>  $prenomEtudiant,
+                         "mail_etud" => $mailEtudiant,
+                         "id_promo" => $promoEtud,
                     );
 
-                    ModelUser::insert($new_account);
+                    ModelEtudiant::insert($new_account);
                 }
             }
         }
