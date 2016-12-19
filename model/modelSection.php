@@ -27,8 +27,8 @@ class ModelSection extends Model {
 
   public static function listeSections(){
     $sql =  "SELECT id_promo, annee, id_section, libelle_section ".
-            "FROM ".static::$table.", Promo".
-            "WHERE Section.id_section = Promo.id_section".
+            "FROM ".static::$table.", Promo ".
+            "WHERE Section.id_section = Promo.id_section ".
             "ORDER BY Section.id_section ASC;";
     try{
 
