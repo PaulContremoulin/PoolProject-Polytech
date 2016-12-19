@@ -50,10 +50,12 @@
 	    {
 	    /* On compte les départements de cette région */
 	    var nbp = tab[ids][1].length;
-	    var form_p  = '<select name="promoEtudiant" id="promoEtudiant">';
+
+	    var form_p  = '<label for="section"><h4> Année : </h4></label>';
+	    form_p += '<select name="promoEtudiant" id="promoEtudiant">';
 	    for(var j = 0;  j < nbp; j++)
 	    {
-	        form_p += '  <option value="'+ tab[ids][1][j] +'">'+ tab[ids][2][j] +" ("+ tab[ids][1][j] +')<\/option>';
+	        form_p += '  <option value="'+ tab[ids][1][j] +'">'+ tab[ids][2][j] +'<\/option>';
 	    }
 	    form_p += '<\/select>';
 	    }

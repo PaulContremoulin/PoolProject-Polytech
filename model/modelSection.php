@@ -29,7 +29,7 @@ class ModelSection extends Model {
     $sql =  "SELECT id_promo, annee, Section.id_section AS id_section, libelle_section ".
             "FROM ".static::$table.", Promo ".
             "WHERE Section.id_section = Promo.id_section ".
-            "ORDER BY Section.id_section ASC;";
+            "ORDER BY Section.id_section ASC, annee ASC;";
     try{
 
       $req_prep = Model::$pdo->prepare($sql);

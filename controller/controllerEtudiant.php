@@ -51,7 +51,7 @@ switch ($action) {
         $prenomEtudiant = $_POST["prenomEtudiant"];
         $mailEtudiant = $_POST["mailEtudiant"];
         $confirmPwd = $_POST["confirmPwd"];
-        $promoEtud = $_POST["promoEtud"];
+        $promoEtud = $_POST["promoEtudiant"];
 
         if(!modelEtudiant::mailExist($mailEtudiant)){
             if(modelEtudiant::isMailFormat($mailEtudiant)){
