@@ -21,19 +21,47 @@
 				<label for="confirmPwd"><h4> Confirmez le mot de passe : </h4></label>
 		    	<input type="password" name="confirmPwd" id="confirmPwd"  required/>
 		    	<label for="section"><h4> Section : </h4></label>
-		    	<select name="section" id="section"> <!-- onchange="changePromo(tab, this.value);" -->
+		    	<select name="section" id="section" onchange="changePromo(tab, this.value);">
 		    		<?php
 		    		//$nbr = count($sections);
 		    		foreach ($sections as $id_section => $values) {
 		    		?>
-		    		<option value="<?php echo($values[0][0]); ?>"><?php echo($values[0][1]); ?></option>
+		    		<option value="<?php echo($id_section); ?>"><?php echo($values[0]); ?></option>
 		    		<?php
 		    		}
 		    		?>
 		    	</select>
+		    	<span id="idListePromo"></span><br />
 		    	<input id="submit" class="btn btn-large" type="submit" value="Je m'inscris" />
 			</fieldset> 
 		</form>
 	</div>
 </div>
+
+<script type="text/javascript" src="js/arrayPHP2JS.js" charset="iso_8859-1"></script>
+<script type="text/javascript">
+	var tableau = new PhpArray2Js('<?php echo $sectionsJS; ?>');
+	var tab = tableau.retour();
+</script>
+<script type="text/javascript">
+	function changePromo(tab,ids)
+	{
+	    if(ids != "vide")
+	    {
+	    /* On compte les départements de cette région */
+	    var nbp = tab[ids][1].length;
+	    var form_p  = '<select name="promoEtudiant" id="promoEtudiant">';
+	    for(var j = 0;  j < nbp; j++)
+	    {
+	        form_p += '  <option value="'+ tab[ids][1][j] +'">'+ tab[ids][2][j] +" ("+ tab[ids][1][j] +')<\/option>';
+	    }
+	    form_p += '<\/select>';
+	    }
+	    else
+	    {
+	        form_p = "";
+	    }
+	    document.getElementById("idListePromo").innerHTML = form_p;
+	}
+</script>
 

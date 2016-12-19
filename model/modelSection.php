@@ -36,7 +36,6 @@ class ModelSection extends Model {
       $req_prep->execute();
 
       $temoin_s = "id_sec";
-      $ids = -1;
       $idp = 0;
       $sections = array();
 
@@ -46,19 +45,16 @@ class ModelSection extends Model {
         $p = $ligne['id_promo'];
 
         if($temoin_s != $s){
-          $ids++;
-          $sections[$ids] = array();
-          $sections[$ids][0] = array();
-          $sections[$ids][0][0] = $s;
-          $sections[$ids][0][1] = $ligne['libelle_section'];
-          $sections[$ids][1] = array();
-          $sections[$ids][2] = array();
+          $sections[$s] = array();
+          $sections[$s][0] = $ligne['libelle_section']
+          $sections[$s][1] = array();
+          $sections[$s][2] = array();
           $temoin_s = $s;
           $idp = 0;
         }
 
-        $sections[$ids][1][$idp] = $p;
-        $sections[$ids][2][$idp] = $ligne['annee'];
+        $sections[$s][1][$idp] = $p;
+        $sections[$s][2][$idp] = $ligne['annee'];
         $idp++;
       }
 
