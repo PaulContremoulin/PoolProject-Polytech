@@ -21,17 +21,16 @@
 				<label for="confirmPwd"><h4> Confirmez le mot de passe : </h4></label>
 		    	<input type="password" name="confirmPwd" id="confirmPwd"  required/>
 		    	<label for="section"><h4> Section : </h4></label>
-		    	<h4><select name="section" id="section"> <!-- onchange="changePromo(tab, this.value);" -->
-		    		<option value="vide">- - - Votre section - - -</option>
+		    	<select name="section" id="section"> <!-- onchange="changePromo(tab, this.value);" -->
 		    		<?php
 		    		//$nbr = count($sections);
 		    		foreach ($sections as $id_section => $libelle_section) {
 		    		?>
-		    		<option value="<?php echo($id_section); ?>"><?php echo($libelle_section); ?></option>
+		    		<option value="<?php echo($id_section); ?>"><?php echo($libelle_section[0]); ?></option>
 		    		<?php
 		    		}
 		    		?>
-		    	</select></h4>
+		    	</select>
 		    	<input id="submit" class="btn btn-large" type="submit" value="Je m'inscris" />
 			</fieldset> 
 		</form>

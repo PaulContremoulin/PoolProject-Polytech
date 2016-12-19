@@ -36,7 +36,7 @@ switch ($action) {
     case "inscription":
 
         $sections = ModelSection::listeSections();
-
+        $sectionsJS = htmlspecialchars(serialize($sections), ENT_QUOTES);
         $pagetitle = "Inscription";
         $view = "inscription";
 
