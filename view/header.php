@@ -1,7 +1,8 @@
 <!-- Tête de page -->
 <div class="navbar">
   <div class="navbar-inner">
-    <div class="container"> <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> <a class="brand" href="index.html"><img src="img/user.jpg" alt=""></a>
+    <div class="container"> 
+      <a class="brand" href="./index.php"><img src="img/polytech.gif" alt=""></a>
       <ul class="nav nav-collapse pull-right">
         <?php if(!empty($_SESSION['nom'])){ ?>
           <li><a href="index.html" class="active"><i class="icon-user"></i> Votre Profil</a></li>

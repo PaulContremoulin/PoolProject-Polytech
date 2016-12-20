@@ -2850,7 +2850,7 @@ button.btn.btn-mini, input[type="submit"].btn.btn-mini {
 	clear: both;
 }
 .navbar .container {
-	width: 940px;
+	width: auto;
 }
 .nav-collapse.collapse {
 	height: auto;
