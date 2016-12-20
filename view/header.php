@@ -21,7 +21,7 @@ $first_part = $components[1];
           <li class="<?php if ($first_part==" Se déconnecter") {echo "active"; }?>"><a href="resume.html"><i class="icon-power"></i>  Se déconnecter</a></li>
         <?php } else { ?>
           <li class="<?php if ($first_part==" Se connecter") {echo "active"; }?>"><a href="index.php?controller=etudiant&amp;action=connexion"><i class="icon-power"></i> Se connecter</a></li>
-        <?php } ?>s
+        <?php } ?>
       </ul>
       <div class="nav-collapse collapse"></div>
     </div>
