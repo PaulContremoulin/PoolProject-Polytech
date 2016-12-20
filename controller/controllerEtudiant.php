@@ -9,9 +9,9 @@ $action = $_GET['action'];// recupère l'action passée dans l'URL
 
 switch ($action) {
 
-    case "accueil":
-        $pagetitle = "Accueil";
-        $view = "accueil";
+    case "profil":
+        $pagetitle = "Votre profil";
+        $view = "profil";
 
         /* A garder pour la gestion des etudiants / admins / pas inscrits
         if(Session::is_admin()){
@@ -41,8 +41,8 @@ switch ($action) {
             $_SESSION['admin'] = 0;
         }
 
-        $pagetitle = "Accueil";
-        $view = "accueil";
+        $pagetitle = "Votre profil";
+        $view = "profil";
 
         require ("{$ROOT}{$DS}view{$DS}view.php");
         break;
@@ -88,7 +88,7 @@ switch ($action) {
 
         //Redirection vers la page d'accueil
         $pagetitle = "Accueil";
-        $view = "accueil";
+        $view = "profil";
 
         require ("{$ROOT}{$DS}view{$DS}view.php");
         break;
