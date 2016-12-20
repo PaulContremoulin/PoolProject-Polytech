@@ -87,7 +87,7 @@ class ModelEtudiant extends Model {
     $req_prep->execute(array(':mail'=>$mail));
     $row = $req_prep->fetch(PDO::FETCH_ASSOC);
 
-    return $row;        
+    return $row['id_etudiant'];        
   }
 
 /*

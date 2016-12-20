@@ -13,12 +13,8 @@ switch ($action) {
 
         $login = ModelEtudiant::getINE($_POST["login"]); //On récupère l'ine associé à l'e-mail
         $password = $_POST["password"];
-        print_r($login);
-        print_r($password);
         $cryptedPwd = Security::chiffrer($password);
-        print_r($cryptedPwd);
         $checkAccount = ModelEtudiant::checkPassword($login,$cryptedPwd);
-        print_r($checkAccount);
         if($checkAccount == true){
 
             $account = ModelEtudiant::select($login);
