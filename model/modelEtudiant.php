@@ -79,6 +79,17 @@ class ModelEtudiant extends Model {
     return preg_match("#^[a-z0-9._-]{1,}@[a-z0-9._-]{2,}\.[a-z]{2,4}$#",$mail);
   }
 
+  public static function getINE($mail){
+    $sql =  "SELECT id_etudiant ".
+            "FROM ". static::$table." ".
+            "WHERE mail_etud = :mail;";
+    $req_prep = Model::$pdo->prepare($sql);
+    $req_prep->execute(array(':mail'=>$mail));
+    $row = $req_prep->fetch(PDO::FETCH_ASSOC)
+
+    return $row['id_etudiant'];        
+  }
+
 /*
   function delete(){
     Model::delete($this->modele);
