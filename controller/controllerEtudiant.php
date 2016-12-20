@@ -15,6 +15,7 @@ switch ($action) {
         $password = $_POST["password"];
         $cryptedPwd = Security::chiffrer($password);
         $checkAccount = ModelEtudiant::checkPassword($login,$cryptedPwd);
+        print($checkAccount);
         if($checkAccount == true){
 
             $account = ModelEtudiant::select($login);
