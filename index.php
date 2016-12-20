@@ -17,7 +17,7 @@ if(!isset($_GET['controller'])){
 switch ($controller) {	
 	case "etudiant" :
 		if(!isset($_GET['action'])){
-			$_GET['action'] = "Accueil";
+			$_GET['action'] = "accueil";
 		}
 		require ("{$ROOT}{$DS}controller{$DS}controller".ucfirst($controller).".php"); //ucfirst met la premiere lettre de la chaine en MAJ
 		break;
