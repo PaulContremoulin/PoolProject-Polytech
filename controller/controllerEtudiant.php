@@ -11,7 +11,7 @@ switch ($action) {
 
     case "accueil":
         $pagetitle = "Accueil";
-        $view = "default";
+        $view = "accueil";
 
         /* A garder pour la gestion des etudiants / admins / pas inscrits
         if(Session::is_admin()){
@@ -40,9 +40,9 @@ switch ($action) {
             $_SESSION['nom'] = $account->getName();
             $_SESSION['admin'] = 0;
         }
-        
+
         $pagetitle = "Accueil";
-        $view = "default";
+        $view = "accueil";
 
         require ("{$ROOT}{$DS}view{$DS}view.php");
         break;
@@ -88,7 +88,7 @@ switch ($action) {
 
         //Redirection vers la page d'accueil
         $pagetitle = "Accueil";
-        $view = "default";
+        $view = "accueil";
 
         require ("{$ROOT}{$DS}view{$DS}view.php");
         break;
