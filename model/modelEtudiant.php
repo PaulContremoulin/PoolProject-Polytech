@@ -48,12 +48,12 @@ class ModelEtudiant extends Model {
 	public static function checkPassword($login,$mot_de_passe_crypte){
 
     $check = false;
-	  $sql = "SELECT * FROM Etudiant WHERE mail_etud = :user AND pwd_etud = :pwd";
+	  $sql = "SELECT * FROM Etudiant WHERE id_etudiant = :login AND pwd_etud = :pwd";
 
 	  try{
 
 		  $req_prep = Model::$pdo->prepare($sql);
-		  $req_prep->bindParam(":user", $login);
+		  $req_prep->bindParam(":login", $login);
 		  $req_prep->bindParam(":pwd", $mot_de_passe_crypte);
 		  $req_prep->execute();
 
