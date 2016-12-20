@@ -8,7 +8,24 @@ $action = $_GET['action'];// recupère l'action passée dans l'URL
 //require_once ("{$ROOT}{$DS}model{$DS}ModelQuelconque.php"); // chargement du modèle
 
 switch ($action) {
-	
+
+    case "accueil":
+        $pagetitle = "Accueil";
+        $view = "default";
+
+        /* A garder pour la gestion des etudiants / admins / pas inscrits
+        if(Session::is_admin()){
+
+        }else if(Session::is_user()){
+
+        }else{
+
+        }
+        */
+        
+        require ("{$ROOT}{$DS}view{$DS}view.php");//"redirige" vers la vue
+        break;
+
     case "connexion":
 
         $login = ModelEtudiant::getINE($_POST["login"]); //On récupère l'ine associé à l'e-mail
@@ -23,10 +40,11 @@ switch ($action) {
             $_SESSION['nom'] = $account->getName();
             $_SESSION['admin'] = 0;
         }
-        $controller="accueil";
-        $_GET['action'] = "default";
+        
+        $pagetitle = "Accueil";
+        $view = "default";
 
-        require ("{$ROOT}{$DS}controller{$DS}controller".ucfirst($controller).".php"); //ucfirst met la premiere lettre de la chaine en MAJ
+        require ("{$ROOT}{$DS}view{$DS}view.php");
         break;
 
     case "inscription":
@@ -69,10 +87,10 @@ switch ($action) {
         }
 
         //Redirection vers la page d'accueil
-        $controller="accueil";
-        $_GET['action'] = "default";
+        $pagetitle = "Accueil";
+        $view = "default";
 
-        require ("{$ROOT}{$DS}controller{$DS}controller".ucfirst($controller).".php"); //ucfirst met la premiere lettre de la chaine en MAJ
+        require ("{$ROOT}{$DS}view{$DS}view.php");
         break;
 
 }
