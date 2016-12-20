@@ -2,7 +2,7 @@
 <div class="navbar">
   <div class="navbar-inner">
     <div class="container"> 
-      <a class="brand" href="./index.php"><img src="img/polytech.png" alt=""></a>
+      <a href="./index.php"><img src="img/polytech.png" alt=""></a>
       <ul class="nav nav-collapse pull-right">
         <?php if(!empty($_SESSION['nom'])){ ?>
           <li><a href="index.html" class="active"><i class="icon-user"></i> Votre Profil</a></li>
