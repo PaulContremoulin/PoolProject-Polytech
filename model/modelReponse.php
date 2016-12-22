@@ -34,7 +34,7 @@ class ModelReponse extends Model {
     $this->$id_group = $num_group;
   }
 
-  public static function get_all_reponseG($num_group){
+  public static function get_all_reponse_Groupe($num_group){
     $sql = "SELECT * FROM Reponse WHERE id_group = :idGroup";
 
 	  try{
@@ -50,7 +50,7 @@ class ModelReponse extends Model {
 	  }
   }
 
-  public static function get_all_reponseP($num_profil){
+  public static function get_all_reponse_Profil($num_profil){
     $sql = "SELECT * FROM Reponse WHERE id_profil = :idProfil";
 
 	  try{
@@ -68,8 +68,3 @@ class ModelReponse extends Model {
 
 
 }
-
-$result = ModelReponse::get_all_reponseP(1);
-$result1 = ModelReponse::get_all_reponseG(1);
-print_r($result);
-print_r($result1);

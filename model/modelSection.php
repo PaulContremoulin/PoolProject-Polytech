@@ -13,8 +13,8 @@ class ModelSection extends Model {
 
   public function __construct($section = NULL, $libelle = NULL) {
     if (!is_null($section) && !is_null($libelle)) {
-      $this->id_section = $section;
-      $this->libelle_section = $libelle;
+      $this->$id_section = $section;
+      $this->$libelle_section = $libelle;
       /*
       $this->tabAtt = array (
 					"mail"  => $this->mailUser,
