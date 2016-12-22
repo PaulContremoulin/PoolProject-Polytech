@@ -11,19 +11,19 @@ class ModelReponse extends Model {
   protected static $table = 'Reponse';
   protected static $primary = 'id_reponse';
 
-  public get_id_reponse(){
+  public static function get_id_reponse(){
     return $this->$id_reponse;
   }
 
-  public get_id_profil(){
+  public static function get_id_profil(){
     return $this->$id_profil;
   }
 
-  public get_text_reponse(){
+  public static function get_text_reponse(){
     return $this->$text_rep;
   }
 
-  public get_id_group(){
+  public static function get_id_group(){
     return $this->$id_group;
   }
 
@@ -34,7 +34,7 @@ class ModelReponse extends Model {
     $this->$id_group = $num_group;
   }
 
-  public get_all_reponseG($num_group){
+  public static function get_all_reponseG($num_group){
     $sql = "SELECT * FROM Reponse WHERE id_group = :idGroup";
 
 	  try{
@@ -50,7 +50,7 @@ class ModelReponse extends Model {
 	  }
   }
 
-  public get_all_reponseP($num_profil){
+  public static function get_all_reponseP($num_profil){
     $sql = "SELECT * FROM Reponse WHERE id_profil = :idProfil";
 
 	  try{
@@ -68,3 +68,8 @@ class ModelReponse extends Model {
 
 
 }
+
+$result = ModelReponse::get_all_reponseP(1);
+$result1 = ModelReponse::get_all_reponseG(1);
+print_r($result);
+print_r($result1);

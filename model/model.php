@@ -1,10 +1,10 @@
 <?php
-require_once "{$ROOT}{$DS}config{$DS}conf.php"; 
+require_once ("../config/conflocal.php"); 
 
 class Model{
-	  
+
 	public static $pdo;
-	
+
 	public static function Init(){
 		$host = Conf::getHostname();
 		$dbname = Conf::getDatabase();
@@ -23,7 +23,7 @@ class Model{
 	    $sql = "SELECT * from ".static::$table." WHERE ".static::$primary."=:nom_var";
 
 	    try{
-	    	
+
 	    	$req_prep = Model::$pdo->prepare($sql);
 	    	$req_prep->bindParam(":nom_var", $para);
 	    	$req_prep->execute();
@@ -33,7 +33,7 @@ class Model{
 	    		$rslt = $req_prep->fetch();
 	    	}else{
 	    		$rslt = null;
-	    	} 	
+	    	}
 
 	  		return $rslt;
 
@@ -64,7 +64,7 @@ class Model{
 			echo $e->getMessage(); // affiche un message d'erreur
 		}
   	}
-	
+
 }
 
 Model::Init();

@@ -3,13 +3,13 @@ class Conf {
 
   static private $databases = array(
 
-    'hostname' => 'mysql.hostinger.fr',
+    'hostname' => '127.0.0.1',
 
-    'database' => 'u972922602_pool',
+    'database' => 'pool',
 
-    'login' => 'u972922602_admin',
+    'login' => 'root',
 
-    'password' => 'pool342016'
+    'password' => ''
   );
 
   static public function getLogin() {
