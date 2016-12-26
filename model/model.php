@@ -1,5 +1,5 @@
 <?php
-require_once ("../config/conf.php"); 
+require_once "{$ROOT}{$DS}config{$DS}conf.php"; //ne jamais modifier
 
 class Model{
 
