@@ -56,6 +56,9 @@ switch ($action) {
         $pagetitle = "Votre profil";
         $view = "profil";
 
+        require ("{$ROOT}{$DS}view{$DS}view.php");
+        break;
+
     case "inscription":
 
         $sections = ModelSection::listeSections();
