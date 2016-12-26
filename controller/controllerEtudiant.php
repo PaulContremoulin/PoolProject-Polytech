@@ -47,6 +47,15 @@ switch ($action) {
         require ("{$ROOT}{$DS}view{$DS}view.php");
         break;
 
+    case "deconnexion":
+
+        unset($_SESSION['login']);
+        unset($_SESSION['nom']);
+        unset($_SESSION['admin']);
+
+        $pagetitle = "Votre profil";
+        $view = "profil";
+
     case "inscription":
 
         $sections = ModelSection::listeSections();
