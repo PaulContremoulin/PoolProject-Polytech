@@ -3,9 +3,7 @@
 		<img src="img/mini.png" alt="">
 	</div>
 	<div class="span6">
-		<?php if(!empty($_SESSION['nom'])){ ?>
-			<h1>Bienvenue <?php print_r($_SESSION['nom']) ?> sur votre test de personnalité</h1>
-		<?php }else{ ?>
+		<?php if(empty($_SESSION['login'])){ ?> <!-- si l'utilisateur n'est pas encore connecté -->
 			<h1>Bienvenue !</h1>
 			<h3>Connectez-vous pour acceder à votre profil !</h3>
 				<form method="POST" action="index.php?controller=etudiant&amp;action=connexion">
@@ -24,10 +22,11 @@
 					</h4>
 				</form>
 			</p>
+
+		<?php }else{ ?>
+			<h1>Bienvenue <?php print_r($_SESSION['nom']) ?> sur votre test de personnalité</h1>
+			<!-- a completer avec chart js -->
 		<?php } ?>
-		<p>Connexion à la base de données : 
-		<?php require_once "model/model.php"; echo "Connexion réussie !" ; ?>
-		</p>
 	</div>
 </div>
 

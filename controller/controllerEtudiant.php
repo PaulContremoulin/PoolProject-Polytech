@@ -8,17 +8,30 @@ $action = $_GET['action'];// recupère l'action passée dans l'URL
 //require_once ("{$ROOT}{$DS}model{$DS}ModelQuelconque.php"); // chargement du modèle
 
 switch ($action) {
-	
+
+    case "profil":
+        $pagetitle = "Votre profil";
+        $view = "profil";
+
+        /* A garder pour la gestion des etudiants / admins / pas inscrits
+        if(Session::is_admin()){
+
+        }else if(Session::is_user()){
+
+        }else{
+
+        }
+        */
+        
+        require ("{$ROOT}{$DS}view{$DS}view.php");//"redirige" vers la vue
+        break;
+
     case "connexion":
 
-        $login = $_POST["login"];
+        $login = ModelEtudiant::getINE($_POST["login"]); //On récupère l'ine associé à l'e-mail
         $password = $_POST["password"];
-        print_r($login);
-        print_r($password);
         $cryptedPwd = Security::chiffrer($password);
-        print_r($cryptedPwd);
         $checkAccount = ModelEtudiant::checkPassword($login,$cryptedPwd);
-        print_r($checkAccount);
         if($checkAccount == true){
 
             $account = ModelEtudiant::select($login);
@@ -27,16 +40,17 @@ switch ($action) {
             $_SESSION['nom'] = $account->getName();
             $_SESSION['admin'] = 0;
         }
-        $controller="accueil";
-        $_GET['action'] = "default";
 
-        require ("{$ROOT}{$DS}controller{$DS}controller".ucfirst($controller).".php"); //ucfirst met la premiere lettre de la chaine en MAJ
+        $pagetitle = "Votre profil";
+        $view = "profil";
+
+        require ("{$ROOT}{$DS}view{$DS}view.php");
         break;
 
     case "inscription":
 
         $sections = ModelSection::listeSections();
-
+        $sectionsJS = htmlspecialchars(serialize($sections), ENT_QUOTES);
         $pagetitle = "Inscription";
         $view = "inscription";
 
@@ -51,7 +65,7 @@ switch ($action) {
         $prenomEtudiant = $_POST["prenomEtudiant"];
         $mailEtudiant = $_POST["mailEtudiant"];
         $confirmPwd = $_POST["confirmPwd"];
-        $promoEtud = $_POST["promoEtud"];
+        $promoEtudiant = $_POST["promoEtudiant"];
 
         if(!modelEtudiant::mailExist($mailEtudiant)){
             if(modelEtudiant::isMailFormat($mailEtudiant)){
@@ -64,7 +78,7 @@ switch ($action) {
                          "nom_etud" => $nameEtudiant,
                          "prenom_etud" =>  $prenomEtudiant,
                          "mail_etud" => $mailEtudiant,
-                         "id_promo" => $promoEtud,
+                         "id_promo" => $promoEtudiant,
                     );
 
                     ModelEtudiant::insert($new_account);
@@ -73,10 +87,10 @@ switch ($action) {
         }
 
         //Redirection vers la page d'accueil
-        $controller="accueil";
-        $_GET['action'] = "default";
+        $pagetitle = "Accueil";
+        $view = "profil";
 
-        require ("{$ROOT}{$DS}controller{$DS}controller".ucfirst($controller).".php"); //ucfirst met la premiere lettre de la chaine en MAJ
+        require ("{$ROOT}{$DS}view{$DS}view.php");
         break;
 
 }

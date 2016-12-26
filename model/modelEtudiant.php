@@ -48,12 +48,12 @@ class ModelEtudiant extends Model {
 	public static function checkPassword($login,$mot_de_passe_crypte){
 
     $check = false;
-	  $sql = "SELECT * FROM Etudiant WHERE mail_etud = :user AND pwd_etud = :pwd";
+	  $sql = "SELECT * FROM Etudiant WHERE id_etudiant = :login AND pwd_etud = :pwd";
 
 	  try{
 
 		  $req_prep = Model::$pdo->prepare($sql);
-		  $req_prep->bindParam(":user", $login);
+		  $req_prep->bindParam(":login", $login);
 		  $req_prep->bindParam(":pwd", $mot_de_passe_crypte);
 		  $req_prep->execute();
 
@@ -77,6 +77,17 @@ class ModelEtudiant extends Model {
 
   public static function isMailFormat($mail){
     return preg_match("#^[a-z0-9._-]{1,}@[a-z0-9._-]{2,}\.[a-z]{2,4}$#",$mail);
+  }
+
+  public static function getINE($mail){
+    $sql =  "SELECT id_etudiant ".
+            "FROM ". static::$table." ".
+            "WHERE mail_etud = :mail;";
+    $req_prep = Model::$pdo->prepare($sql);
+    $req_prep->execute(array(':mail'=>$mail));
+    $row = $req_prep->fetch(PDO::FETCH_ASSOC);
+
+    return $row['id_etudiant'];        
   }
 
 /*
