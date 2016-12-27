@@ -105,5 +105,19 @@ switch ($action) {
         require ("{$ROOT}{$DS}view{$DS}view.php");
         break;
 
+        case "test":
+            require_once("modelGroup.php");
+            if(isset($_SESSION['login'])){
+
+                switch ($action) {
+
+                    case "start" :
+                        
+                }
+
+            }else{
+                //erreur
+            }
+
 }
 ?>
