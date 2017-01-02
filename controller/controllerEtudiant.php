@@ -114,7 +114,7 @@ switch ($action) {
                 switch ($option) {
                     case "start" :
                         $groupe = modelGroupe::select("1");
-                        print($groupe);
+                        print_r($groupe);
                         prin("fin");
                         $tab_answers = $groupe->getAnswers();
                     break;
