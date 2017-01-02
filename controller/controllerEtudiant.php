@@ -112,9 +112,7 @@ switch ($action) {
                 $option = $_GET['option'];
                 switch ($option) {
                     case "start" :
-                    print("option");
                         $groupe = modelGroupe::select(1);
-                        print("groupe : ".$groupe . "fin");
                         $tab_answers = $groupe->getAnswers();
                     break;
 
