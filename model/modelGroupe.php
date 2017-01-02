@@ -20,7 +20,7 @@ class ModelGroupe extends Model {
   }
 
   //Recupère les réponses et leurs ids associé à l'object group courant
-  public function getAnwsers(){
+  public function getAnswers(){
 
       $sql =  "SELECT id_reponse AS idr, id_profil AS idp, text_reponse AS libelle ".
               "FROM ".static::$table.", Reponse ".
