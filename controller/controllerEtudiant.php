@@ -109,13 +109,13 @@ switch ($action) {
             require_once("{$ROOT}{$DS}model{$DS}modelGroupe.php");
             if(isset($_SESSION['login'])){
 
-                switch ($action) {
+                switch ($option) {
 
                     case "start" :
                         $groupe = modelGroupe::select("1");
                         print("groupe : ".$groupe . "fin");
                         $tab_answers = $groupe->getAnswers();
-                        break;
+                    break;
 
                 }
 
