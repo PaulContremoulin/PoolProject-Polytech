@@ -113,7 +113,7 @@ switch ($action) {
                 $option = $_GET['option'];
                 switch ($option) {
                     case "start" :
-                        $groupe = modelGroupe::select(1);
+                        $groupe = modelGroupe::select("1");
                         $tab_answers = $groupe->getAnswers();
                     break;
 

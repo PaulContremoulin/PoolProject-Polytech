@@ -8,15 +8,14 @@ class ModelGroupe extends Model {
   protected static $table = 'Groupe';
   protected static $primary = 'id_group';
 
-  public function getidGroup(){
-    return $this->$idGroup;
-  }
-
-
   public function __construct($idG = NULL){
     if (!is_null($idG)){
       $this->idGroup = $idG;
     }
+  }
+
+  public function getidGroup(){
+    return $this->$idGroup;
   }
 
   //Recupère les réponses et leurs ids associé à l'object group courant
