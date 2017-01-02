@@ -36,4 +36,5 @@ class ModelGroup extends Model {
         echo 'getAnswers() failed: ' . $e->getMessage();     
       }
   }
+}
 ?>
