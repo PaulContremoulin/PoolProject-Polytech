@@ -110,8 +110,8 @@ switch ($action) {
             if(isset($_SESSION['login'])){
                 //option du test
                 switch ($option) {
-                    print("option");
                     case "start" :
+                    print("option");
                         $groupe = modelGroupe::select(1);
                         print("groupe : ".$groupe . "fin");
                         $tab_answers = $groupe->getAnswers();
@@ -128,5 +128,6 @@ switch ($action) {
             }else{
                 //erreur
             }
+            break;
 }
 ?>
