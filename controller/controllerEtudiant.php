@@ -113,6 +113,7 @@ switch ($action) {
 
                     case "start" :
                         $groupe = modelGroupe::select("1");
+                        print("groupe : ".$groupe . "fin");
                         $tab_answers = $groupe->getAnswers();
                         break;
 
