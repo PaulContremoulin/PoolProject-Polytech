@@ -106,13 +106,13 @@ switch ($action) {
         break;
 
         case "test":
-            require_once("{$ROOT}{$DS}model{$DS}modelGroup.php");
+            require_once("{$ROOT}{$DS}model{$DS}modelGroupe.php");
             if(isset($_SESSION['login'])){
 
                 switch ($action) {
 
                     case "start" :
-                        $groupe = modelGroup::select("1");
+                        $groupe = modelGroupe::select("1");
                         $tab_answers = $groupe->getAnswers();
                         break;
 
