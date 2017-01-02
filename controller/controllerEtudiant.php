@@ -109,6 +109,7 @@ switch ($action) {
             require_once("{$ROOT}{$DS}model{$DS}modelGroupe.php");
             if(isset($_SESSION['login'])){
                 //option du test
+                $option = $_GET['option'];
                 switch ($option) {
                     case "start" :
                     print("option");
