@@ -115,15 +115,14 @@ switch ($action) {
                     case "start" :
                         $groupe = modelGroup::select(1);
                         $tab_answers = $groupe->getAnswers();
+                        break;
 
-                        $
                 }
 
                 $pagetitle = "Test";
                 $view = "test";
 
                 require ("{$ROOT}{$DS}view{$DS}view.php");
-                break;
 
 
             }else{
