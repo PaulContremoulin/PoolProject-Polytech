@@ -2,7 +2,6 @@
 
 require_once("{$ROOT}{$DS}model{$DS}modelEtudiant.php");
 require_once("{$ROOT}{$DS}model{$DS}modelSection.php");
-require_once("{$ROOT}{$DS}model{$DS}modelGroup.php");
 
 $action = $_GET['action'];// recupère l'action passée dans l'URL
 
@@ -107,7 +106,7 @@ switch ($action) {
         break;
 
         case "test":
-            require_once("modelGroup.php");
+            require_once("{$ROOT}{$DS}model{$DS}modelGroup.php");
             if(isset($_SESSION['login'])){
 
                 switch ($action) {
