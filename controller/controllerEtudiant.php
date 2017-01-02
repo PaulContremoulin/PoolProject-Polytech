@@ -108,7 +108,7 @@ switch ($action) {
         case "test":
             require_once("{$ROOT}{$DS}model{$DS}modelGroupe.php");
             if(isset($_SESSION['login'])){
-
+                //option du test
                 switch ($option) {
 
                     case "start" :
