@@ -25,7 +25,15 @@ class ModelGroup extends Model {
       $sql =  "SELECT id_reponse AS idr, id_profil AS idp, text_reponse AS libelle ".
               "FROM ".static::$table.", Reponse ".
               "WHERE ".static::$table.".id_group = Reponse.id_group ".
-              "AND ".static::$table.".".static::$primary." = ".$idGroup." "
+              "AND ".static::$table.".".static::$primary." = ".$idGroup." ".
               "ORDER BY id_reponse ASC;"; // afinir
+      try{
+          $req_prep = Model::$pdo->prepare($sql);
+          $req_prep->execute();
+          $result = $req_prep->fetchAll();
+          return $result;
+      } catch(PDOException $e) {
+        echo 'getAnswers() failed: ' . $e->getMessage();     
+      }
   }
 ?>

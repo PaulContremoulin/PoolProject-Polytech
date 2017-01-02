@@ -2,6 +2,7 @@
 
 require_once("{$ROOT}{$DS}model{$DS}modelEtudiant.php");
 require_once("{$ROOT}{$DS}model{$DS}modelSection.php");
+require_once("{$ROOT}{$DS}model{$DS}modelGroup.php");
 
 $action = $_GET['action'];// recupère l'action passée dans l'URL
 
@@ -112,8 +113,18 @@ switch ($action) {
                 switch ($action) {
 
                     case "start" :
-                        
+                        $groupe = modelGroup::select(1);
+                        $tab_answers = $groupe->getAnswers();
+
+                        $
                 }
+
+                $pagetitle = "Test";
+                $view = "test";
+
+                require ("{$ROOT}{$DS}view{$DS}view.php");
+                break;
+
 
             }else{
                 //erreur
