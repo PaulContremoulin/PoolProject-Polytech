@@ -106,18 +106,27 @@ switch ($action) {
         break;
 
         case "test":
-            require_once("modelGroup.php");
+            require_once("{$ROOT}{$DS}model{$DS}modelGroupe.php");
             if(isset($_SESSION['login'])){
-
-                switch ($action) {
-
+                $option = $_GET['option'];
+                switch ($option) {
                     case "start" :
-                        
+                        $groupe = modelGroupe::select("1");
+                        $idGroupe = $groupe->getIdGroupe();
+                        $tab_answers = $groupe->getAnswers();
+                    break;
+
                 }
+
+                $pagetitle = "Test";
+                $view = "test";
+
+                require ("{$ROOT}{$DS}view{$DS}view.php");
+
 
             }else{
                 //erreur
             }
-
+            break;
 }
 ?>
