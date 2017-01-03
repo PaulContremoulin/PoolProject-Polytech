@@ -24,7 +24,7 @@ class ModelGroupe extends Model {
       $sql =  "SELECT id_reponse AS idr, id_profil AS idp, text_reponse AS libelle ".
               "FROM ".static::$table.", Reponse ".
               "WHERE ".static::$table.".id_group = Reponse.id_group ".
-              "AND ".static::$table.".".static::$primary." = ".$this->$id_group." ".
+              "AND ".static::$table.".".static::$primary." = ".$this->id_group." ".
               "ORDER BY id_reponse ASC;"; // afinir
       try{
           $req_prep = Model::$pdo->prepare($sql);
