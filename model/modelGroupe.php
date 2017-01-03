@@ -4,7 +4,7 @@ require_once ("model.php");
 
 class ModelGroupe extends Model {
 
-  private $id_group;
+  protected $id_group;
   protected static $table = 'Groupe';
   protected static $primary = 'id_group';
 

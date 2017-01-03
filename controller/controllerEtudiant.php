@@ -112,6 +112,7 @@ switch ($action) {
                 switch ($option) {
                     case "start" :
                         $groupe = modelGroupe::select("1");
+                        $idGroupe = $groupe->getIdGroupe();
                         $tab_answers = $groupe->getAnswers();
                     break;
 
