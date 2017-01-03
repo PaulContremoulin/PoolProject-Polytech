@@ -14,8 +14,8 @@ class ModelGroupe extends Model {
     }
   }
 
-  public function getidGroup(){
-    return $this->$id_group;
+  public function getIdGroupe(){
+    return $this->id_group;
   }
 
   //Recupère les réponses et leurs ids associé à l'object group courant

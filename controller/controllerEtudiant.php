@@ -108,13 +108,10 @@ switch ($action) {
         case "test":
             require_once("{$ROOT}{$DS}model{$DS}modelGroupe.php");
             if(isset($_SESSION['login'])){
-                //option du test
-                print("option");
                 $option = $_GET['option'];
                 switch ($option) {
                     case "start" :
                         $groupe = modelGroupe::select("1");
-                        print_r($groupe);
                         $tab_answers = $groupe->getAnswers();
                     break;
 
