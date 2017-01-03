@@ -3,7 +3,7 @@
 
 require_once ("model.php"); 
 
-class ModelUser extends Model {
+class ModelProfil extends Model {
 	private $id_profil;
 	private $libelle_profil;
 	protected static $table = 'Profil';
@@ -38,7 +38,7 @@ class ModelUser extends Model {
 	  }
   	}
 
-  	public static function retrieve_libelle2($libelle){
+  	public static function retrieve_id2($libelle){
   		$sql = "SELECT id_profil from".static::$table."WHERE libelle_profil LIKE ".$libelle;
   		try{
 

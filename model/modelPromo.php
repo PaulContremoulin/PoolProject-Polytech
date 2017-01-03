@@ -81,8 +81,6 @@ class ModelPromo extends Model {
 
 	}
 
-
-
 }
 
 ?>

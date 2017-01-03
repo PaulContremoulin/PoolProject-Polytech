@@ -65,10 +65,14 @@ class ModelSection extends Model {
     }
 
   }
+
 /*
   function delete(){
     Model::delete($this->modele);
   }
   */
+
 }
+
+
 ?>
