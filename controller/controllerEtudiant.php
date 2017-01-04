@@ -112,10 +112,10 @@ switch ($action) {
                 //si l'identifiant du groupe est envoyé par le formulaire
                 if(isset($_POST['idGroupe'])){
                     //si clic sur groupe precedent
-                    if(isset($_POST['Precedent']){
+                    if(isset($_POST['Precedent'])){
                         $idGroupe = intval($_POST['idGroupe']) - 1;
                     //si clic sur groupe suivant
-                    }else if(isset($_POST['Suivant']){
+                    }else if(isset($_POST['Suivant'])){
                         $idGroupe = intval($_POST['idGroupe']) + 1;
                     }
                     $_SESSION['idGroupe'] = $idGroupe;
