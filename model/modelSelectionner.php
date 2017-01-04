@@ -52,8 +52,6 @@ class ModelSelectionner extends Model {
     $entrepreneur = ModelProfil::retrieve_id2('ENTREPRENEUR');
     $conventionnel = ModelProfil::retrieve_id2('CONVENTIONNEL');
 
-    print("realiste".$realiste);
-
     $tab_resultats = array("REALISTE"=>0 ,"INVESTIGATIF"=>0 ,"ARTISTIQUE" => 0, "SOCIAL" => 0, "ENTREPRENEUR" => 0, "CONVENTIONNEL" => 0);
     $tab_resultats_ids = array($realiste=>0 ,$investigatif=>0 ,$artistique => 0, $social => 0, $entrepreneur => 0, $conventionnel => 0);
 
@@ -66,6 +64,7 @@ class ModelSelectionner extends Model {
     foreach($tab_resultats as $key => &$values){
       $tab_resultats[$key] = (($tab_resultats_ids[ModelProfil::retrieve_id2($key)] * 100)/72);
     }
+    print_r($tab_resultats);
 
     return $tab_resultats;
   }
