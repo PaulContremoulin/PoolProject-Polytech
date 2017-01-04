@@ -235,5 +235,20 @@
 
      return $tab_resultats;
     }
+
+    public function calcul_result_promo($id_promo){
+      $liste_etudiants = ModelEtudiant::getEtud_by_promo($id_promo);
+      $tab_resultats_promo = array("realiste"=>0 ,"investigatif"=>0 ,"artistique" => 0, "social" => 0, "entrepreneur" => 0, "conventionnel" => 0, "INE" => 0);
+      foreach ($liste_etudiants as $etudiant) {
+        $tab_reponse = select_by_num_user($etudiant["ine"]);
+        $tab_intermediaire = calcul_result_etud($tab_reponse);
+        $tab_resultats_promo["realiste"] = $tab_resultats["realiste"] + $tab_intermediaire["realiste"];
+        $tab_resultats_promo["investigatif"] = $tab_resultats["investigatif"] + $tab_intermediaire["investigatif"];
+        $tab_resultats_promo["artistique"] = $tab_resultats["artistique"] + $tab_intermediaire["artistique"];
+        $tab_resultats_promo["social"] = $tab_resultats["social"] + $tab_intermediaire["social"];
+        $tab_resultats_promo["entrepreneur"] = $tab_resultats["entrepreneur"] + $tab_intermediaire["entrepreneur"];
+      }
+
+    }
   }
 ?>

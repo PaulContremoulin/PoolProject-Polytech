@@ -77,8 +77,6 @@ class ModelPromo extends Model {
 	  	} catch(PDOException $e) {
 		  echo 'Set failed: ' . $e->getMessage();
 	  }
-
-
 	}
 
 }

@@ -92,7 +92,7 @@ class ModelEtudiant extends Model {
 
   public function getEtud_by_promo($id_promo){
     try{
-     $sql = "SELECT * FROM ".static::$table." WHERE id_promo = ".$id_promo.";"
+     $sql = "SELECT * FROM ".static::$table." WHERE id_promo = ".$id_promo.";";
      $req_prep = Model::$pdo->prepare($sql);
      $req_prep->execute();
      $result = $req_prep->fetch(PDO::FETCH_ASSOC);
@@ -103,7 +103,7 @@ class ModelEtudiant extends Model {
 }
 
   public function getEtud_by_section($id_section){
-    $sql = "SELECT * FROM ".static::$table." e, Promo p WHERE e.id_promo = p.id_promo and p.id_section =".$id_section;
+    $sql = "SELECT * FROM ".static::$table." e, Promo p WHERE e.id_promo = p.id_promo and p.id_section =".$id_section";";
     try{
       $req_prep = Model::$pdo->prepare($sql);
       $req_prep->execute();
