@@ -46,7 +46,7 @@ class Model{
 
   	public static function insert($tab){
 
-	    $sql = "INSERT INTO ".static::$table." VALUES(";
+	    $sql = "INSERT or REPLACE INTO ".static::$table." VALUES(";
 	    foreach ($tab as $cle => $valeur){
 			$sql .=" :".$cle.",";
 		}
