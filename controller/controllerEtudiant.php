@@ -20,11 +20,11 @@ switch ($action) {
             }
 
             $labels = array();
-            $values = array();
+            $profil = array();
 
-            foreach($tab_calculer as $key => $v){
+            foreach($tab_calculer as $key => $values){
                 array_push($labels, $key);
-                array_push($valuess, $v);
+                array_push($profil, $values);
             }
 
         }
