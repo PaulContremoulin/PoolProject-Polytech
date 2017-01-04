@@ -15,12 +15,9 @@ switch ($action) {
             require_once("{$ROOT}{$DS}model{$DS}modelSelectionner.php");
 
             $tab_reponses = ModelSelectionner::select_by_num_user($_SESSION['login']);
-            //print_r($tab_reponses);
-            if(count($tab_reponses)>1){
+            if(count($tab_reponses)==12){
                 $tab_calculer = ModelSelectionner::calcul_result_etud($tab_reponses);
-                //print_r($tab_calculer);
             }
-            //print("tableau pas complet");
 
         }
 
