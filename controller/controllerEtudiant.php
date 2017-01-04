@@ -27,6 +27,8 @@ switch ($action) {
                 array_push($profil, $values);
             }
 
+        }else{
+            print("echec sessiosn");
         }
 
         $pagetitle = "Votre profil";
