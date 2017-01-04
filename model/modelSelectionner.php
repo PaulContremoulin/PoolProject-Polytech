@@ -28,7 +28,7 @@ class ModelSelectionner extends Model {
   * Sélectionner les reponses d'un user
   * @return Array Les reponses pour chaque groupes de reponse du user
   **/
-  public function select_by_num_user($ine){
+  public static function select_by_num_user($ine){
      $sql = 'SELECT id_groupe, choix_1, choix_2, choix_3 FROM '.static::$table.' WHERE id_etudiant = "'.$ine.'";';
     try{  
       $req_prep = Model::$pdo->prepare($sql);
@@ -43,7 +43,7 @@ class ModelSelectionner extends Model {
   }
 
 
-  public function calcul_result_etud($tab_reponse){
+  public static function calcul_result_etud($tab_reponse){
 
     $realiste = ModelProfil::retrieve_id2('REALISTE');
     $investigatif = ModelProfil::retrieve_id2('INVESTIGATIF');
