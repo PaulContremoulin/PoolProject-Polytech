@@ -247,8 +247,15 @@
         $tab_resultats_promo["artistique"] = $tab_resultats["artistique"] + $tab_intermediaire["artistique"];
         $tab_resultats_promo["social"] = $tab_resultats["social"] + $tab_intermediaire["social"];
         $tab_resultats_promo["entrepreneur"] = $tab_resultats["entrepreneur"] + $tab_intermediaire["entrepreneur"];
+        $tab_resultats_promo["conventionnel"] = $tab_resultats["conventionnel"] + $tab_intermediaire["conventionnel"];
       }
-
+      $tab_resultats_promo["realiste"] = $tab_resultats_promo["realiste"]/len($liste_etudiants);
+      $tab_resultats_promo["investigatif"] = $tab_resultats_promo["investigatif"]/len($liste_etudiants);
+      $tab_resultats_promo["artistique"] = $tab_resultats_promo["artistique"]/len($liste_etudiants);
+      $tab_resultats_promo["social"] = $tab_resultats_promo["social"]/len($liste_etudiants);
+      $tab_resultats_promo["entrepreneur"] = $tab_resultats_promo["entrepreneur"]/len($liste_etudiants);
+      $tab_resultats_promo["conventionnel"] = $tab_resultats_promo["conventionnel"]/len($liste_etudiants);
+      return $tab_resultats_promo;
     }
   }
 ?>
