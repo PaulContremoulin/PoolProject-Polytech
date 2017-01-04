@@ -13,20 +13,21 @@
 
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 			<script>
+				<?php $labels = array_keys($tab_calculer); ?>
 				var ctx = document.getElementById("myChart");
 				var data = {
-				    labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
+				    labels: ['<?php echo "$labels[0]" ?>', "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
 				    datasets: [
 				        {
-				            label: "My First dataset",
+				            label: "Votre personnalité",
 				            backgroundColor: "rgba(179,181,198,0.2)",
 				            borderColor: "rgba(179,181,198,1)",
 				            pointBackgroundColor: "rgba(179,181,198,1)",
 				            pointBorderColor: "#fff",
 				            pointHoverBackgroundColor: "#fff",
 				            pointHoverBorderColor: "rgba(179,181,198,1)",
-				            data: [65, 59, 90, 81, 56, 55, 40]
-				        },
+				            data: [ <?php echo "$tab_calculer[$labels[1]], $tab_calculer[$labels[2]], $tab_calculer[$labels[3]], $tab_calculer[$labels[4]], $tab_calculer[$labels[5]], $tab_calculer[$labels[6]]"; ?>]
+				        }/*,
 				        {
 				            label: "My Second dataset",
 				            backgroundColor: "rgba(255,99,132,0.2)",
@@ -36,7 +37,7 @@
 				            pointHoverBackgroundColor: "#fff",
 				            pointHoverBorderColor: "rgba(255,99,132,1)",
 				            data: [28, 48, 40, 19, 96, 27, 100]
-				        }
+				        }*/
 				    ]
 				};
 				var myChart = new Chart(ctx, {
