@@ -154,9 +154,86 @@
       }
     }
 
-    
 
+    public function calcul_result_etud($tab_reponse){
+      $tab_resultats = array("realiste"=>0 ,"investigatif"=>0 ,"artistique" => 0, "social" => 0, "entrepreneur" => 0, "conventionnel" => 0, "INE" => 0);
+      $realiste = ModelProfil::retrieve_id2('REALISTE');
+      $investigatif = ModelProfil::retrieve_id2('INVESTIGATIF');
+      $artistique = ModelProfil::retrieve_id2('ARTISTIQUE');
+      $social = ModelProfil::retrieve_id2('SOCIAL');
+      $entrepreneur = ModelProfil::retrieve_id2('ENTREPRENEUR');
+      $conventionnel = ModelProfil::retrieve_id2('CONVENTIONNEL');
 
+      foreach($tab_reponse as $reponse){
+        if($tab_reponse["choix1"] == $realiste){
+          $tab_resultats["realiste"]+=3;
+        }
+        else if($tab_reponse["choix1"] == $investigatif){
+          $tab_resultats["investigatif"]+=3;
+        }
 
+        else if($tab_reponse["choix1"] == $artistique){
+          $tab_resultats["artistique"]+=3;
+        }
+        else if($tab_reponse["choix1"] == $social){
+          $tab_resultats["social"]+=3;
+        }
+
+        else if($tab_reponse["choix1"] == $entrepreneur){
+          $tab_resultats["entrepreneur"]+=3;
+        }
+        else if($tab_reponse["choix1"] == $conventionnel){
+          $tab_resultats["conventionnel"]+=3;
+        }
+        if($tab_reponse["choix2"] == $realiste){
+          $tab_resultats["realiste"]+=2;
+        }
+        else if($tab_reponse["choix2"] == $investigatif){
+          $tab_resultats["investigatif"]+=2;
+        }
+
+        else if($tab_reponse["choix2"] == $artistique){
+          $tab_resultats["artistique"]+=2;
+        }
+        else if($tab_reponse["choix2"] == $social){
+          $tab_resultats["social"]+=2;
+        }
+
+        else if($tab_reponse["choix2"] == $entrepreneur){
+          $tab_resultats["entrepreneur"]+=2;
+        }
+        else if($tab_reponse["choix2"] == $conventionnel){
+          $tab_resultats["conventionnel"]+=2;
+        }
+        if($tab_reponse["choix3"] == $realiste){
+          $tab_resultats["realiste"]+=1;
+        }
+        else if($tab_reponse["choix3"] == $investigatif){
+          $tab_resultats["investigatif"]+=1;
+        }
+
+        else if($tab_reponse["choix3"] == $artistique){
+          $tab_resultats["artistique"]+=1;
+        }
+        else if($tab_reponse["choix3"] == $social){
+          $tab_resultats["social"]+=1;
+        }
+
+        else if($tab_reponse["choix3"] == $entrepreneur){
+          $tab_resultats["entrepreneur"]+=1;
+        }
+        else if($tab_reponse["choix3"] == $conventionnel){
+          $tab_resultats["conventionnel"]+=1;
+        }
+      }
+     $tab_resultats["realiste"] = ($tab_resultats["realiste"] * 100)/72;
+     $tab_resultats["investigatif"] = ($tab_resultats["investigatif"] * 100)/72;
+     $tab_resultats["social"] = ($tab_resultats["social"] * 100)/72;
+     $tab_resultats["artistique"] = ($tab_resultats["artistique"] * 100)/72;
+     $tab_resultats["conventionnel"] = ($tab_resultats["conventionnel"] * 100)/72;
+     $tab_resultats["entrepreneur"] = ($tab_resultats["entrepreneur"] * 100)/72;
+
+     return $tab_resultats;
+    }
   }
 ?>

@@ -128,5 +128,6 @@ switch ($action) {
                 //erreur
             }
             break;
+        case "Resultat"
 }
 ?>
