@@ -127,6 +127,7 @@ switch ($action) {
                     $idGroupe = 1;
                 }
 
+                require_once("{$ROOT}{$DS}model{$DS}modelGroupe.php");
                 $groupe = modelGroupe::select($idGroupe);
                 $tab_answers = $groupe->getAnswers();
 
