@@ -12,7 +12,7 @@ switch ($action) {
     case "profil":
 
         if(isset($_SESSION['login'])){
-            require_once("{$ROOT}{$DS}model{$DS}modelSelectionner");
+            require_once("{$ROOT}{$DS}model{$DS}modelSelectionner.php");
 
             $tab_reponses = ModelSelectionner::select_by_num_user($_SESSION['login']);
             print_r($tab_reponses);
