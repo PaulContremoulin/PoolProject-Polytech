@@ -113,7 +113,7 @@ switch ($action) {
                 if(isset($_POST['idGroupe'])){
                     //si tous les choix sont cochés
                     if(isset($_POST['choix1']) && isset($_POST['choix2']) && isset($_POST['choix3'])){
-                        require_once("{$ROOT}{$DS}model{$DS}ModelSelectionner.php");
+                        require_once("{$ROOT}{$DS}model{$DS}modelSelectionner.php");
                         $new_result = array(
                          "id_select" => "null",
                          "choix_1" => $_POST['choix1'],
