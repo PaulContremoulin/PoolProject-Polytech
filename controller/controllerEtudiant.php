@@ -115,7 +115,6 @@ switch ($action) {
                     if(isset($_POST['choix1']) && isset($_POST['choix2']) && isset($_POST['choix3'])){
                         require_once("{$ROOT}{$DS}model{$DS}modelSelectionner.php");
                         $new_result = array(
-                         "id_select" => "null",
                          "choix_1" => $_POST['choix1'],
                          "choix_2" => $_POST['choix2'],
                          "choix_3" => $_POST['choix3'],
