@@ -18,6 +18,7 @@ switch ($action) {
             if(count($tab_reponses)==12){
                 $tab_calculer = ModelSelectionner::calcul_result_etud($tab_reponses);
             }
+            print_r($tab_calculer);
 
         }
 
