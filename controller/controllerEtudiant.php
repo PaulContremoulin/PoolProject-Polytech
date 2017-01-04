@@ -113,6 +113,17 @@ switch ($action) {
                 if(isset($_POST['idGroupe'])){
                     //si tous les choix sont cochés
                     if(isset($_POST['choix1']) && isset($_POST['choix2']) && isset($_POST['choix3'])){
+                        require_once("{$ROOT}{$DS}model{$DS}ModelSelectionner.php");
+                        $new_result = array(
+                         "id_select" => "null",
+                         "choix_1" => $_POST['choix1'],
+                         "choix_2" => $_POST['choix2'],
+                         "choix_3" => $_POST['choix3'],
+                         "id_groupe" => $_POST['idGroupe'],
+                         "id_etud" => $_SESSION['login'],
+                        );
+
+                        ModelSelectionner::insert($new_result);
                         //si clic sur groupe precedent
                         if(isset($_POST['Precedent'])){
                             $idGroupe = intval($_POST['idGroupe']) - 1;
