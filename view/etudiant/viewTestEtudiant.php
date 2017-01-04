@@ -19,7 +19,7 @@
 					</tr>
 				<?php } ?>
 				</table>
-				<input type="submit" class="btn btn-large" name="Precedent" value="Precedent" /><input type="submit" class="btn btn-large" name="Suivant" value="Suivant" />
+				<input type="submit" class="btn btn-large" name="Precedent" value="Precedent" <?php if($idGroupe == 1){ echo "disabled";} ?>/><input type="submit" class="btn btn-large" name="Suivant" value="Suivant" <?php if($idGroupe == 12){ echo "disabled";} ?>/>
 		</form>
 	</div>
 </div>
