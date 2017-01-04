@@ -10,6 +10,20 @@ $action = $_GET['action'];// recupère l'action passée dans l'URL
 switch ($action) {
 
     case "profil":
+
+        if(isset($_SESSION['login'])){
+            require_once("{$ROOT}{$DS}model{$DS}modelSelectionner");
+
+            $tab_reponses = ModelSelectionner::select_by_num_user($_SESSION['login']);
+            print_r($tab_reponses);
+            if(count($tab_reponses)>1){
+                $tab_calculer = ModelSelectionner::calcul_result_etud($tab_reponses);
+                print_r($tab_calculer);
+            }
+            print("tableau pas complet");
+
+        }
+
         $pagetitle = "Votre profil";
         $view = "profil";
 
