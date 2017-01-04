@@ -1,7 +1,7 @@
 <div class="container profile">
 	<div class="span6">
 		<form method="POST" action="index.php?controller=etudiant&amp;action=test&amp;option=null">
-			<h3>Groupe n°<?php echo "$idGroupe"; ?></h3>
+			<h3>Groupe n°<?php echo "$idGroupe"; ?></h3><h4 class="erreur"><?php echo "$msgError"; ?></h4>
 			<input type="hidden"  name="idGroupe"  value="<?php echo "$idGroupe"; ?>">
 				<table>
 					<tr>

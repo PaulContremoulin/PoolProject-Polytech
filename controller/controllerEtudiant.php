@@ -111,12 +111,19 @@ switch ($action) {
             if(isset($_SESSION['login'])){
                 //si l'identifiant du groupe est envoyé par le formulaire
                 if(isset($_POST['idGroupe'])){
-                    //si clic sur groupe precedent
-                    if(isset($_POST['Precedent'])){
-                        $idGroupe = intval($_POST['idGroupe']) - 1;
-                    //si clic sur groupe suivant
-                    }else if(isset($_POST['Suivant'])){
-                        $idGroupe = intval($_POST['idGroupe']) + 1;
+                    //si tous les choix sont cochés
+                    if(isset($_POST['choix1']) && isset($_POST['choix2']) && isset($_POST['choix3'])){
+                        //si clic sur groupe precedent
+                        if(isset($_POST['Precedent'])){
+                            $idGroupe = intval($_POST['idGroupe']) - 1;
+                        //si clic sur groupe suivant
+                        }else if(isset($_POST['Suivant'])){
+                            $idGroupe = intval($_POST['idGroupe']) + 1;
+                        }
+                    //si un choix n'est pas coché
+                    }else{
+                        $msgError = "Vous devez cocher 3 choix."
+                        $idGroupe = $_POST['idGroupe'];
                     }
                     $_SESSION['idGroupe'] = $idGroupe;
                 //si la session avait deja un test commencé

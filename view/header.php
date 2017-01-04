@@ -1,13 +1,3 @@
-<!--
-Verifie quelle page est active
--->
-<?php 
-$directoryURI = $_SERVER['REQUEST_URI'];
-$path = parse_url($directoryURI, PHP_URL_PATH);
-$components = explode('/', $path);
-$first_part = $components[1];
-?>
-
 <!-- Tête de page -->
 <div class="navbar">
   <div class="navbar-inner">
