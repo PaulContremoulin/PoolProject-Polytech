@@ -158,7 +158,7 @@
 
 
     public function calcul_result_etud($tab_reponse){
-      $tab_resultats = array("realiste"=>0 ,"investigatif"=>0 ,"artistique" => 0, "social" => 0, "entrepreneur" => 0, "conventionnel" => 0, "INE" => 0);
+      $tab_resultats = array("realiste"=>0 ,"investigatif"=>0 ,"artistique" => 0, "social" => 0, "entrepreneur" => 0, "conventionnel" => 0);
       $realiste = ModelProfil::retrieve_id2('REALISTE');
       $investigatif = ModelProfil::retrieve_id2('INVESTIGATIF');
       $artistique = ModelProfil::retrieve_id2('ARTISTIQUE');
@@ -240,16 +240,16 @@
 
     public function calcul_result_promo($id_promo){
       $liste_etudiants = ModelEtudiant::getEtud_by_promo($id_promo);
-      $tab_resultats_promo = array("realiste"=>0 ,"investigatif"=>0 ,"artistique" => 0, "social" => 0, "entrepreneur" => 0, "conventionnel" => 0, "INE" => 0);
+      $tab_resultats_promo = array("realiste"=>0 ,"investigatif"=>0 ,"artistique" => 0, "social" => 0, "entrepreneur" => 0, "conventionnel" => 0);
       foreach ($liste_etudiants as $etudiant) {
         $tab_reponse = select_by_num_user($etudiant["ine"]);
         $tab_intermediaire = calcul_result_etud($tab_reponse);
-        $tab_resultats_promo["realiste"] = $tab_resultats["realiste"] + $tab_intermediaire["realiste"];
-        $tab_resultats_promo["investigatif"] = $tab_resultats["investigatif"] + $tab_intermediaire["investigatif"];
-        $tab_resultats_promo["artistique"] = $tab_resultats["artistique"] + $tab_intermediaire["artistique"];
-        $tab_resultats_promo["social"] = $tab_resultats["social"] + $tab_intermediaire["social"];
-        $tab_resultats_promo["entrepreneur"] = $tab_resultats["entrepreneur"] + $tab_intermediaire["entrepreneur"];
-        $tab_resultats_promo["conventionnel"] = $tab_resultats["conventionnel"] + $tab_intermediaire["conventionnel"];
+        $tab_resultats_promo["realiste"] = $tab_resultats_promo["realiste"] + $tab_intermediaire["realiste"];
+        $tab_resultats_promo["investigatif"] = $tab_resultats_promo["investigatif"] + $tab_intermediaire["investigatif"];
+        $tab_resultats_promo["artistique"] = $tab_resultats_promo["artistique"] + $tab_intermediaire["artistique"];
+        $tab_resultats_promo["social"] = $tab_resultats_promo["social"] + $tab_intermediaire["social"];
+        $tab_resultats_promo["entrepreneur"] = $tab_resultats_promo["entrepreneur"] + $tab_intermediaire["entrepreneur"];
+        $tab_resultats_promo["conventionnel"] = $tab_resultats_promo["conventionnel"] + $tab_intermediaire["conventionnel"];
       }
       $tab_resultats_promo["realiste"] = $tab_resultats_promo["realiste"]/len($liste_etudiants);
       $tab_resultats_promo["investigatif"] = $tab_resultats_promo["investigatif"]/len($liste_etudiants);
@@ -258,6 +258,30 @@
       $tab_resultats_promo["entrepreneur"] = $tab_resultats_promo["entrepreneur"]/len($liste_etudiants);
       $tab_resultats_promo["conventionnel"] = $tab_resultats_promo["conventionnel"]/len($liste_etudiants);
       return $tab_resultats_promo;
+    }
+
+    
+    public function calcul_result_departement($id_section){
+      $liste_etudiants = ModelEtudiant::getEtud_by_section($id_section);
+      $tab_resultats_section = array("realiste"=>0 ,"investigatif"=>0 ,"artistique" => 0, "social" => 0, "entrepreneur" => 0, "conventionnel" => 0);
+      foreach ($liste_etudiants as $etudiant){
+        $tab_intermediaire = calcul_result_etud($tab_reponse);
+        $tab_reponse = select_by_num_user($etudiant["ine"]);
+        $tab_resultats_section["realiste"] = $tab_resultats_section["realiste"] + $tab_intermediaire["realiste"];
+        $tab_resultats_section["investigatif"] = $tab_resultats_section["investigatif"] + $tab_intermediaire["investigatif"];
+        $tab_resultats_section["artistique"] = $tab_resultats_section["artistique"] + $tab_intermediaire["artistique"];
+        $tab_resultats_secton["social"] = $tab_resultats_section["social"] + $tab_intermediaire["social"];
+        $tab_resultats_section["entrepreneur"] = $tab_resultats_section["entrepreneur"] + $tab_intermediaire["entrepreneur"];
+        $tab_resultats_section["conventionnel"] = $tab_resultats_section["conventionnel"] + $tab_intermediaire["conventionnel"];
+      }
+      $tab_resultats_section["realiste"] = $tab_resultats_section["realiste"]/len($liste_etudiants);
+      $tab_resultats_section["investigatif"] = $tab_resultats_section["investigatif"]/len($liste_etudiants);
+      $tab_resultats_section["artistique"] = $tab_resultats_section["artistique"]/len($liste_etudiants);
+      $tab_resultats_section["social"] = $tab_resultats_section["social"]/len($liste_etudiants);
+      $tab_resultats_section["entrepreneur"] = $tab_resultats_section["entrepreneur"]/len($liste_etudiants);
+      $tab_resultats_section["conventionnel"] = $tab_resultats_section["conventionnel"]/len($liste_etudiants);
+      return $tab_resultats_section;
+      }
     }
   }
 ?>
