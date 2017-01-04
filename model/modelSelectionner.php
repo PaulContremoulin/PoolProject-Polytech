@@ -45,7 +45,7 @@ class ModelSelectionner extends Model {
 
   public static function calcul_result_etud($tab_reponse){
 
-    $realiste = ModelProfil::retrieve_id2('REALISTE');
+    $realiste = ModelProfil::retrieve_id2('Realiste');
     $investigatif = ModelProfil::retrieve_id2('INVESTIGATIF');
     $artistique = ModelProfil::retrieve_id2('ARTISTIQUE');
     $social = ModelProfil::retrieve_id2('SOCIAL');
