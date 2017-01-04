@@ -1,6 +1,8 @@
 <?php
 
   require_once("Model.php");
+   require_once("modelEtudiant.php");
+    require_once("modelProfil.php");
 
   class ModelSelectionner extends Model{
     protected $choix1;
