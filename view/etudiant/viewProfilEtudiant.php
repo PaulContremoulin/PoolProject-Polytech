@@ -26,7 +26,7 @@
 				            pointBorderColor: "#fff",
 				            pointHoverBackgroundColor: "#fff",
 				            pointHoverBorderColor: "rgba(179,181,198,1)",
-				            data: ['<?php echo "[$tab_calculer[$labels[0]], $tab_calculer[$labels[1]], $tab_calculer[$labels[2]], $tab_calculer[$labels[3]], $tab_calculer[$labels[4]], $tab_calculer[$labels[5]]";?>']
+				            data: ['<?php echo "$tab_calculer[$labels[0]], $tab_calculer[$labels[1]], $tab_calculer[$labels[2]], $tab_calculer[$labels[3]], $tab_calculer[$labels[4]], $tab_calculer[$labels[5]]";?>']
 				        }/*,
 				        {
 				            label: "My Second dataset",
