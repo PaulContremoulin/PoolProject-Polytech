@@ -122,7 +122,7 @@ switch ($action) {
                         }
                     //si un choix n'est pas coché
                     }else{
-                        $msgError = "Vous devez cocher 3 choix."
+                        $msgError = "Vous devez cocher 3 choix.";
                         $idGroupe = $_POST['idGroupe'];
                     }
                     $_SESSION['idGroupe'] = $idGroupe;
