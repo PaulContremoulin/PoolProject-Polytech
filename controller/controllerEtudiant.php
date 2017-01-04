@@ -162,6 +162,7 @@ switch ($action) {
                 //si l'utilisateur commence le test
                 }else{
                     $idGroupe = 1;
+                    $_SESSION['idGroupe'] = $idGroupe;
                 }
 
                 require_once("{$ROOT}{$DS}model{$DS}modelGroupe.php");
