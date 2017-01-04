@@ -109,16 +109,26 @@ switch ($action) {
 
             //Si l'utilisateur est connecté
             if(isset($_SESSION['login'])){
-
-                $option = $_GET['option'];
-                switch ($option) {
-                    case "start" :
-                        $groupe = modelGroupe::select("1");
-                        $idGroupe = $groupe->getIdGroupe();
-                        $tab_answers = $groupe->getAnswers();
-                    break;
-
+                //si l'identifiant du groupe est envoyé par le formulaire
+                if(isset($_POST['idGroupe'])){
+                    //si clic sur groupe precedent
+                    if(isset($_POST['Precedent']){
+                        $idGroupe = intval($_POST['idGroupe']) - 1;
+                    //si clic sur groupe suivant
+                    }else if(isset($_POST['Suivant']){
+                        $idGroupe = intval($_POST['idGroupe']) + 1;
+                    }
+                    $_SESSION['idGroupe'] = $idGroupe;
+                //si la session avait deja un test commencé
+                }else if(isset($_SESSION['idGroupe'])){
+                    $idGroupe = intval($_SESSION['idGroupe']);
+                //si l'utilisateur commence le test
+                }else{
+                    $idGroupe = 1;
                 }
+
+                $groupe = modelGroupe::select($idGroupe);
+                $tab_answers = $groupe->getAnswers();
 
                 $pagetitle = "Test";
                 $view = "test";

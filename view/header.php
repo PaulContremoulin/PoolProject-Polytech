@@ -16,7 +16,7 @@ $first_part = $components[1];
       <ul class="nav nav-collapse pull-right">
         <?php if(!empty($_SESSION['login']) && isset($_SESSION['login'])){ ?>
           <li class="<?php if ($action=="profil") {echo "active"; }?>"><a href="index.php?controller=etudiant&amp;action=profil"><i class="icon-user"></i> Votre Profil</a></li>
-          <li class="<?php if ($action=="test") {echo "active"; }?>"><a href="index.php?controller=etudiant&amp;action=test&amp;option=start"><i class="icon-doc-text"></i> Test de personnalité</a></li>
+          <li class="<?php if ($action=="test") {echo "active"; }?>"><a href="index.php?controller=etudiant&amp;action=test"><i class="icon-doc-text"></i> Test de personnalité</a></li>
           <li class="<?php if ($action=="deconnexion") {echo "active"; }?>"><a href="index.php?controller=etudiant&amp;action=deconnexion"><i class="icon-power"></i>  Se déconnecter</a></li>
         <?php } ?>
       </ul>
