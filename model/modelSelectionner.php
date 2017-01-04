@@ -29,7 +29,7 @@ class ModelSelectionner extends Model {
   * @return Array Les reponses pour chaque groupes de reponse du user
   **/
   public static function select_by_num_user($ine){
-     $sql = 'SELECT id_groupe, choix_1, choix_2, choix_3 FROM '.static::$table.' WHERE id_etudiant = "'.$ine.'";';
+     $sql = 'SELECT id_groupe, choix_1, choix_2, choix_3 FROM '.static::$table.' WHERE id_etud = "'.$ine.'";';
     try{  
       $req_prep = Model::$pdo->prepare($sql);
       $req_prep->execute();
