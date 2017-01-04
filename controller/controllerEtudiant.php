@@ -106,8 +106,10 @@ switch ($action) {
         break;
 
         case "test":
-            require_once("{$ROOT}{$DS}model{$DS}modelGroupe.php");
+
+            //Si l'utilisateur est connecté
             if(isset($_SESSION['login'])){
+
                 $option = $_GET['option'];
                 switch ($option) {
                     case "start" :
@@ -121,12 +123,12 @@ switch ($action) {
                 $pagetitle = "Test";
                 $view = "test";
 
-                require ("{$ROOT}{$DS}view{$DS}view.php");
-
-
+            //Si l'utilisateur n'est pas connecté
             }else{
-                //erreur
+                $pagetitle = "Erreur";
+                $view = "Erreur";
             }
+            require ("{$ROOT}{$DS}view{$DS}view.php");
             break;
 }
 ?>
