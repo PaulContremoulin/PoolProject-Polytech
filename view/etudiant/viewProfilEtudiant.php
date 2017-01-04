@@ -13,11 +13,11 @@
 
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 			<script>
-				var labels = <?php echo json_encode($labels); ?>;
-				var profil = <?php echo json_encode($profil, JSON_NUMERIC_CHECK); ?>;
+				var var_labels = <?php echo json_encode($labels); ?>;
+				var var_profil = <?php echo json_encode($profil, JSON_NUMERIC_CHECK); ?>;
 				var ctx = document.getElementById("myChart");
 				var data = {
-				    labels: ['a','b','c'],
+				    labels: var_labels,
 				    datasets: [
 				        {
 				            label: "Votre personnalité",
@@ -27,7 +27,7 @@
 				            pointBorderColor: "#fff",
 				            pointHoverBackgroundColor: "#fff",
 				            pointHoverBorderColor: "rgba(179,181,198,1)",
-				            data: [1,2,3]
+				            data: var_profil
 				        }/*,
 				        {
 				            label: "My Second dataset",

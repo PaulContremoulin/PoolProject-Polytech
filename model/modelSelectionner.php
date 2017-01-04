@@ -63,7 +63,6 @@ class ModelSelectionner extends Model {
     foreach($tab_resultats as $key => &$values){
       $tab_resultats[$key] = (($tab_resultats_ids[ModelProfil::retrieve_id2($key)] * 100)/72);
     }
-    print_r($tab_resultats);
 
     return $tab_resultats;
   }
