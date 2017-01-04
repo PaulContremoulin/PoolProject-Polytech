@@ -30,7 +30,7 @@ class ModelProfil extends Model {
       try{
         $req_prep = Model::$pdo->prepare($sql);
         $req_prep->execute();
-        $rslt = $req_prep->fetch();
+        $rslt = $req_prep->$sth->fetchColumn();
         return $rslt;
       } catch(PDOException $e) {
         echo 'retrieve failed: ' . $e->getMessage();      
