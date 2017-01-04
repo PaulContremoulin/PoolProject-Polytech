@@ -26,7 +26,7 @@ class ModelProfil extends Model {
   	}
 
     public static function retrieve_id2($libelle){
-      $sql = "SELECT id_profil FROM ".static::$table." WHERE libelle_profil LIKE ".$libelle.";";
+      $sql = "SELECT id_profil FROM ".static::$table." WHERE libelle_profil LIKE '".$libelle."';";
       try{
         $req_prep = Model::$pdo->prepare($sql);
         $req_prep->execute();
