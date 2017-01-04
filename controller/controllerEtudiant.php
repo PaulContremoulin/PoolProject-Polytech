@@ -66,6 +66,7 @@ switch ($action) {
         unset($_SESSION['login']);
         unset($_SESSION['nom']);
         unset($_SESSION['admin']);
+        unset($_SESSION['idGroupe']);
 
         $pagetitle = "Votre profil";
         $view = "profil";
