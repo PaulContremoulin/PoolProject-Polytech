@@ -16,7 +16,7 @@
 				<?php $labels = array_keys($tab_calculer); ?>
 				var ctx = document.getElementById("myChart");
 				var data = {
-				    labels: ['<?php echo "$labels[0]" ?>', "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
+				    labels: ['<?php echo "$labels[0], $labels[1], $labels[2], $labels[3], $labels[4], $labels[5]" ?>'],
 				    datasets: [
 				        {
 				            label: "Votre personnalité",
@@ -26,7 +26,7 @@
 				            pointBorderColor: "#fff",
 				            pointHoverBackgroundColor: "#fff",
 				            pointHoverBorderColor: "rgba(179,181,198,1)",
-				            data: [ <?php echo "$tab_calculer[$labels[1]], $tab_calculer[$labels[2]], $tab_calculer[$labels[3]], $tab_calculer[$labels[4]], $tab_calculer[$labels[5]], $tab_calculer[$labels[6]]"; ?>]
+				            data: ['<?php echo "[$tab_calculer[$labels[0]], $tab_calculer[$labels[1]], $tab_calculer[$labels[2]], $tab_calculer[$labels[3]], $tab_calculer[$labels[4]], $tab_calculer[$labels[5]]";?>']
 				        }/*,
 				        {
 				            label: "My Second dataset",
