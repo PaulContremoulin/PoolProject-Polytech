@@ -17,7 +17,7 @@
 				var profil = <?php echo json_encode($profil, JSON_NUMERIC_CHECK); ?>;
 				var ctx = document.getElementById("myChart");
 				var data = {
-				    labels: labels,
+				    labels: ['a','b','c'],
 				    datasets: [
 				        {
 				            label: "Votre personnalité",
@@ -27,7 +27,7 @@
 				            pointBorderColor: "#fff",
 				            pointHoverBackgroundColor: "#fff",
 				            pointHoverBorderColor: "rgba(179,181,198,1)",
-				            data: profil
+				            data: [1,2,3]
 				        }/*,
 				        {
 				            label: "My Second dataset",
