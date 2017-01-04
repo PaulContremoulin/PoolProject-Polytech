@@ -52,6 +52,8 @@ class ModelSelectionner extends Model {
     $entrepreneur = ModelProfil::retrieve_id2('ENTREPRENEUR');
     $conventionnel = ModelProfil::retrieve_id2('CONVENTIONNEL');
 
+    print("realiste".$realiste);
+
     $tab_resultats = array("REALISTE"=>0 ,"INVESTIGATIF"=>0 ,"ARTISTIQUE" => 0, "SOCIAL" => 0, "ENTREPRENEUR" => 0, "CONVENTIONNEL" => 0);
     $tab_resultats_ids = array($realiste=>0 ,$investigatif=>0 ,$artistique => 0, $social => 0, $entrepreneur => 0, $conventionnel => 0);
 
