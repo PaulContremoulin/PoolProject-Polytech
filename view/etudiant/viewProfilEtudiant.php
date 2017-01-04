@@ -13,7 +13,7 @@
 
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 			<script>
-				<?php $labels = array_keys($tab_calculer); ?>
+				var myprofil = <?php echo json_encode($tab_calculer); ?>;
 				var ctx = document.getElementById("myChart");
 				var data = {
 				    labels: ['Realiste', 'Investigatif', 'Artistique', 'Social', 'Entrepreneur', 'Conventionnel'],
@@ -26,7 +26,7 @@
 				            pointBorderColor: "#fff",
 				            pointHoverBackgroundColor: "#fff",
 				            pointHoverBorderColor: "rgba(179,181,198,1)",
-				            data: <?php echo json_encode($tab_calculer); ?> 
+				            data: myprofil
 				        }/*,
 				        {
 				            label: "My Second dataset",
