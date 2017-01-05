@@ -70,11 +70,6 @@ class ModelSelectionner extends Model {
 
 
 
-}
-
-
-  
-
     public function set_answers_user($ine,$id_groupe,$choix1,$choix2,$choix3){
        $sql = 'UPDATE'.static::$table.' SET choix1 ='.$choix1.',choix2 ='.$choix2.',choix3 ='.$choix3.' WHERE id_etudiant ='.$ine.' AND id_groupe = '.$id_groupe;
       try{
@@ -149,7 +144,7 @@ class ModelSelectionner extends Model {
       }
     }
 
-    public function calcul_result_promo($id_promo){
+   /* public function calcul_result_promo($id_promo){
       $liste_etudiants = ModelEtudiant::getEtud_by_promo($id_promo);
       $tab_resultats_promo = array("realiste"=>0 ,"investigatif"=>0 ,"artistique" => 0, "social" => 0, "entrepreneur" => 0, "conventionnel" => 0);
       foreach ($liste_etudiants as $etudiant) {
@@ -192,8 +187,7 @@ class ModelSelectionner extends Model {
       $tab_resultats_section["entrepreneur"] = $tab_resultats_section["entrepreneur"]/len($liste_etudiants);
       $tab_resultats_section["conventionnel"] = $tab_resultats_section["conventionnel"]/len($liste_etudiants);
       return $tab_resultats_section;
-      }
-    }
+      }*/
   }
 ?>
 
