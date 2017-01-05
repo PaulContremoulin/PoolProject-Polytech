@@ -1,0 +1,5 @@
+/*This stylesheet contains some custom class rather than Bootstrap*/
+
+.erreur{
+	color : #cc0000;
+}

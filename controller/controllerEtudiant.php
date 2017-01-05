@@ -10,6 +10,27 @@ $action = $_GET['action'];// recupère l'action passée dans l'URL
 switch ($action) {
 
     case "profil":
+
+        if(isset($_SESSION['login'])){
+            require_once("{$ROOT}{$DS}model{$DS}modelSelectionner.php");
+
+            $tab_reponses = ModelSelectionner::select_by_num_user($_SESSION['login']);
+            if(count($tab_reponses)==12){
+                $tab_calculer = ModelSelectionner::calcul_result_etud($tab_reponses);
+            }
+
+            $labels = array();
+            $profil = array();
+
+            foreach($tab_calculer as $key => $values){
+                array_push($labels, $key);
+                array_push($profil, $values);
+            }
+
+        }else{
+            print("echec sessiosn");
+        }
+
         $pagetitle = "Votre profil";
         $view = "profil";
 
@@ -52,6 +73,7 @@ switch ($action) {
         unset($_SESSION['login']);
         unset($_SESSION['nom']);
         unset($_SESSION['admin']);
+        unset($_SESSION['idGroupe']);
 
         $pagetitle = "Votre profil";
         $view = "profil";
@@ -105,28 +127,61 @@ switch ($action) {
         require ("{$ROOT}{$DS}view{$DS}view.php");
         break;
 
-    case "test":
-        require_once("{$ROOT}{$DS}model{$DS}modelGroupe.php");
-        if(isset($_SESSION['login'])){
-            $option = $_GET['option'];
-            switch ($option) {
-                case "start" :
-                    if(isset($_POST['idGroupe'])){
-                        $idGroupe = $_POST['idGroupe'];
-                    }else{
-                        $idGroupe = 1;
-                    }
-                    $groupe = modelGroupe::select("1");
-                    $tab_answers = $groupe->getAnswers();
-                break;
 
+        case "test":
+
+            //Si l'utilisateur est connecté
+            if(isset($_SESSION['login'])){
+                //si l'identifiant du groupe est envoyé par le formulaire
+                if(isset($_POST['idGroupe'])){
+                    //si tous les choix sont cochés
+                    if(isset($_POST['choix1']) && isset($_POST['choix2']) && isset($_POST['choix3'])){
+                        require_once("{$ROOT}{$DS}model{$DS}modelSelectionner.php");
+                        $new_result = array(
+                         "choix_1" => $_POST['choix1'],
+                         "choix_2" => $_POST['choix2'],
+                         "choix_3" => $_POST['choix3'],
+                         "id_groupe" => $_POST['idGroupe'],
+                         "id_etud" => $_SESSION['login'],
+                        );
+
+                        ModelSelectionner::insert($new_result);
+                        //si clic sur groupe precedent
+                        if(isset($_POST['Precedent'])){
+                            $idGroupe = intval($_POST['idGroupe']) - 1;
+                        //si clic sur groupe suivant
+                        }else if(isset($_POST['Suivant'])){
+                            $idGroupe = intval($_POST['idGroupe']) + 1;
+                        }
+                    //si un choix n'est pas coché
+                    }else{
+                        $msgError = "Vous devez cocher 3 choix.";
+                        $idGroupe = $_POST['idGroupe'];
+                    }
+                    $_SESSION['idGroupe'] = $idGroupe;
+                //si la session avait deja un test commencé
+                }else if(isset($_SESSION['idGroupe'])){
+                    $idGroupe = intval($_SESSION['idGroupe']);
+                //si l'utilisateur commence le test
+                }else{
+                    $idGroupe = 1;
+                    $_SESSION['idGroupe'] = $idGroupe;
+                }
+
+                require_once("{$ROOT}{$DS}model{$DS}modelGroupe.php");
+                $groupe = modelGroupe::select($idGroupe);
+                $tab_answers = $groupe->getAnswers();
+
+                $pagetitle = "Test";
+                $view = "test";
+
+            //Si l'utilisateur n'est pas connecté
+            }else{
+                $pagetitle = "Erreur";
+                $view = "Erreur";
             }
-            $pagetitle = "Test";
-            $view = "test";
             require ("{$ROOT}{$DS}view{$DS}view.php");
-        }else{
-            //erreur
-        }
-        break;
+            break;
+
 }
 ?>

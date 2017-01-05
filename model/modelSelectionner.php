@@ -1,44 +1,75 @@
 <?php
 
-  require_once("Model.php");
-   require_once("modelEtudiant.php");
-    require_once("modelProfil.php");
+require_once ("model.php"); 
+require_once ("modelProfil.php");
+require_once ("modelEtudiant.php");
 
-  class ModelSelectionner extends Model{
-    protected $choix1;
-    protected $choix2;
-    protected $choix3;
-    protected $id_etud;
-    protected $id_select;
-    protected $id_groupe;
-    protected static $table  = "Selectionner";
-    protected static $primary = 'id_select';
+class ModelSelectionner extends Model {
+
+  private $choix_1;
+  private $choix_2;
+  private $choix_3;
+  private $id_groupe;
+  private $id_etud;
+
+  protected static $table = 'Selectionner';
+  protected static $primary = '$id_etud;';
+   
+  public function __construct($c1 = NULL, $c2 = NULL, $c3 = NULL, $idg = NULL, $ide = NULL) {
+    if (!is_null($c1) && !is_null($c2) && !is_null($c3) && !is_null($idg) && !is_null($ide)) {
+      $this->choix_1 = $c1;
+      $this->choix_2 = $c2;
+      $this->choix_3 = $c3;
+      $this->id_groupe = $idg;
+      $this->id_etud = $ide;
+    }
+  }
+
+  /**
+  * Sélectionner les reponses d'un user
+  * @return Array Les reponses pour chaque groupes de reponse du user
+  **/
+  public static function select_by_num_user($ine){
+     $sql = 'SELECT id_groupe, choix_1, choix_2, choix_3 FROM '.static::$table.' WHERE id_etud = "'.$ine.'";';
+    try{  
+      $req_prep = Model::$pdo->prepare($sql);
+      $req_prep->execute();
+      $result = $req_prep->fetchAll();
+      return $result;
+    }
+    catch(PDOException $e){
+      echo($e->getMessage());
+      die("<br> Erreur lors de la recherche des reponse de l'utilisateur  " . $this->table);
+    }
+  }
 
 
-     /**
-    * Constructeur d'une instance de la table Selectionner
-    * @return Array avec tout les attribut de la table Selectionner
-    **/
-    public function __construct($id_slt=NULL,$ch1 = NULL, $ch2 = NULL, $ch3 = NULL, $id_etud=NULL, $id_gpe=NULL){
-      if (!is_null($id_slt) and !is_null($choix1) and !is_null($choix2) and !is_null($choix3) and !is_null($id_etud) and !is_null($id_gpe)){
-        $this->$id_select = $id_slt;
-        $this->$choix1 = $ch1;
-        $this->$choix2 = $ch2;
-        $this->$choix3 = $ch3;
-        $this->$id_etudiant = $id_etud;
-        $this->$id_groupe = $id_gpe;
-      }
+  public static function calcul_result_etud($tab_reponse){
+
+    $realiste = ModelProfil::retrieve_id2('REALISTE');
+    $investigatif = ModelProfil::retrieve_id2('INVESTIGATIF');
+    $artistique = ModelProfil::retrieve_id2('ARTISTIQUE');
+    $social = ModelProfil::retrieve_id2('SOCIAL');
+    $entrepreneur = ModelProfil::retrieve_id2('ENTREPRENEUR');
+    $conventionnel = ModelProfil::retrieve_id2('CONVENTIONNEL');
+
+    $tab_resultats = array("REALISTE"=>0 ,"INVESTIGATIF"=>0 ,"ARTISTIQUE" => 0, "SOCIAL" => 0, "ENTREPRENEUR" => 0, "CONVENTIONNEL" => 0);
+    $tab_resultats_ids = array($realiste=>0 ,$investigatif=>0 ,$artistique => 0, $social => 0, $entrepreneur => 0, $conventionnel => 0);
+
+    foreach($tab_reponse as $reponse){
+      $tab_resultats_ids[$reponse["choix_1"]]+=3;
+      $tab_resultats_ids[$reponse["choix_2"]]+=2;
+      $tab_resultats_ids[$reponse["choix_3"]]+=1;
+    }
+    foreach($tab_resultats as $key => &$values){
+      $tab_resultats[$key] = (($tab_resultats_ids[ModelProfil::retrieve_id2($key)] * 100)/72);
     }
 
-    /**
-    * Modificateur de l'ensemble des reponses d'un utilisateur par rapport à un groupe
-    * @param ine Int : c'est l'identifiant de l'utilisateur
-    * @param id_groupe Int : c'est l'identifiant du groupe auquel appartient la réponse
-    * @param choix1 Int : c'est le profil auquel appartient la réponse sélectionnée par l'utilisateur
-    * @param choix2 Int : c'est le profil auquel appartient la réponse sélectionnée par l'utilisateur
-    * @param choix3 Int : c'est le profil auquel appartient la réponse sélectionnée par l'utilisateur
-    * 
-    **/
+    return $tab_resultats;
+  }
+
+
+
     public function set_answers_user($ine,$id_groupe,$choix1,$choix2,$choix3){
        $sql = 'UPDATE'.static::$table.' SET choix1 ='.$choix1.',choix2 ='.$choix2.',choix3 ='.$choix3.' WHERE id_etudiant ='.$ine.' AND id_groupe = '.$id_groupe;
       try{
@@ -113,132 +144,7 @@
       }
     }
 
-
-
-    
-    /**
-    * Sélectionner les reponses d'un user
-    * @return Array Les reponses pour chaque groupes de reponse du user
-    **/
-    public function select_by_num_user($ine){
-       $sql = 'SELECT * FROM '.static::$table.' WHERE id_etudiant ='.$ine;
-      try{
-       
-        $req_prep = Model::$pdo->prepare($sql);
-        $req_prep->execute();
-        $result = $req_prep->fetchAll();
-        return $result;
-      }
-      catch(PDOException $e){
-        echo($e->getMessage());
-        die("<br> Erreur lors de la recherche des reponse de l'utilisateur  " . $this->table);
-      }
-    }
-
-    /**
-    * Sélectionner les reponses d'un user en fonction d'un groupe en particulier
-    * @param ine Int : c'est l'identifiant de l'utilisateur
-    * @param id_groupe Int : c'est l'identifiant du groupe auquel appartient la réponse
-    * @return Array Les reponses de l'user pour le groupe passé en paramètre
-    **/
-    public function select_by_num_user($ine,$id_groupe){
-       $sql = 'SELECT * FROM '.static::$table.' WHERE id_etudiant ='.$ine.' AND id_groupe = '.$id_groupe;
-      try{
-       
-        $req_prep = Model::$pdo->prepare($sql);
-        $req_prep->execute();
-        $result = $req_prep->fetchAll();
-        return $result;
-      }
-      catch(PDOException $e){
-        echo($e->getMessage());
-        die("<br> Erreur lors de la recherche des reponse de l'utilisateur par rapport au groupe  " . $this->table);
-      }
-    }
-
-
-    public function calcul_result_etud($tab_reponse){
-      $tab_resultats = array("realiste"=>0 ,"investigatif"=>0 ,"artistique" => 0, "social" => 0, "entrepreneur" => 0, "conventionnel" => 0);
-      $realiste = ModelProfil::retrieve_id2('REALISTE');
-      $investigatif = ModelProfil::retrieve_id2('INVESTIGATIF');
-      $artistique = ModelProfil::retrieve_id2('ARTISTIQUE');
-      $social = ModelProfil::retrieve_id2('SOCIAL');
-      $entrepreneur = ModelProfil::retrieve_id2('ENTREPRENEUR');
-      $conventionnel = ModelProfil::retrieve_id2('CONVENTIONNEL');
-
-      foreach($tab_reponse as $reponse){
-        if($tab_reponse["choix1"] == $realiste){
-          $tab_resultats["realiste"]+=3;
-        }
-        else if($tab_reponse["choix1"] == $investigatif){
-          $tab_resultats["investigatif"]+=3;
-        }
-
-        else if($tab_reponse["choix1"] == $artistique){
-          $tab_resultats["artistique"]+=3;
-        }
-        else if($tab_reponse["choix1"] == $social){
-          $tab_resultats["social"]+=3;
-        }
-
-        else if($tab_reponse["choix1"] == $entrepreneur){
-          $tab_resultats["entrepreneur"]+=3;
-        }
-        else if($tab_reponse["choix1"] == $conventionnel){
-          $tab_resultats["conventionnel"]+=3;
-        }
-        if($tab_reponse["choix2"] == $realiste){
-          $tab_resultats["realiste"]+=2;
-        }
-        else if($tab_reponse["choix2"] == $investigatif){
-          $tab_resultats["investigatif"]+=2;
-        }
-
-        else if($tab_reponse["choix2"] == $artistique){
-          $tab_resultats["artistique"]+=2;
-        }
-        else if($tab_reponse["choix2"] == $social){
-          $tab_resultats["social"]+=2;
-        }
-
-        else if($tab_reponse["choix2"] == $entrepreneur){
-          $tab_resultats["entrepreneur"]+=2;
-        }
-        else if($tab_reponse["choix2"] == $conventionnel){
-          $tab_resultats["conventionnel"]+=2;
-        }
-        if($tab_reponse["choix3"] == $realiste){
-          $tab_resultats["realiste"]+=1;
-        }
-        else if($tab_reponse["choix3"] == $investigatif){
-          $tab_resultats["investigatif"]+=1;
-        }
-
-        else if($tab_reponse["choix3"] == $artistique){
-          $tab_resultats["artistique"]+=1;
-        }
-        else if($tab_reponse["choix3"] == $social){
-          $tab_resultats["social"]+=1;
-        }
-
-        else if($tab_reponse["choix3"] == $entrepreneur){
-          $tab_resultats["entrepreneur"]+=1;
-        }
-        else if($tab_reponse["choix3"] == $conventionnel){
-          $tab_resultats["conventionnel"]+=1;
-        }
-      }
-     $tab_resultats["realiste"] = ($tab_resultats["realiste"] * 100)/72;
-     $tab_resultats["investigatif"] = ($tab_resultats["investigatif"] * 100)/72;
-     $tab_resultats["social"] = ($tab_resultats["social"] * 100)/72;
-     $tab_resultats["artistique"] = ($tab_resultats["artistique"] * 100)/72;
-     $tab_resultats["conventionnel"] = ($tab_resultats["conventionnel"] * 100)/72;
-     $tab_resultats["entrepreneur"] = ($tab_resultats["entrepreneur"] * 100)/72;
-
-     return $tab_resultats;
-    }
-
-    public function calcul_result_promo($id_promo){
+   /* public function calcul_result_promo($id_promo){
       $liste_etudiants = ModelEtudiant::getEtud_by_promo($id_promo);
       $tab_resultats_promo = array("realiste"=>0 ,"investigatif"=>0 ,"artistique" => 0, "social" => 0, "entrepreneur" => 0, "conventionnel" => 0);
       foreach ($liste_etudiants as $etudiant) {
@@ -281,7 +187,7 @@
       $tab_resultats_section["entrepreneur"] = $tab_resultats_section["entrepreneur"]/len($liste_etudiants);
       $tab_resultats_section["conventionnel"] = $tab_resultats_section["conventionnel"]/len($liste_etudiants);
       return $tab_resultats_section;
-      }
-    }
+      }*/
   }
 ?>
+

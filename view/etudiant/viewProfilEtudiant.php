@@ -13,20 +13,22 @@
 
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 			<script>
+				var var_labels = <?php echo json_encode($labels); ?>;
+				var var_profil = <?php echo json_encode($profil, JSON_NUMERIC_CHECK); ?>;
 				var ctx = document.getElementById("myChart");
 				var data = {
-				    labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
+				    labels: var_labels,
 				    datasets: [
 				        {
-				            label: "My First dataset",
+				            label: "Votre personnalité",
 				            backgroundColor: "rgba(179,181,198,0.2)",
 				            borderColor: "rgba(179,181,198,1)",
 				            pointBackgroundColor: "rgba(179,181,198,1)",
 				            pointBorderColor: "#fff",
 				            pointHoverBackgroundColor: "#fff",
 				            pointHoverBorderColor: "rgba(179,181,198,1)",
-				            data: [65, 59, 90, 81, 56, 55, 40]
-				        },
+				            data: var_profil
+				        }/*,
 				        {
 				            label: "My Second dataset",
 				            backgroundColor: "rgba(255,99,132,0.2)",
@@ -36,7 +38,7 @@
 				            pointHoverBackgroundColor: "#fff",
 				            pointHoverBorderColor: "rgba(255,99,132,1)",
 				            data: [28, 48, 40, 19, 96, 27, 100]
-				        }
+				        }*/
 				    ]
 				};
 				var myChart = new Chart(ctx, {
