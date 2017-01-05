@@ -9,7 +9,7 @@
 		<form method="POST" action="index.php?controller=etudiant&amp;action=creation">
 			<fieldset>
 		  		<label for="ineEtudiant"><h4> INE : </h4></label>
-		    	<input type="text" placeholder="1234567890A" name="ineEtudiant" id="ineEtudiant" required/>
+		    	<input type="text" placeholder="1234567890A" name="ineEtudiant" id="ineEtudiant" pattern=".{11,11}" required/>
 		    	<label for="mailEtudiant"><h4> E-mail : </h4></label>
 		    	<input type="text" placeholder="prenom.nom@etu.umontpellier.fr" name="mailEtudiant" id="mailEtudiant" required/>
 		    	<label for="nameEtudiant"><h4> Nom : </h4></label>
