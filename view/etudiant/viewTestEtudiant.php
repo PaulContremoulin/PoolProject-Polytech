@@ -11,6 +11,7 @@
 						<th>3</th>
 					</tr>
 				<?php foreach ($tab_answers as $values) { ?>
+
 					<tr>
 						<td><?php echo "$values[libelle]"; ?></td>
 						<td><INPUT type= "radio" name="choix1" value="<?php echo "$values[idp]"; ?>"></td>

@@ -37,6 +37,7 @@ class ModelProfil extends Model {
       }
     }
 
+	
 }
 
 

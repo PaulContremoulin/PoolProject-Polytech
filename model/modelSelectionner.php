@@ -2,6 +2,7 @@
 
 require_once ("model.php"); 
 require_once ("modelProfil.php");
+require_once ("modelEtudiant.php");
 
 class ModelSelectionner extends Model {
 
@@ -70,4 +71,129 @@ class ModelSelectionner extends Model {
 
 
 }
+
+
+  
+
+    public function set_answers_user($ine,$id_groupe,$choix1,$choix2,$choix3){
+       $sql = 'UPDATE'.static::$table.' SET choix1 ='.$choix1.',choix2 ='.$choix2.',choix3 ='.$choix3.' WHERE id_etudiant ='.$ine.' AND id_groupe = '.$id_groupe;
+      try{
+       
+        $req_prep = Model::$pdo->prepare($sql);
+        $req_prep->execute();
+        $result = $req_prep->fetchAll();
+        return $result;
+      }
+      catch(PDOException $e){
+        echo($e->getMessage());
+        die("<br> Erreur lors de la modification des reponses de l'utilisateur  " . $this->table);
+      }
+    }
+
+
+   /**
+    * Modificateur du 1er choix d'un utilisateur par rapport à un groupe
+    * @param ine Int : c'est l'identifiant de l'utilisateur
+    * @param id_groupe Int : c'est l'identifiant du groupe auquel appartient la réponse
+    * @param choix1 Int : c'est le profil auquel appartient la réponse sélectionnée par l'utilisateur
+    **/
+    public function set_answers1_user($ine,$id_groupe,$choix1){
+       $sql = 'UPDATE'.static::$table.' SET choix1 ='.$choix1.' WHERE id_etudiant ='.$ine.' AND id_groupe = '.$id_groupe;
+      try{
+       
+        $req_prep = Model::$pdo->prepare($sql);
+        $req_prep->execute();
+      }
+      catch(PDOException $e){
+        echo($e->getMessage());
+        die("<br> Erreur lors de la modification de la reponse 1 de l'utilisateur  " . $this->table);
+      }
+    }
+
+
+    /**
+    * Modificateur du 2eme choix d'un utilisateur par rapport à un groupe
+    * @param ine Int : c'est l'identifiant de l'utilisateur
+    * @param id_groupe Int : c'est l'identifiant du groupe auquel appartient la réponse
+    * @param choix2 Int : c'est le profil auquel appartient la réponse sélectionnée par l'utilisateur
+    **/
+    public function set_answers2_user($ine,$id_groupe,$choix2){
+       $sql = 'UPDATE'.static::$table.' SET choix2 ='.$choix2.' WHERE id_etudiant ='.$ine.' AND id_groupe = '.$id_groupe;
+      try{
+       
+        $req_prep = Model::$pdo->prepare($sql);
+        $req_prep->execute();
+      }
+      catch(PDOException $e){
+        echo($e->getMessage());
+        die("<br> Erreur lors de la modification de la reponse 2 de l'utilisateur  " . $this->table);
+      }
+    }
+
+    /**
+    * Modificateur du 3eme choix d'un utilisateur par rapport à un groupe
+    * @param ine Int : c'est l'identifiant de l'utilisateur
+    * @param id_groupe Int : c'est l'identifiant du groupe auquel appartient la réponse
+    * @param choix3 Int : c'est le profil auquel appartient la réponse sélectionnée par l'utilisateur
+    **/
+    public function set_answers3_user($ine,$id_groupe,$choix3){
+       $sql = 'UPDATE'.static::$table.' SET choix3 ='.$choix3.' WHERE id_etudiant ='.$ine.' AND id_groupe = '.$id_groupe;
+      try{
+       
+        $req_prep = Model::$pdo->prepare($sql);
+        $req_prep->execute();
+      }
+      catch(PDOException $e){
+        echo($e->getMessage());
+        die("<br> Erreur lors de la modification de la reponse 3 de l'utilisateur  " . $this->table);
+      }
+    }
+
+    public function calcul_result_promo($id_promo){
+      $liste_etudiants = ModelEtudiant::getEtud_by_promo($id_promo);
+      $tab_resultats_promo = array("realiste"=>0 ,"investigatif"=>0 ,"artistique" => 0, "social" => 0, "entrepreneur" => 0, "conventionnel" => 0);
+      foreach ($liste_etudiants as $etudiant) {
+        $tab_reponse = select_by_num_user($etudiant["ine"]);
+        $tab_intermediaire = calcul_result_etud($tab_reponse);
+        $tab_resultats_promo["realiste"] = $tab_resultats_promo["realiste"] + $tab_intermediaire["realiste"];
+        $tab_resultats_promo["investigatif"] = $tab_resultats_promo["investigatif"] + $tab_intermediaire["investigatif"];
+        $tab_resultats_promo["artistique"] = $tab_resultats_promo["artistique"] + $tab_intermediaire["artistique"];
+        $tab_resultats_promo["social"] = $tab_resultats_promo["social"] + $tab_intermediaire["social"];
+        $tab_resultats_promo["entrepreneur"] = $tab_resultats_promo["entrepreneur"] + $tab_intermediaire["entrepreneur"];
+        $tab_resultats_promo["conventionnel"] = $tab_resultats_promo["conventionnel"] + $tab_intermediaire["conventionnel"];
+      }
+      $tab_resultats_promo["realiste"] = $tab_resultats_promo["realiste"]/len($liste_etudiants);
+      $tab_resultats_promo["investigatif"] = $tab_resultats_promo["investigatif"]/len($liste_etudiants);
+      $tab_resultats_promo["artistique"] = $tab_resultats_promo["artistique"]/len($liste_etudiants);
+      $tab_resultats_promo["social"] = $tab_resultats_promo["social"]/len($liste_etudiants);
+      $tab_resultats_promo["entrepreneur"] = $tab_resultats_promo["entrepreneur"]/len($liste_etudiants);
+      $tab_resultats_promo["conventionnel"] = $tab_resultats_promo["conventionnel"]/len($liste_etudiants);
+      return $tab_resultats_promo;
+    }
+
+    
+    public function calcul_result_departement($id_section){
+      $liste_etudiants = ModelEtudiant::getEtud_by_section($id_section);
+      $tab_resultats_section = array("realiste"=>0 ,"investigatif"=>0 ,"artistique" => 0, "social" => 0, "entrepreneur" => 0, "conventionnel" => 0);
+      foreach ($liste_etudiants as $etudiant){
+        $tab_intermediaire = calcul_result_etud($tab_reponse);
+        $tab_reponse = select_by_num_user($etudiant["ine"]);
+        $tab_resultats_section["realiste"] = $tab_resultats_section["realiste"] + $tab_intermediaire["realiste"];
+        $tab_resultats_section["investigatif"] = $tab_resultats_section["investigatif"] + $tab_intermediaire["investigatif"];
+        $tab_resultats_section["artistique"] = $tab_resultats_section["artistique"] + $tab_intermediaire["artistique"];
+        $tab_resultats_secton["social"] = $tab_resultats_section["social"] + $tab_intermediaire["social"];
+        $tab_resultats_section["entrepreneur"] = $tab_resultats_section["entrepreneur"] + $tab_intermediaire["entrepreneur"];
+        $tab_resultats_section["conventionnel"] = $tab_resultats_section["conventionnel"] + $tab_intermediaire["conventionnel"];
+      }
+      $tab_resultats_section["realiste"] = $tab_resultats_section["realiste"]/len($liste_etudiants);
+      $tab_resultats_section["investigatif"] = $tab_resultats_section["investigatif"]/len($liste_etudiants);
+      $tab_resultats_section["artistique"] = $tab_resultats_section["artistique"]/len($liste_etudiants);
+      $tab_resultats_section["social"] = $tab_resultats_section["social"]/len($liste_etudiants);
+      $tab_resultats_section["entrepreneur"] = $tab_resultats_section["entrepreneur"]/len($liste_etudiants);
+      $tab_resultats_section["conventionnel"] = $tab_resultats_section["conventionnel"]/len($liste_etudiants);
+      return $tab_resultats_section;
+      }
+    }
+  }
 ?>
+

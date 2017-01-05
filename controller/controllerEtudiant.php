@@ -127,6 +127,7 @@ switch ($action) {
         require ("{$ROOT}{$DS}view{$DS}view.php");
         break;
 
+
         case "test":
 
             //Si l'utilisateur est connecté
@@ -181,5 +182,6 @@ switch ($action) {
             }
             require ("{$ROOT}{$DS}view{$DS}view.php");
             break;
+
 }
 ?>
