@@ -9,18 +9,25 @@ require_once ("{$ROOT}{$DS}config{$DS}security.php");
 
 // On initialise le controlleur à appeler
 if(!isset($_GET['controller'])){
-	$controller="etudiant";
+  $controller="etudiant";
 }else{
-	$controller = $_GET['controller'];
+  $controller = $_GET['controller'];
 }
 
-switch ($controller) {	
-	case "etudiant" :
-		if(!isset($_GET['action'])){
-			$_GET['action'] = "profil";
-		}
-		require ("{$ROOT}{$DS}controller{$DS}controller".ucfirst($controller).".php"); //ucfirst met la premiere lettre de la chaine en MAJ
-		break;
+switch ($controller) {  
+  case "etudiant" :
+    if(!isset($_GET['action'])){
+      $_GET['action'] = "profil";
+    }
+    require ("{$ROOT}{$DS}controller{$DS}controller".ucfirst($controller).".php"); //ucfirst met la premiere lettre de la chaine en MAJ
+    break;
+
+  case "administrateur" :
+    if(!isset($_GET['action'])){
+      $_GET['action'] = "connexion";
+    }
+    require ("{$ROOT}{$DS}controller{$DS}controller".ucfirst($controller).".php"); //ucfirst met la premiere lettre de la chaine en MAJ
+    break;
 }
 
 ?>
