@@ -24,3 +24,9 @@
 		</form>
 	</div>
 </div>
+<script type="text/javascript">
+  $('input[type=radio]').click(function(){
+    $(this).parent().parent().find('input[type=radio]').prop('checked',false);
+    $(this).prop('checked',true);
+  });
+</script>
