@@ -3,3 +3,30 @@
 .erreur{
 	color : #cc0000;
 }
+
+input[type="text"],input[type="password"]{
+
+	color: #000000;
+	display: inline-block;
+	font-size: 14px;
+	height: 28px;
+	line-height: 28px;
+	margin-bottom: 10px;
+	padding: 10px 6px;
+	vertical-align: middle;
+	width: 40%;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	background-color: #ddf3df;
+	border: 0;
+ -webkit-transition: background-color linear .2s;
+ -moz-transition: background-color linear .2s;
+ -o-transition: background-color linear .2s;
+ transition: background-color linear .2s;
+ border-color: rgba(82, 168, 236, 0.8);
+	background-color: #ffffff;
+	outline: 0;
+	outline: thin dotted \9;/* IE6-9 */
+	text-align : center;
+}

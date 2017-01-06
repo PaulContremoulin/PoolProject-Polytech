@@ -1,6 +1,5 @@
 <div class="container profile">
 	<div class="span3">
-		<img src="img/mini.png" alt="">
 	</div>
 	<div class="span6">
 		<h1>Inscription</h1>
@@ -8,19 +7,19 @@
 
 		<form method="POST" action="index.php?controller=etudiant&amp;action=creation">
 			<fieldset>
-		  		<label for="ineEtudiant"><h4> INE : </h4></label>
-		    	<input type="text" placeholder="1234567890A" name="ineEtudiant" pattern="^[0-9]{10}[a-z]$" title="Please enter your real INE (10 numbers and a letter)." id="ineEtudiant"  required/>
-		    	<label for="mailEtudiant"><h4> E-mail : </h4></label>
-		    	<input type="text" placeholder="prenom.nom@etu.umontpellier.fr" name="mailEtudiant" pattern="[a-z-]+[.][a-z-]+@etu.umontpellier.fr$" title="The form of your email must be prenom.nom@etu.umontpellier.fr ." id="mailEtudiant" required/>
-		    	<label for="nameEtudiant"><h4> Nom : </h4></label>
-		    	<input type="text" placeholder="Dupont" name="nameEtudiant" pattern="[a-zA-ZàâæçéèêëîïôœùûüÿÀÂÆÇnÉÈÊËÎÏÔŒÙÛÜŸ-]+" id="nameEtudiant"  required/>
-		    	<label for="prenomEtudiant"><h4> Prenom : </h4></label>
-		    	<input type="text" placeholder="Dupont" name="prenomEtudiant" pattern="[a-zA-ZàâæçéèêëîïôœùûüÿÀÂÆÇnÉÈÊËÎÏÔŒÙÛÜŸ-]+" id="prenomEtudiant"  required/>
-		    	<label for="pwdEtudiant"><h4> Mot de passe : </h4></label>
-		    	<input type="password" name="pwdEtudiant" pattern="[0-9a-zA-Z]{6,}" title="Your password must have at least 6 characters except special characters(; , - ...)" id="pwdEtudiant" required/>
-				<label for="confirmPwd"><h4> Confirmez le mot de passe : </h4></label>
-		    	<input type="password" name="confirmPwd" pattern="[0-9a-zA-Z.]{6,}" title="Your password must have at least 6 characters except special characters(; , - ...)" id="confirmPwd"  required/>
-		    	<label for="section"><h4> Section : </h4></label>
+		  		<label for="ineEtudiant"><h4> INE  </h4></label></fieldset>
+		    	<input type="text" placeholder="1234567890A" name="ineEtudiant" pattern="^[0-9]{10}[a-z]$" title="Please enter your real INE (10 numbers and a letter)." id="ineEtudiant"  required/></br></br>
+		    	<label for="mailEtudiant"><h4> E-mail : </h4></label></br>
+		    	<input type="text" placeholder="prenom.nom@etu.umontpellier.fr" name="mailEtudiant" pattern="[a-z-]+[.][a-z-]+@etu.umontpellier.fr$" title="The form of your email must be prenom.nom@etu.umontpellier.fr ." id="mailEtudiant" required/></br></br>
+		    	<label for="nameEtudiant"><h4> Nom  </h4></label></br>
+		    	<input type="text" placeholder="Dupont" name="nameEtudiant" pattern="[a-zA-ZàâæçéèêëîïôœùûüÿÀÂÆÇnÉÈÊËÎÏÔŒÙÛÜŸ-]+" id="nameEtudiant"  required/></br></br>
+		    	<label for="prenomEtudiant"><h4> Prenom : </h4></label></br>
+		    	<input type="text" placeholder="Dupont" name="prenomEtudiant" pattern="[a-zA-ZàâæçéèêëîïôœùûüÿÀÂÆÇnÉÈÊËÎÏÔŒÙÛÜŸ-]+" id="prenomEtudiant"  required/></br></br>
+		    	<label for="pwdEtudiant"><h4> Mot de passe  </h4></label></br>
+		    	<input type="password" name="pwdEtudiant" pattern="[0-9a-zA-Z]{6,}" title="Your password must have at least 6 characters except special characters(; , - ...)" id="pwdEtudiant" required/></br></br>
+				<label for="confirmPwd"><h4> Confirmez le mot de passe  </h4></label></br>
+		    	<input type="password" name="confirmPwd" pattern="[0-9a-zA-Z.]{6,}" title="Your password must have at least 6 characters except special characters(; , - ...)" id="confirmPwd"  required/></br></br>
+		    	<label for="section"><h4> Section  </h4></label></br>
 		    	<select name="section" id="section" onchange="changePromo(tab, this.value);" required>
 		    		<option value="vide"> --- Choisissez votre section --- </option>
 		    		<?php
@@ -32,8 +31,8 @@
 		    		}
 		    		?>
 		    	</select>
-		    	<span id="idListePromo"></span><br />
-		    	<input id="submit" class="btn btn-large" type="submit" value="Je m'inscris" />
+		    	</br></br><span id="idListePromo"></span></br><br />
+		    	<input id="submit" class="btn btn-dark btn-lg" type="submit" value="Je m'inscris" />
 			</fieldset> 
 		</form>
 	</div>
