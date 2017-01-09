@@ -8,7 +8,7 @@
 		<?php if(empty($_SESSION['login'])){ //si l'utilisateur n'est pas encore connecté 
 			require_once("viewConnexionEtudiant.php");
 		}else{ ?>
-			<h1>Bienvenue <?php print_r($_SESSION['nom']) ?> sur votre test de personnalité</h1>
+			<h2>Bienvenue <?php print_r($_SESSION['nom']) ?> sur votre test de personnalité</h2>
 			<canvas id="myChart" width="400" height="400"></canvas>
 
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
