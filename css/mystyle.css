@@ -30,3 +30,41 @@ input[type="text"],input[type="password"]{
 	outline: thin dotted \9;/* IE6-9 */
 	text-align : center;
 }
+
+h2{
+
+}
+h4{
+	font-weight : bold;
+}
+
+h3{
+	font-weight : bold;
+	text-align: center;
+}
+
+#insc {
+	/* position du conteneur pour le préparer à bouger */
+	position: relative;
+	top: 0;
+	/* on prépare la transition à venir */
+	transition: top 1.4s cubic-bezier(.49,.22,.52,1.35);
+}
+
+#tablequest{
+	text-align: center
+
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td{
+	font-size: medium;
+	font-weight: 100;
+	font-weight: bolder;
+}
