@@ -10,7 +10,7 @@
 		}else{ ?>
 			<h2>Bienvenue <?php print_r($_SESSION['nom']) ?> sur votre test de personnalité</h2>	
 		<div class="mychart">	
-			<canvas id="myChart" width="400" height="400"></canvas>
+			<canvas id="myChart" width="400" height="400" ></canvas>
 
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 			<script>
@@ -22,7 +22,7 @@
 				    datasets: [
 				        {
 				            label: "Votre personnalité",
-				            backgroundColor: "rgba(179,181,198,0.2)",
+				            backgroundColor: "rgba(0,0,0,0.5)",
 				            borderColor: "rgba(179,181,198,1)",
 				            pointBackgroundColor: "rgba(179,181,198,1)",
 				            pointBorderColor: "#fff",
@@ -51,6 +51,7 @@
 				                    beginAtZero: true
 				                }
 				            }
+				            responsive: true
 				    }
 				});
 			</script>
