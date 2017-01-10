@@ -168,6 +168,7 @@ class ModelSelectionner extends Model {
     }
     else{
       print("not an array");
+      return 0;
     }
     }
       
