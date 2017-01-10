@@ -1,8 +1,9 @@
 <div class="container profile">
+	<center>
 	<div class="span6" id="divquest">
 		<form method="POST" action="index.php?controller=etudiant&amp;action=test&amp;option=null">
 			<h3>Groupe n°<?php echo "$idGroupe"; ?></h3><h4 class="erreur"><?php echo "$msgError"; ?></h4>
-			<input type="hidden"  name="idGroupe"  value="<?php echo "$idGroupe"; ?>">
+			<input type="hidden"  name="idGroupe"  value="<?php echo "$idGroupe"; ?>">	
 				<table id="tablequest">
 					<tr>
 						<th></th>
@@ -23,5 +24,6 @@
 				<input type="submit" class="btn btn-lg btn-dark" name="Precedent" value="Precedent" <?php if($idGroupe == 1){ echo "disabled";} ?>/><?php if($idGroupe != 12){ ?><input type="submit" class="btn btn-lg btn-dark" name="Suivant" value="Suivant" > <?php } else { ?> <input type="submit" class="btn btn-lg btn-dark" name="Terminer" value="Terminer" action="index.php?controller=etudiant&action=profil;"/> <?php } ?>
 		</form>
 	</div>
+	</center>
 </div>
 
