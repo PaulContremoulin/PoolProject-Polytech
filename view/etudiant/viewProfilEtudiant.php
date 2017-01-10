@@ -51,7 +51,6 @@
 				                    beginAtZero: true
 				                }
 				            }
-				            responsive: true
 				    }
 				});
 			</script>
