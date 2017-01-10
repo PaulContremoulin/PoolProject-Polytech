@@ -68,3 +68,8 @@ td{
 	font-weight: 100;
 	font-weight: bolder;
 }
+
+#thechart{
+	height: 50%;
+	width: 50%;
+}
