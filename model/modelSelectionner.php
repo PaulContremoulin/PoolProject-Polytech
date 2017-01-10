@@ -144,7 +144,7 @@ class ModelSelectionner extends Model {
       }
     }
 
-    public function calcul_result_promo($id_promo){
+    public static function calcul_result_promo($id_promo){
       $liste_etudiants = ModelEtudiant::getEtud_by_promo($id_promo);
       $tab_resultats_promo = array("realiste"=>0 ,"investigatif"=>0 ,"artistique" => 0, "social" => 0, "entrepreneur" => 0, "conventionnel" => 0);
       foreach ($liste_etudiants as $etudiant) {
@@ -157,12 +157,12 @@ class ModelSelectionner extends Model {
         $tab_resultats_promo["entrepreneur"] = $tab_resultats_promo["entrepreneur"] + $tab_intermediaire["entrepreneur"];
         $tab_resultats_promo["conventionnel"] = $tab_resultats_promo["conventionnel"] + $tab_intermediaire["conventionnel"];
       }
-      $tab_resultats_promo["realiste"] = $tab_resultats_promo["realiste"]/len($liste_etudiants);
-      $tab_resultats_promo["investigatif"] = $tab_resultats_promo["investigatif"]/len($liste_etudiants);
-      $tab_resultats_promo["artistique"] = $tab_resultats_promo["artistique"]/len($liste_etudiants);
-      $tab_resultats_promo["social"] = $tab_resultats_promo["social"]/len($liste_etudiants);
-      $tab_resultats_promo["entrepreneur"] = $tab_resultats_promo["entrepreneur"]/len($liste_etudiants);
-      $tab_resultats_promo["conventionnel"] = $tab_resultats_promo["conventionnel"]/len($liste_etudiants);
+      $tab_resultats_promo["realiste"] = $tab_resultats_promo["realiste"]/count($liste_etudiants);
+      $tab_resultats_promo["investigatif"] = $tab_resultats_promo["investigatif"]/count($liste_etudiants);
+      $tab_resultats_promo["artistique"] = $tab_resultats_promo["artistique"]/count($liste_etudiants);
+      $tab_resultats_promo["social"] = $tab_resultats_promo["social"]/count($liste_etudiants);
+      $tab_resultats_promo["entrepreneur"] = $tab_resultats_promo["entrepreneur"]/count($liste_etudiants);
+      $tab_resultats_promo["conventionnel"] = $tab_resultats_promo["conventionnel"]/count($liste_etudiants);
       return $tab_resultats_promo;
     }
 
@@ -180,12 +180,12 @@ class ModelSelectionner extends Model {
         $tab_resultats_section["entrepreneur"] = $tab_resultats_section["entrepreneur"] + $tab_intermediaire["entrepreneur"];
         $tab_resultats_section["conventionnel"] = $tab_resultats_section["conventionnel"] + $tab_intermediaire["conventionnel"];
       }
-      $tab_resultats_section["realiste"] = $tab_resultats_section["realiste"]/len($liste_etudiants);
-      $tab_resultats_section["investigatif"] = $tab_resultats_section["investigatif"]/len($liste_etudiants);
-      $tab_resultats_section["artistique"] = $tab_resultats_section["artistique"]/len($liste_etudiants);
-      $tab_resultats_section["social"] = $tab_resultats_section["social"]/len($liste_etudiants);
-      $tab_resultats_section["entrepreneur"] = $tab_resultats_section["entrepreneur"]/len($liste_etudiants);
-      $tab_resultats_section["conventionnel"] = $tab_resultats_section["conventionnel"]/len($liste_etudiants);
+      $tab_resultats_section["realiste"] = $tab_resultats_section["realiste"]/count($liste_etudiants);
+      $tab_resultats_section["investigatif"] = $tab_resultats_section["investigatif"]/count($liste_etudiants);
+      $tab_resultats_section["artistique"] = $tab_resultats_section["artistique"]/count($liste_etudiants);
+      $tab_resultats_section["social"] = $tab_resultats_section["social"]/count($liste_etudiants);
+      $tab_resultats_section["entrepreneur"] = $tab_resultats_section["entrepreneur"]/count($liste_etudiants);
+      $tab_resultats_section["conventionnel"] = $tab_resultats_section["conventionnel"]/count($liste_etudiants);
       return $tab_resultats_section;
       }*/
   }
