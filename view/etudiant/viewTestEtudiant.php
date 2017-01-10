@@ -25,7 +25,7 @@
 					</center>
 				<?php } ?>
 				</table></br>
-				<input type="submit" class="btn btn-lg btn-dark" name="Precedent" value="Precedent" <?php if($idGroupe == 1){ echo "disabled";} ?>/><?php if($idGroupe != 12){ ?><input type="submit" class="btn btn-lg btn-dark" name="Suivant" value="Suivant" > <?php } else { ?> <input type="submit" class="btn btn-lg btn-dark" name="Terminer" value="Terminer" action="index.php?controller=etudiant&action=profil;"/> <?php } ?>
+				<input type="submit" class="btn btn-lg btn-dark" name="Precedent" value="Precedent" <?php if($idGroupe == 1){ echo "disabled";} ?>/><?php if($idGroupe != 12){ ?><input type="submit" class="btn btn-lg btn-dark" name="Suivant" value="Suivant" > <?php } else { ?> <input type="submit" class="btn btn-lg btn-dark" name="Terminer" value="Terminer"/> <?php } ?>
 		</form>
 	</div>
 	</center>

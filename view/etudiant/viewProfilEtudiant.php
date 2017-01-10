@@ -9,7 +9,7 @@
 		<?php if(empty($_SESSION['login'])){ //si l'utilisateur n'est pas encore connecté 
 			require_once("viewConnexionEtudiant.php");
 		}else{ ?>
-			<h2>Bienvenue <?php print_r($_SESSION['nom']) ?> sur votre test de personnalité</h2>	
+			<h2>Votre test de personnalité à donné le résultat suivant</h2>	
 		<div class="mychart">	
 			<canvas id="myChart" width="400" height="400" ></canvas>
 
@@ -17,12 +17,13 @@
 			<script>
 				var var_labels = <?php echo json_encode($labels); ?>;
 				var var_profil = <?php echo json_encode($profil, JSON_NUMERIC_CHECK); ?>;
+				var var_profil_promo = <?php echo json_encode($profil_promo, JSON_NUMERIC_CHECK); ?>;
 				var ctx = document.getElementById("myChart");
 				var data = {
 				    labels: var_labels,
 				    datasets: [
 				        {
-				            label: "Votre personnalité",
+				            label: "Ma personnalité",
 				            backgroundColor: "rgba(0,0,255,0.5)",
 				            borderColor: "rgba(179,181,198,1)",
 				            pointBackgroundColor: "rgba(0,0,255,1)",
@@ -30,17 +31,17 @@
 				            pointHoverBackgroundColor: "#fff",
 				            pointHoverBorderColor: "rgba(179,181,198,1)",
 				            data: var_profil
-				        }/*,
+				        },
 				        {
-				            label: "My Second dataset",
+				            label: "Personnalité de ma promo",
 				            backgroundColor: "rgba(255,99,132,0.2)",
 				            borderColor: "rgba(255,99,132,1)",
 				            pointBackgroundColor: "rgba(255,99,132,1)",
 				            pointBorderColor: "#fff",
 				            pointHoverBackgroundColor: "#fff",
 				            pointHoverBorderColor: "rgba(255,99,132,1)",
-				            data: [28, 48, 40, 19, 96, 27, 100]
-				        }*/
+				            data: var_profil_promo
+				        }
 				    ]
 				};
 				var myChart = new Chart(ctx, {

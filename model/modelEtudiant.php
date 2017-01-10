@@ -90,6 +90,18 @@ class ModelEtudiant extends Model {
     return $row['id_etudiant'];        
   }
 
+  public static function getPromo($ine){
+    $sql =  "SELECT id_promo ".
+            "FROM ". static::$table." ".
+            "WHERE id_etudiant = :ine;";
+    $req_prep = Model::$pdo->prepare($sql);
+    $req_prep->execute(array(':ine'=>$ine));
+    $row = $req_prep->fetch(PDO::FETCH_ASSOC);
+
+    return $row['id_promo'];        
+
+  }
+
   public function getEtud_by_promo($id_promo){
     try{
      $sql = "SELECT * FROM ".static::$table." WHERE id_promo = ".$id_promo.";";

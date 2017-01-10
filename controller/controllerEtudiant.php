@@ -13,25 +13,29 @@ switch ($action) {
 
         if(isset($_SESSION['login'])){
             require_once("{$ROOT}{$DS}model{$DS}modelSelectionner.php");
-
+            $promo = ModelEtudiant::getPromo(ModelEtudiant::getINE($_SESSION['login']));
             $tab_reponses = ModelSelectionner::select_by_num_user($_SESSION['login']);
             if(count($tab_reponses)==12){
                 $tab_calculer = ModelSelectionner::calcul_result_etud($tab_reponses);
             }
+            $tab_calculer_promo = ModelSelectionner::calcul_result_promo($promo);
 
             $labels = array();
             $profil = array();
-
+            $profil_promo = array();
             foreach($tab_calculer as $key => $values){
                 array_push($labels, $key);
                 array_push($profil, $values);
+            }
+            foreach($tab_calculer_promo as $keyy => $valuess){
+                array_push($tab_calculer_promo, $valuess);
             }
 
         }else{
             print("echec sessiosn");
         }
 
-        $pagetitle = "Votre profil";
+        $pagetitle = "Mon profil";
         $view = "profil";
 
         /* A garder pour la gestion des etudiants / admins / pas inscrits
@@ -158,7 +162,7 @@ switch ($action) {
                         }else if(isset($_POST['Suivant'])){
                             $idGroupe = intval($_POST['idGroupe']) + 1;
                         }else if(isset($_POST['Terminer'])){
-                            $pagetitle = "Votre Profil";
+                            $pagetitle = "Mon Profil";
                             $view = "profil";
                             require ("{$ROOT}{$DS}view{$DS}view.php");
                             break;
