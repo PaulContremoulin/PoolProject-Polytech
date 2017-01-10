@@ -182,6 +182,5 @@ switch ($action) {
             }
             require ("{$ROOT}{$DS}view{$DS}view.php");
             break;
-
 }
 ?>
