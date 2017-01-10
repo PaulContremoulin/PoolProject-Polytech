@@ -104,10 +104,11 @@ class ModelEtudiant extends Model {
 
   public static function getEtud_by_promo($id_promo){
     try{
-     $sql = "SELECT * FROM ".static::$table." WHERE id_promo = ".$id_promo.";";
+     $sql = "SELECT * FROM ".static::$table." WHERE id_promo = :promo";
      $req_prep = Model::$pdo->prepare($sql);
-     $req_prep->execute();
+     $req_prep->execute(array(':promo'=>$id_promo));
      $result = $req_prep->fetch(PDO::FETCH_ASSOC);
+     print(is_array($result));
      return $result;
    } catch(PDOException $e) {
         echo ' Echec recupération: ' . $e->getMessage();
