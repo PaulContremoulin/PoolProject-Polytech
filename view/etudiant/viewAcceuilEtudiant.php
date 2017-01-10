@@ -1,4 +1,4 @@
-<div class="container_profile">
+<div class="container profile">
 	<center>
 		<div class="span6">
 			<?php if(empty($_SESSION['login'])){ //si l'utilisateur n'est pas encore connecté 
@@ -10,6 +10,7 @@
 				<form method="POST" action="index.php?controller=etudiant&amp;action=test">
 					<input type="submit" class="btn btn-lg btn-dark" name="Commencer le test" value="begin"/>
 				</form>
+			<?php } ?>
 		</div>
 	</center>
 
