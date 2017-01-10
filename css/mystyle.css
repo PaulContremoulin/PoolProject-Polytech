@@ -70,6 +70,7 @@ td{
 }
 
 .mychart{
-	width: 50%;
-	height : 50%;
+	margin : 0 auto;
+	width: 40%;
+	height : 30%;
 }
