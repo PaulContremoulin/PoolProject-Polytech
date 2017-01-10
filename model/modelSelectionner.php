@@ -146,9 +146,9 @@ class ModelSelectionner extends Model {
 
     public static function calcul_result_promo($id_promo){
       $liste_etudiants = ModelEtudiant::getEtud_by_promo($id_promo);
-      print_r($liste_etudiants);
       $tab_resultats_promo = array("realiste"=>0 ,"investigatif"=>0 ,"artistique" => 0, "social" => 0, "entrepreneur" => 0, "conventionnel" => 0);
-      foreach ($liste_etudiants as $etudiant) {
+      if is_array($liste_etudiants){
+        foreach ($liste_etudiants as $etudiant) {
         $tab_reponse = select_by_num_user($etudiant["ine"]);
         $tab_intermediaire = calcul_result_etud($tab_reponse);
         $tab_resultats_promo["realiste"] = $tab_resultats_promo["realiste"] + $tab_intermediaire["realiste"];
@@ -166,6 +166,11 @@ class ModelSelectionner extends Model {
       $tab_resultats_promo["conventionnel"] = $tab_resultats_promo["conventionnel"]/count($liste_etudiants);
       return $tab_resultats_promo;
     }
+    else{
+      print("not an array");
+    }
+    }
+      
 
    /* 
     public function calcul_result_departement($id_section){
