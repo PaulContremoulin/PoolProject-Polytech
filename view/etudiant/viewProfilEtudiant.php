@@ -4,7 +4,7 @@
 		<img src="img/mini.png" alt="">
 	</div>
 	-->
-	<div class="span6">
+	<div class="span6" id="mychart1">
 		<?php if(empty($_SESSION['login'])){ //si l'utilisateur n'est pas encore connecté 
 			require_once("viewConnexionEtudiant.php");
 		}else{ ?>
