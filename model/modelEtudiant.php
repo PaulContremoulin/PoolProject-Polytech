@@ -103,17 +103,13 @@ class ModelEtudiant extends Model {
   }
 
   public static function getEtud_by_promo($id_promo){
-    try{
      $sql = "SELECT * FROM ".static::$table." WHERE id_promo = :promo";
      $req_prep = Model::$pdo->prepare($sql);
      $req_prep->execute(array(':promo'=>$id_promo));
      $result = $req_prep->fetch(PDO::FETCH_ASSOC);
      print(is_array($result));
      return $result;
-   } catch(PDOException $e) {
-        echo ' Echec recupération: ' . $e->getMessage();
-  }
-}
+  } 
 
   public static function getEtud_by_section($id_section){
     $sql = "SELECT * FROM ".static::$table." e, Promo p WHERE e.id_promo = p.id_promo and p.id_section =".$id_section.";";
