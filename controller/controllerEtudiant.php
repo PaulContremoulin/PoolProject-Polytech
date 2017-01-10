@@ -152,6 +152,11 @@ switch ($action) {
                         //si clic sur groupe suivant
                         }else if(isset($_POST['Suivant'])){
                             $idGroupe = intval($_POST['idGroupe']) + 1;
+                        }else if(isset($_POST['Terminer'])){
+                            $pagetitle = "Votre Profil";
+                            $view = "profil";
+                            require ("{$ROOT}{$DS}view{$DS}view.php");
+                            break;
                         }
                     //si un choix n'est pas coché
                     }else{
