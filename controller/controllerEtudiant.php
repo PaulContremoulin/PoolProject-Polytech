@@ -13,7 +13,7 @@ switch ($action) {
 
         if(isset($_SESSION['login'])){
             require_once("{$ROOT}{$DS}model{$DS}modelSelectionner.php");
-            $promo = ModelEtudiant::getPromo(ModelEtudiant::getINE($_SESSION['login']));
+            $promo = ModelEtudiant::getPromo($_SESSION['login']);
             $tab_reponses = ModelSelectionner::select_by_num_user($_SESSION['login']);
             if(count($tab_reponses)==12){
                 $tab_calculer = ModelSelectionner::calcul_result_etud($tab_reponses);
