@@ -24,11 +24,11 @@
 				        {
 				            label: "Votre personnalité",
 				            backgroundColor: "rgba(0,0,255,0.2)",
-				            borderColor: "rgba(255,0,0,1)",
+				            borderColor: "rgba(179,181,198,1)",
 				            pointBackgroundColor: "rgba(179,181,198,1)",
 				            pointBorderColor: "#fff",
 				            pointHoverBackgroundColor: "#fff",
-				            pointHoverBorderColor: "rgba(0,0,0,1)",
+				            pointHoverBorderColor: "rgba(179,181,198,1)",
 				            data: var_profil
 				        }/*,
 				        {
