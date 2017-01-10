@@ -22,7 +22,7 @@
 				    datasets: [
 				        {
 				            label: "Votre personnalité",
-				            backgroundColor: "rgba(0,0,0,0)",
+				            backgroundColor: "rgba(179,181,198,0.2)",
 				            borderColor: "rgba(179,181,198,1)",
 				            pointBackgroundColor: "rgba(179,181,198,1)",
 				            pointBorderColor: "#fff",
