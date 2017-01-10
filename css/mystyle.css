@@ -69,7 +69,7 @@ td{
 	font-weight: bolder;
 }
 
-#canvas{
+.mychart{
 	width: 50%;
 	height : 50%;
 }
