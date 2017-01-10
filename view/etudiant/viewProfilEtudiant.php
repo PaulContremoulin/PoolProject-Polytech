@@ -1,4 +1,4 @@
-<div class="container_profile">
+<div class="container profile">
 	<!--
 	<div class="span3">
 		<img src="img/mini.png" alt="">

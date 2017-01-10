@@ -63,7 +63,7 @@ switch ($action) {
         }
 
         $pagetitle = "Accueil";
-        $view = "??";
+        $view = "acceuil";
         #Hamelina a modifié un truc ici mais e ne sais pas comment on fait pour rediriger vers le le viewAcceuil etudiant du coup
 
         require ("{$ROOT}{$DS}view{$DS}view.php");
