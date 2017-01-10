@@ -69,7 +69,7 @@ td{
 	font-weight: bolder;
 }
 
-.container_profile{
-	width: auto;
-	height : auto;
+#canva{
+	width: 50%;
+	height : 50%;
 }
