@@ -47,6 +47,13 @@
 				    type: "radar",
 				    data: data,
 				    options: {
+				    	legend: {
+				    		display: true,
+            				labels: {
+                				fontColor: 'rgb(255, 99, 132)'
+                				fontSize: '10'
+            				}
+				    	}
 				            scale: {
 				                ticks: {
 				                    beginAtZero: true
