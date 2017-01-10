@@ -5,16 +5,23 @@ class Security{
 	private static $seed = 'coltazekhan3'; //chaine à concaténer
 	
 	public static function getSeed() {  //getter de la chaine à concaténer
+		# getSeed : => char[]
+			#resultat : chaîne à concaténer 
 		return self::$seed;
 	}
 	
 	public static function chiffrer($mdp_en_clair) {
+		# chiffre : char[] => char[]
+			#donnée: chaîne de caractère qui correspond au mot de passe de l'utilisateur
+			#résultat : chaîne de caractère qui au mot de passe de l'utilisateur mais crypté en sha256
 	  $mdp_crypte = $mdp_en_clair . Security::getSeed();
 	  $mdp_crypte = hash('sha256', $mdp_en_clair);
 	  return $mdp_crypte;
 	}
 
 	public static function generateRandomHex() {
+		# generateRandomHex : => Int
+			#résultat : Int, renvoie un hexadécimal de façon aléatoire 
 		// Generate a 32 digits hexadecimal number
 		$numbytes = 16; // Because 32 digits hexadecimal = 16 bytes
 		$bytes = openssl_random_pseudo_bytes($numbytes); 

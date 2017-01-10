@@ -13,6 +13,7 @@ class Conf {
   );
 
   static public function getLogin() {
+    #getLogin : 
     return self::$databases['login'];
   }
 
