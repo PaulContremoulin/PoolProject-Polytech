@@ -9,7 +9,7 @@
 			require_once("viewConnexionEtudiant.php");
 		}else{ ?>
 			<h2>Bienvenue <?php print_r($_SESSION['nom']) ?> sur votre test de personnalité</h2>
-			<canvas id="myChart" width="400" height="400"></canvas>
+			<canvas id="myChart" width="200" height="200"></canvas>
 
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 			<script>
@@ -53,7 +53,6 @@
 				    }
 				});
 			</script>
-
 		<?php } ?>
 	</div>
 </div>
