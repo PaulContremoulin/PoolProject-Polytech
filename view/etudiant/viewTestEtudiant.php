@@ -15,6 +15,7 @@
 					<tr>
 						<td><?php echo "$values[libelle]"; ?></td>
 						<td><INPUT type= "radio" name="choix1" value="<?php echo "$values[idp]"; ?>"></td>
+						<td><INPUT type= "radio" name="choix2" value="<?php echo "$values[idp]"; ?>"></td>
 						<td><INPUT type= "radio" name="choix3" value="<?php echo "$values[idp]"; ?>"></td>
 					</tr>
 				<?php } ?>
