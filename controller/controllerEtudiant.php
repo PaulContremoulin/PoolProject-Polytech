@@ -62,11 +62,16 @@ switch ($action) {
             $_SESSION['admin'] = 0;
         }
 
-        $pagetitle = "Votre profil";
-        $view = "profil";
+        $pagetitle = "Accueil";
+        $view = "??";
+        #Hamelina a modifié un truc ici mais e ne sais pas comment on fait pour rediriger vers le le viewAcceuil etudiant du coup
 
         require ("{$ROOT}{$DS}view{$DS}view.php");
         break;
+
+
+
+
 
     case "deconnexion":
 
