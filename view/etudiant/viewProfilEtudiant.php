@@ -55,5 +55,6 @@
 			</script>
 
 		<?php } ?>
+		<div id="mychart"></div>
 	</div>
 </div>
