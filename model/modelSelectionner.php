@@ -149,7 +149,7 @@ class ModelSelectionner extends Model {
       print_r($liste_etudiants);
       $tab_resultats_promo = array("realiste"=>0 ,"investigatif"=>0 ,"artistique" => 0, "social" => 0, "entrepreneur" => 0, "conventionnel" => 0);
         foreach ($liste_etudiants as $etudiant) {
-        $tab_reponse = ModelSelectionner::select_by_num_user($etudiant["ine"]);
+        $tab_reponse = ModelSelectionner::select_by_num_user($etudiant["[id_etudiant"]);
         $tab_intermediaire =  ModelSelectionner::calcul_result_etud($tab_reponse);
         $tab_resultats_promo["realiste"] = $tab_resultats_promo["realiste"] + $tab_intermediaire["realiste"];
         $tab_resultats_promo["investigatif"] = $tab_resultats_promo["investigatif"] + $tab_intermediaire["investigatif"];
@@ -175,7 +175,7 @@ class ModelSelectionner extends Model {
       $tab_resultats_section = array("realiste"=>0 ,"investigatif"=>0 ,"artistique" => 0, "social" => 0, "entrepreneur" => 0, "conventionnel" => 0);
       foreach ($liste_etudiants as $etudiant){
         $tab_intermediaire = calcul_result_etud($tab_reponse);
-        $tab_reponse = select_by_num_user($etudiant["ine"]);
+        $tab_reponse = select_by_num_user($etudiant["[id_etudiant"]);
         $tab_resultats_section["realiste"] = $tab_resultats_section["realiste"] + $tab_intermediaire["realiste"];
         $tab_resultats_section["investigatif"] = $tab_resultats_section["investigatif"] + $tab_intermediaire["investigatif"];
         $tab_resultats_section["artistique"] = $tab_resultats_section["artistique"] + $tab_intermediaire["artistique"];
