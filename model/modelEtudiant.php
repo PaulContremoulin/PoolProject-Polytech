@@ -103,7 +103,7 @@ class ModelEtudiant extends Model {
   }
 
   public static function getEtud_by_promo($id_promo){
-     $sql = "SELECT * ".
+     $sql = "SELECT id_etudiant ".
             "FROM ".static::$table." ".
             "WHERE id_promo = :promo";
      $req_prep = Model::$pdo->prepare($sql);
