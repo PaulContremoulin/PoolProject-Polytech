@@ -164,7 +164,7 @@ class ModelSelectionner extends Model {
       $tab_resultats_promo["entrepreneur"] = $tab_resultats_promo["entrepreneur"]/count($liste_etudiants);
       $tab_resultats_promo["conventionnel"] = $tab_resultats_promo["conventionnel"]/count($liste_etudiants);
       print_r($tab_resultats_promo);
-      return $tab_resultats_promo;
+      //return $tab_resultats_promo;
     }
       
 
