@@ -11,7 +11,7 @@
 
 					require_once("viewProfilEtudiant.php");
 
-				}elseif($nbQuestionsSave > 0){ //l'étudiant à commencé son test mais ne l'a pas fini ?> 
+				}elseif($nbQuestionsSave >= 1){ //l'étudiant à commencé son test mais ne l'a pas fini ?> 
 
 					<h4>Investigatif ? Réaliste ? Conventionnel ? Entrepreneur ? Artistique ? Social ? Quels sont donc vos caractères prédominants ? </h4></br>
 					<h4>Pour déterminer votre personnalité, veuillez terminer le test. Il vous reste <?php echo 12-$nbQuestionsSave; ?>/12 réponses à completer. </h4></br>

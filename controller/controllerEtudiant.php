@@ -47,7 +47,7 @@ switch ($action) {
                     array_push($labels, $key);
                     array_push($profil, $values);
                 }
-            }elseif(){ // Si il a commencé le test 
+            }elseif($nbQuestionsSave >= 1){ // Si il a commencé le test 
                 $_SESSION['idGroupe'] = $nbQuestionsSave+1; // Il a déjà fait $nbQuestion, donc on le renvoie à la nbQuestion + 1
             }
             //$tab_calculer_promo = ModelSelectionner::calcul_result_promo($promo);
