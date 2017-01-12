@@ -183,13 +183,27 @@ switch ($action) {
                 }
 
                 if(isset($_POST['Terminer']) && $reponsesValides){ //Si le test s'est terminé correctement
-                    include("http://www.poolproject-polytech.ml/index.php?controller=etudiant&action=profil");
+                    //Récupération de tous les résultats
+                    require_once("{$ROOT}{$DS}model{$DS}modelSelectionner.php");
+                    $tab_reponses = ModelSelectionner::select_by_num_user($_SESSION['login']);
+                    $nbQuestionsSave = count($tab_reponses);
+                    $tab_calculer = ModelSelectionner::calcul_result_etud($tab_reponses);
+                    $labels = array(); //Tableau contenant les titres des personnalités
+                    $profil = array(); //Tableau contenant les valeurs des personnalités                     
+                    //Affectation des valeurs aux deux tableaux
+                    foreach($tab_calculer as $key => $values){
+                        array_push($labels, $key);
+                        array_push($profil, $values);
+                    }
+                    $pagetitle = "Accueil";
+                    $view = "acceuil";
+
                 }else{//Sinon, on continue sur le test
                     require_once("{$ROOT}{$DS}model{$DS}modelGroupe.php");
                     $groupe = modelGroupe::select($idGroupe);
                     $tab_answers = $groupe->getAnswers();
 
-                    $pagetitle = "Test";
+                    $pagetitle = "Test RIASEC";
                     $view = "test";
                 }
 

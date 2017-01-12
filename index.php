@@ -1,8 +1,4 @@
 <?php
-
-//php.ini
-ini_set('allow_url_include', true); //Permet la récupération des URL
-
 //Variables pour portage de l'application
 $ROOT = __DIR__; // __DIR__ est une constante qui contient le chemin du dossier courant
 $DS = DIRECTORY_SEPARATOR;
