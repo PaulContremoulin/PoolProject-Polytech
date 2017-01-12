@@ -15,6 +15,7 @@ switch ($action) {
     case "profil":
 
         if(isset($_SESSION['login'])){
+
             
         }
 
@@ -88,8 +89,8 @@ switch ($action) {
         $mailAdmin = $_POST["mailAdmin"];
         $confirmPwd = $_POST["confirmPwd"];
 
-        if(!ModelUser::mailExist($mailEtudiant)){
-            if(ModelUser::isMailFormat($mailEtudiant)){
+        if(!ModelAdmin::mailExist($mailAdmin)){
+            if(ModelAdmin::isMailFormat($mailAdmin)){
                 if($pwdAdmin == $confirmPwd){
                     $pwdAdmin = Security::chiffrer($pwdAdmin);
 
@@ -97,18 +98,18 @@ switch ($action) {
                          "id_admin" => $id_admin,
                          "mdp_admin" => $pwdAdmin,
                          "nom_admin" => $nameAdmin,
-                         "prenom_admin" =>  $prenomAdmin,
+                         "prenom_admin" => $prenomAdmin,
                          "mail_admin" => $mailAdmin,
                     );
 
-                    ModelUser::insert($new_account);
+                    ModelAdmin::insert($new_account);
                 }
             }
         }
 
         //Redirection vers la page d'accueil
         $pagetitle = "Bienvenue";
-        $view = "AccueilAdmin";
+        $view = "accueil";
 
         require ("{$ROOT}{$DS}view{$DS}view.php");
         break;
