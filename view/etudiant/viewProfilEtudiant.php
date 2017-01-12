@@ -47,6 +47,7 @@
 				var myChart = new Chart(ctx, {
 				    type: "radar",
 				    data: data,
+				    
 				    options: {
 				            scale: {
 				                ticks: {

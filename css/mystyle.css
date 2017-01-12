@@ -36,13 +36,9 @@ h2{
 	font-size: 200%;
 }
 h4{
-	font-size: 150%;
+	font-weight : bold;
 }
 
-h3{
-	font-weight : bold;
-	text-align: center;
-}
 
 #insc {
 	/* position du conteneur pour le préparer à bouger */
@@ -84,9 +80,13 @@ th{
 
 
 .boutonEtudiant{
-	width : 50%;
+	width : 40%;
+	font-weight: bolder;
+	font-size: 150%;
 }
 
 .boutonAdmin{
-	width : 50%;
+	width : 40%;
+	font-weight: bolder;
+	font-size: 150%;
 }
