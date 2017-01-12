@@ -1,6 +1,11 @@
 <?php
-//require_once "{$ROOT}{$DS}config{$DS}conflocal.php"; //ne jamais modifier
-require_once "{$ROOT}{$DS}config{$DS}conflocal.php"; //ne jamais modifier
+
+if (getenv("HTTP_HOST") == "localhost" || getenv("HTTP_HOST") == "127.0.0.1") {
+	require_once "{$ROOT}{$DS}config{$DS}conflocal.php"; //ne jamais modifier
+}else{
+	require_once "{$ROOT}{$DS}config{$DS}conflocal.php"; //ne jamais modifier
+}
+
 
 class Model{
 
