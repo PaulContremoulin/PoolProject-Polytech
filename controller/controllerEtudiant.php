@@ -84,7 +84,7 @@ switch ($action) {
         unset($_SESSION['idGroupe']);
 
         $pagetitle = "Accueil";
-        $view = "accueil";
+        $view = "acceuil";
 
         require ("{$ROOT}{$DS}view{$DS}view.php");
         break;
@@ -130,7 +130,7 @@ switch ($action) {
 
         //Redirection vers la page d'accueil
         $pagetitle = "Accueil";
-        $view = "accueil";
+        $view = "acceuil";
 
         require ("{$ROOT}{$DS}view{$DS}view.php");
         break;
