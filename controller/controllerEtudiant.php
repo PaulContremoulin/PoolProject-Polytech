@@ -34,7 +34,8 @@ switch ($action) {
             //$promo = ModelEtudiant::getPromo($_SESSION['login']);
             $tab_reponses = ModelSelectionner::select_by_num_user($_SESSION['login']);
             $nbQuestionsSave = count($tab_reponses);
-            if($nbQuestionsSave==12){
+
+            if($nbQuestionsSave==12){// Test terminé
                 $tab_calculer = ModelSelectionner::calcul_result_etud($tab_reponses);
 
 
@@ -46,6 +47,8 @@ switch ($action) {
                     array_push($labels, $key);
                     array_push($profil, $values);
                 }
+            }elseif($nbQuestionsSave >= 1){ // Si il a commencé le test 
+                $_SESSION['idGroupe'] = $nbQuestionsSave+1; // Il a déjà fait $nbQuestion, donc on le renvoie à la nbQuestion + 1
             }
             //$tab_calculer_promo = ModelSelectionner::calcul_result_promo($promo);
 
@@ -80,8 +83,8 @@ switch ($action) {
         unset($_SESSION['admin']);
         unset($_SESSION['idGroupe']);
 
-        $pagetitle = "Votre profil";
-        $view = "profil";
+        $pagetitle = "Accueil";
+        $view = "acceuil";
 
         require ("{$ROOT}{$DS}view{$DS}view.php");
         break;
@@ -127,7 +130,7 @@ switch ($action) {
 
         //Redirection vers la page d'accueil
         $pagetitle = "Accueil";
-        $view = "profil";
+        $view = "acceuil";
 
         require ("{$ROOT}{$DS}view{$DS}view.php");
         break;
@@ -137,10 +140,13 @@ switch ($action) {
 
             //Si l'utilisateur est connecté
             if(isset($_SESSION['login'])){
+
+
                 //si l'identifiant du groupe est envoyé par le formulaire
                 if(isset($_POST['idGroupe'])){
                     //si tous les choix sont cochés
-                    if(isset($_POST['choix1']) && isset($_POST['choix2']) && isset($_POST['choix3'])){
+                    $reponsesValides = isset($_POST['choix1']) && isset($_POST['choix2']) && isset($_POST['choix3']);
+                    if($reponsesValides){
                         require_once("{$ROOT}{$DS}model{$DS}modelSelectionner.php");
                         $new_result = array(
                          "choix_1" => $_POST['choix1'],
@@ -157,14 +163,14 @@ switch ($action) {
                         //si clic sur groupe suivant
                         }else if(isset($_POST['Suivant'])){
                             $idGroupe = intval($_POST['idGroupe']) + 1;
+                        //Le test est terminé
                         }else if(isset($_POST['Terminer'])){
-                            $pagetitle = "Mon Profil";
-                            $view = "profil";
+                            $idGroupe = intval($_POST['idGroupe']);
                         }
                     //si un choix n'est pas coché
                     }else{
                         $msgError = "Vous devez cocher 3 choix.";
-                        $idGroupe = $_POST['idGroupe'];
+                        $idGroupe = intval($_POST['idGroupe']);
                     }
                     $_SESSION['idGroupe'] = $idGroupe;
                 //si la session avait deja un test commencé
@@ -176,12 +182,30 @@ switch ($action) {
                     $_SESSION['idGroupe'] = $idGroupe;
                 }
 
-                require_once("{$ROOT}{$DS}model{$DS}modelGroupe.php");
-                $groupe = modelGroupe::select($idGroupe);
-                $tab_answers = $groupe->getAnswers();
+                if(isset($_POST['Terminer']) && $reponsesValides){ //Si le test s'est terminé correctement
+                    //Récupération de tous les résultats
+                    require_once("{$ROOT}{$DS}model{$DS}modelSelectionner.php");
+                    $tab_reponses = ModelSelectionner::select_by_num_user($_SESSION['login']);
+                    $nbQuestionsSave = count($tab_reponses);
+                    $tab_calculer = ModelSelectionner::calcul_result_etud($tab_reponses);
+                    $labels = array(); //Tableau contenant les titres des personnalités
+                    $profil = array(); //Tableau contenant les valeurs des personnalités                     
+                    //Affectation des valeurs aux deux tableaux
+                    foreach($tab_calculer as $key => $values){
+                        array_push($labels, $key);
+                        array_push($profil, $values);
+                    }
+                    $pagetitle = "Accueil";
+                    $view = "acceuil";
 
-                $pagetitle = "Test";
-                $view = "test";
+                }else{//Sinon, on continue sur le test
+                    require_once("{$ROOT}{$DS}model{$DS}modelGroupe.php");
+                    $groupe = modelGroupe::select($idGroupe);
+                    $tab_answers = $groupe->getAnswers();
+
+                    $pagetitle = "Test RIASEC";
+                    $view = "test";
+                }
 
             //Si l'utilisateur n'est pas connecté
             }else{

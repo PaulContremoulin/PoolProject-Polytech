@@ -1,5 +1,5 @@
 <?php
-
+//Variables pour portage de l'application
 $ROOT = __DIR__; // __DIR__ est une constante qui contient le chemin du dossier courant
 $DS = DIRECTORY_SEPARATOR;
 

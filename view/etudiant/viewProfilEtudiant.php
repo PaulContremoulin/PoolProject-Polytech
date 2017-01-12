@@ -19,12 +19,12 @@
 				    datasets: [
 				        {
 				            label: "Ma personnalité",
-				            backgroundColor: "rgba(0,0,255,0.8)",
-				            borderColor: "rgba(0,0,255,1)",
+				            backgroundColor: "rgba(0,0,0,0.4)",
+				            borderColor: "rgba(0,0,0,1)",
 				            pointBackgroundColor: "rgba(0,0,0,1)",
-				            pointBorderColor: "#fff",
+				            pointBorderColor: "rgba(0,0,0,0)",
 				            pointHoverBackgroundColor: "#fff",
-				            pointHoverBorderColor: "rgba(179,181,198,1)",
+				            pointHoverBorderColor: "rgba(0,0,0,1)",
 				            data: var_profil
 				        }
 				       /* {
