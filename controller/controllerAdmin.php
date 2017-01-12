@@ -2,6 +2,8 @@
 
 require_once("{$ROOT}{$DS}model{$DS}modelEtudiant.php");
 require_once("{$ROOT}{$DS}model{$DS}modelSection.php");
+require_once("{$ROOT}{$DS}model{$DS}modelAdmin.php");
+
 
 $action = $_GET['action'];// recupère l'action passée dans l'URL
 
@@ -9,28 +11,11 @@ $action = $_GET['action'];// recupère l'action passée dans l'URL
 
 switch ($action) {
 
+    
     case "profil":
 
         if(isset($_SESSION['login'])){
-            require_once("{$ROOT}{$DS}model{$DS}modelSelectionner.php");
-            $promo = ModelEtudiant::getPromo($_SESSION['login']);
-            $tab_reponses = ModelSelectionner::select_by_num_user($_SESSION['login']);
-            if(count($tab_reponses)==12){
-                $tab_calculer = ModelSelectionner::calcul_result_etud($tab_reponses);
-            }
-            //$tab_calculer_promo = ModelSelectionner::calcul_result_promo($promo);
-
-            $labels = array();
-            $profil = array();
-            //$profil_promo = array();
-            foreach($tab_calculer as $key => $values){
-                array_push($labels, $key);
-                array_push($profil, $values);
-            }
-            /*foreach($tab_calculer_promo as $keyy => $valuess){
-                array_push($tab_calculer_promo, $valuess);
-            }*/
-
+            
         }
 
         $pagetitle = "Mon profil";
@@ -50,22 +35,21 @@ switch ($action) {
         break;
 
     case "connexion":
-
-        $login = ModelEtudiant::getINE($_POST["login"]); //On récupère l'ine associé à l'e-mail
+        $login = ModelAdmin::getID($_POST["login"]);
         $password = $_POST["password"];
         $cryptedPwd = Security::chiffrer($password);
-        $checkAccount = ModelEtudiant::checkPassword($login,$cryptedPwd);
+        $checkAccount = ModelAdmin::checkPassword($login,$cryptedPwd);
         if($checkAccount == true){
 
-            $account = ModelEtudiant::select($login);
+            $account = ModelAdmin::select($login);
 
             $_SESSION['login']=$login;
             $_SESSION['nom'] = $account->getName();
-            $_SESSION['admin'] = 0;
+            $_SESSION['admin'] = 1;
         }
 
         $pagetitle = "Accueil";
-        $view = "acceuil";
+        $view = "accueil";
 
         require ("{$ROOT}{$DS}view{$DS}view.php");
         break;
@@ -87,7 +71,7 @@ switch ($action) {
         require ("{$ROOT}{$DS}view{$DS}view.php");
         break;
 
-    case "inscription":
+   /* case "inscription":
 
         $sections = ModelSection::listeSections();
         $sectionsJS = htmlspecialchars(serialize($sections), ENT_QUOTES);
@@ -96,45 +80,43 @@ switch ($action) {
 
         require ("{$ROOT}{$DS}view{$DS}view.php");
         break; 
-
+*/
     case "creation":
 
-        $ineEtudiant = $_POST["ineEtudiant"];
-        $pwdEtudiant = $_POST["pwdEtudiant"];
-        $nameEtudiant = $_POST["nameEtudiant"];
-        $prenomEtudiant = $_POST["prenomEtudiant"];
-        $mailEtudiant = $_POST["mailEtudiant"];
+        $id_admin = $_POST["id_admin"];
+        $pwdAdmin = $_POST["pwdAdmin"];
+        $nameAdmin = $_POST["nameAdmin"];
+        $prenomAdmin = $_POST["Admin"];
+        $mailAdmin = $_POST["mailAdmin"];
         $confirmPwd = $_POST["confirmPwd"];
-        $promoEtudiant = $_POST["promoEtudiant"];
 
-        if(!modelEtudiant::mailExist($mailEtudiant)){
-            if(modelEtudiant::isMailFormat($mailEtudiant)){
-                if($pwdEtudiant == $confirmPwd){
-                    $pwdEtudiant = Security::chiffrer($pwdEtudiant);
+        if(!ModelUser::mailExist($mailEtudiant)){
+            if(ModelUser::isMailFormat($mailEtudiant)){
+                if($pwdAdmin == $confirmPwd){
+                    $pwdAdmin = Security::chiffrer($pwdAdmin);
 
                     $new_account = array(
-                         "id_etudiant" => $ineEtudiant,
-                         "pwd_etud" => $pwdEtudiant,
-                         "nom_etud" => $nameEtudiant,
-                         "prenom_etud" =>  $prenomEtudiant,
-                         "mail_etud" => $mailEtudiant,
-                         "id_promo" => $promoEtudiant,
+                         "id_admin" => $id_admin,
+                         "mdp_admin" => $pwdAdmin,
+                         "nom_admin" => $nameAdmin,
+                         "prenom_admin" =>  $prenomAdmin,
+                         "mail_admin" => $mailAdmin,
                     );
 
-                    ModelEtudiant::insert($new_account);
+                    ModelUser::insert($new_account);
                 }
             }
         }
 
         //Redirection vers la page d'accueil
-        $pagetitle = "Accueil";
-        $view = "profil";
+        $pagetitle = "Bienvenue";
+        $view = "AccueilAdmin";
 
         require ("{$ROOT}{$DS}view{$DS}view.php");
         break;
+}
 
-
-        case "test":
+        /*case "test":
 
             //Si l'utilisateur est connecté
             if(isset($_SESSION['login'])){
@@ -193,5 +175,5 @@ switch ($action) {
             }
             require ("{$ROOT}{$DS}view{$DS}view.php");
             break;
-}
+}*/
 ?>

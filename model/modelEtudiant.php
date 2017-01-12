@@ -109,7 +109,6 @@ class ModelEtudiant extends Model {
      $req_prep = Model::$pdo->prepare($sql);
      $req_prep->execute(array(':promo'=>$id_promo));
      $result = $req_prep->fetch(PDO::FETCH_ASSOC);
-     print(is_array($result));
      return $result;
   } 
 
