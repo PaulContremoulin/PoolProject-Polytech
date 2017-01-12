@@ -9,46 +9,6 @@ $action = $_GET['action'];// recupère l'action passée dans l'URL
 
 switch ($action) {
 
-    case "profil":
-
-        if(isset($_SESSION['login'])){
-            require_once("{$ROOT}{$DS}model{$DS}modelSelectionner.php");
-            $promo = ModelEtudiant::getPromo($_SESSION['login']);
-            $tab_reponses = ModelSelectionner::select_by_num_user($_SESSION['login']);
-            if(count($tab_reponses)==12){
-                $tab_calculer = ModelSelectionner::calcul_result_etud($tab_reponses);
-            }
-            //$tab_calculer_promo = ModelSelectionner::calcul_result_promo($promo);
-
-            $labels = array();
-            $profil = array();
-            //$profil_promo = array();
-            foreach($tab_calculer as $key => $values){
-                array_push($labels, $key);
-                array_push($profil, $values);
-            }
-            /*foreach($tab_calculer_promo as $keyy => $valuess){
-                array_push($tab_calculer_promo, $valuess);
-            }*/
-
-        }
-
-        $pagetitle = "Mon profil";
-        $view = "profil";
-
-        /* A garder pour la gestion des etudiants / admins / pas inscrits
-        if(Session::is_admin()){
-
-        }else if(Session::is_user()){
-
-        }else{
-
-        }
-        */
-        
-        require ("{$ROOT}{$DS}view{$DS}view.php");//"redirige" vers la vue
-        break;
-
     case "connexion":
 
         $login = ModelEtudiant::getINE($_POST["login"]); //On récupère l'ine associé à l'e-mail
@@ -64,15 +24,54 @@ switch ($action) {
             $_SESSION['admin'] = 0;
         }
 
+
+        //break; Le break saute car une fois connecté, on veut exécuter le code de profil pour etre redirigée vers la page d'accueil de l'étudiant
+
+    case "profil":
+
+        if(isset($_SESSION['login'])){
+            require_once("{$ROOT}{$DS}model{$DS}modelSelectionner.php");
+            //$promo = ModelEtudiant::getPromo($_SESSION['login']);
+            $tab_reponses = ModelSelectionner::select_by_num_user($_SESSION['login']);
+            $nbQuestionsSave = count($tab_reponses);
+            if($nbQuestionsSave==12){
+                $tab_calculer = ModelSelectionner::calcul_result_etud($tab_reponses);
+
+
+                $labels = array(); //Tableau contenant les titres des personnalités
+                $profil = array(); //Tableau contenant les valeurs des personnalités
+                
+                //Affectation des valeurs aux deux tableaux
+                foreach($tab_calculer as $key => $values){
+                    array_push($labels, $key);
+                    array_push($profil, $values);
+                }
+            }
+            //$tab_calculer_promo = ModelSelectionner::calcul_result_promo($promo);
+
+
+            /*foreach($tab_calculer_promo as $keyy => $valuess){
+                array_push($tab_calculer_promo, $valuess);
+            }*/
+
+        }
+
         $pagetitle = "Accueil";
         $view = "acceuil";
 
         require ("{$ROOT}{$DS}view{$DS}view.php");
+
         break;
 
+        /* A garder pour la gestion des etudiants / admins / pas inscrits
+        if(Session::is_admin()){
 
+        }else if(Session::is_user()){
 
+        }else{
 
+        }
+        */
 
     case "deconnexion":
 
