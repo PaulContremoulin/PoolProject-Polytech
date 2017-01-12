@@ -154,8 +154,8 @@ case "modif":
     break;
 
 
-case "question":
-    print("a faire");
+/*case "question":
+    print("a faire : afficher dans un tablea");
 
 
 case "promo":
@@ -167,6 +167,6 @@ case "departement":
  
 
  case "code":
-    print("facile a faire. Selection de la promo concernée, du departement, generation du code avec un random et insertion dans la base de donnee");     
+    print("facile a faire. Selection de la promo concernée, du departement, generation du code avec un random et insertion dans la base de donnee"); */    
 }
 ?>
