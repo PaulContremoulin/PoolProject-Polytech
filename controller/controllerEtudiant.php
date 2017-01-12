@@ -83,8 +83,8 @@ switch ($action) {
         unset($_SESSION['admin']);
         unset($_SESSION['idGroupe']);
 
-        $pagetitle = "Votre profil";
-        $view = "profil";
+        $pagetitle = "Accueil";
+        $view = "accueil";
 
         require ("{$ROOT}{$DS}view{$DS}view.php");
         break;
@@ -130,7 +130,7 @@ switch ($action) {
 
         //Redirection vers la page d'accueil
         $pagetitle = "Accueil";
-        $view = "profil";
+        $view = "accueil";
 
         require ("{$ROOT}{$DS}view{$DS}view.php");
         break;
