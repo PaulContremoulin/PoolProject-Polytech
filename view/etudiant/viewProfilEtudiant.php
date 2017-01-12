@@ -9,8 +9,7 @@
 		<?php if(empty($_SESSION['login'])){ //si l'utilisateur n'est pas encore connecté 
 			require_once("viewConnexionEtudiant.php");
 		}else{ ?>
-			<h2>Votre test de personnalité à donné le résultat suivant</h2>	
-		<div>	
+			<h2>Votre test de personnalité à donné le résultat suivant</h2>		
 			<canvas id="myChart" width="80%" height="80%" ></canvas>
 
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
@@ -59,7 +58,6 @@
 			</script>
 
 		<?php } ?>
-		</div>
 	</div>
 	</center>
 </div>
