@@ -9,13 +9,13 @@ require_once ("{$ROOT}{$DS}config{$DS}security.php");
 
 // On initialise le controlleur à appeler
 if(!isset($_GET['controller'])){
-	$controller="Who";
+	$controller="who";
 }else{
 	$controller = $_GET['controller'];
 }
 
 switch ($controller) {
-	case "Who":
+	case "who":
 		if(!isset($_GET['action'])){
 			$_GET['action'] = "choix";
 		}
