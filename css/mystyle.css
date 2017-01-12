@@ -65,18 +65,18 @@ th{
 	font-size: 130%;
 }
 
-.mychart{
+/*.mychart{
 	margin : 0 auto;
 	width: 100%;
 	height : 100%;
 	font-weight: bolder;
 	font-size: 15%
-}
-
-/*#mychart1{
-	width: 80%;
-	height: 80%;
 }*/
+
+#mychart1{
+	width: 20%;
+	height: 20%;
+}
 
 
 .boutonEtudiant{
