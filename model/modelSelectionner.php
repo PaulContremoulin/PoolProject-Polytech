@@ -62,7 +62,7 @@ class ModelSelectionner extends Model {
       $tab_resultats_ids[$reponse["choix_3"]]+=1;
     }
     foreach($tab_resultats as $key => &$values){
-      $tab_resultats[$key] = (($tab_resultats_ids[ModelProfil::retrieve_id2($key)] * 100)/72);
+      $tab_resultats[$key] = round((($tab_resultats_ids[ModelProfil::retrieve_id2($key)] * 100)/72),PHP_ROUND_HALF_UP);
     }
 
     return $tab_resultats;
