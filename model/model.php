@@ -1,6 +1,6 @@
 <?php
 //require_once "{$ROOT}{$DS}config{$DS}conflocal.php"; //ne jamais modifier
-require_once "{$ROOT}{$DS}config{$DS}conf.php"; //ne jamais modifier
+require_once "{$ROOT}{$DS}config{$DS}conflocal.php"; //ne jamais modifier
 
 class Model{
 

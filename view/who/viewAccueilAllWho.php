@@ -4,5 +4,5 @@
 	<input id="submit" class="btn btn-dark btn-large boutonEtudiant" type="submit" value="Etudiant" /></br></br>
 </form>
 <form method="POST" action="index.php?controller=admin&amp;action=profil">
-	<input id="submit" class="btn btn-dark btn-large boutonAdmin" type="submit" value="Administrateur" /></br></br>
+	<input id="submit" class="btn btn-dark btn-large boutonAdmin" type="submit" value="Administrateur" />
 </form>

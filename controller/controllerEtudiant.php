@@ -161,8 +161,6 @@ switch ($action) {
                         }else if(isset($_POST['Terminer'])){
                             $pagetitle = "Mon Profil";
                             $view = "profil";
-                            require ("{$ROOT}{$DS}view{$DS}view.php");
-                            break;
                         }
                     //si un choix n'est pas coché
                     }else{

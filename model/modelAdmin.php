@@ -10,7 +10,7 @@ class ModelAdmin extends Model {
   private $prenom_admin;
   private $id_admin;
 
-  protected static $table = 'admin';
+  protected static $table = 'Admin';
   protected static $primary = 'id_admin';
 
 
@@ -37,42 +37,51 @@ class ModelAdmin extends Model {
       $this->mail_admin = $mail;
       $this->mdp_dmin = $pwd;
       $this->nom_admin = $name;
-      $this->tabAtt = array (
-					"mail"  => $this->mail_admin,
-					"name" => $this->nom_admin,
-					"pwd" => $this->mdp_admin,
-				);
+      /*$this->tabAtt = array (
+					"mail_admin"  => $this->mail_admin,
+					"nom_admin" => $this->nom_admin,
+					"mdp_admin" => $this->mdp_admin,
+				);*/
     }
   }
 
 	public static function checkPassword($login,$mot_de_passe_crypte){
 
     $check = false;
-	  $sql = "SELECT * FROM ".static::$table." WHERE mail_admin = :login AND mdp_admin = :pwd";
+    $sql = "SELECT * FROM Admin WHERE id_admin = :login AND mdp_admin = :pwd";
 
-	  try{
+    try{
 
-		  $req_prep = Model::$pdo->prepare($sql);
-		  $req_prep->bindParam(":login", $login);
-		  $req_prep->bindParam(":pwd", $mot_de_passe_crypte);
-		  $req_prep->execute();
+      $req_prep = Model::$pdo->prepare($sql);
+      $req_prep->bindParam(":login", $login);
+      $req_prep->bindParam(":pwd", $mot_de_passe_crypte);
+      $req_prep->execute();
 
-		  if($req_prep->rowCount()>0){
-			  $check = true;
-		  }
+      if($req_prep->rowCount()>0){
+        $check = true;
+      }
 
       return $check;
 
-	  } catch(PDOException $e) {
-		  echo 'Cheking failed: ' . $e->getMessage();		  
-	  }
-	}
+    } catch(PDOException $e) {
+      echo 'Cheking failed: ' . $e->getMessage();     
+    }
+  }
+
 
   public static function mailExist($mail){
     $sql = "SELECT mail_admin FROM Admin WHERE mail_admin= :mail;";
     $req_prep = Model::$pdo->prepare($sql);
     $req_prep->execute(array(':mail'=>$mail));
     return ($req_prep->rowCount()!=0);
+  }
+
+  public static function getEmail($ine){
+    $sql = "SELECT mail_admin FROM Admin WHERE id_admin= :ine;";
+     $req_prep = Model::$pdo->prepare($sql);
+    $req_prep->execute(array(':ine'=>$ine));
+     $row = $req_prep->fetch(PDO::FETCH_ASSOC);
+    return $row['mail_admin'];        
   }
 
   public static function isMailFormat($mail){
@@ -94,4 +103,8 @@ class ModelAdmin extends Model {
   }
   */
 }
+
+//print(ModelAdmin::getEmail(ModelAdmin::getID("yves.alain@etu.umontpellier.fr")));
+print(ModelAdmin::checkPassword("yves.alain@etu.umontpellier.fr","4c163f8c62b749d8b8fa3be0e3c0c6b2fdc276bcf7c1827a9a975a8679943dd5"));
+print_r(ModelAdmin::select("yves.alain@etu.umontpellier.fr"));
 ?>

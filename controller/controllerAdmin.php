@@ -30,21 +30,24 @@ switch ($action) {
 
         }
         */
-        
-        require ("{$ROOT}{$DS}view{$DS}view.php");//"redirige" vers la vue
+        require ("{$ROOT}{$DS}view{$DS}view.php");
         break;
 
     case "connexion":
-        $login = ModelAdmin::getID($_POST["login"]);
+        print($_POST["login"]);
+        print($_POST["password"]);
+        $login = ModelAdmin::getID($_POST["login"]); //On récupère l'ine associé à l'e-mail
         $password = $_POST["password"];
         $cryptedPwd = Security::chiffrer($password);
+        print($cryptedPwd);
         $checkAccount = ModelAdmin::checkPassword($login,$cryptedPwd);
-        if($checkAccount == true){
-
+        print($checkAccount);
+        if($checkAccount){
+            print("if");
             $account = ModelAdmin::select($login);
 
             $_SESSION['login']=$login;
-            $_SESSION['nom'] = $account->getName();
+            //$_SESSION['nom'] = $account->getName();
             $_SESSION['admin'] = 1;
         }
 
@@ -53,9 +56,6 @@ switch ($action) {
 
         require ("{$ROOT}{$DS}view{$DS}view.php");
         break;
-
-
-
 
 
     case "deconnexion":
@@ -67,10 +67,8 @@ switch ($action) {
 
         $pagetitle = "Votre profil";
         $view = "profil";
-
         require ("{$ROOT}{$DS}view{$DS}view.php");
         break;
-
    /* case "inscription":
 
         $sections = ModelSection::listeSections();

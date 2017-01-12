@@ -17,9 +17,10 @@
 </head>
 	<body>
 		<header id="top" class="header">
+			<?php require_once("header.php");?>
 			<div class="text-vertical-center">
 				<?php
-					require_once("header.php");
+					//require_once("header.php");
 					// Si $controleur='accueil' et $view='default',
 					// alors $filepath=".../view/accueil/"
 					//       $filename="viewDefaultAccueil.php";
