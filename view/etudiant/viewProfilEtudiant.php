@@ -5,12 +5,12 @@
 	</div>
 	-->
 	<center>
-	<div class="span6" id="mychart1">
+	<div class="span6">
 		<?php if(empty($_SESSION['login'])){ //si l'utilisateur n'est pas encore connecté 
 			require_once("viewConnexionEtudiant.php");
 		}else{ ?>
 			<h2>Votre test de personnalité à donné le résultat suivant</h2>	
-		<div class="mychart">	
+		<div id="mychart1">	
 			<canvas id="myChart" width="400" height="400" ></canvas>
 
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
