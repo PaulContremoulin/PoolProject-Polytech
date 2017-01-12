@@ -183,7 +183,7 @@ switch ($action) {
                 }
 
                 if(isset($_POST['Terminer']) && $reponsesValides){ //Si le test s'est terminé correctement
-                    include("{$ROOT}.{DS}index?controller=etudiant&action=profil");
+                    include("{$ROOT}{$DS}index?controller=etudiant&action=profil");
                 }else{//Sinon, on continue sur le test
                     require_once("{$ROOT}{$DS}model{$DS}modelGroupe.php");
                     $groupe = modelGroupe::select($idGroupe);
