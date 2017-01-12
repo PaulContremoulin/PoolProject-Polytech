@@ -11,7 +11,7 @@
 				<form method="POST" action="index.php?controller=admin&amp;action=question">
 					<input type="submit" class="btn btn-lg btn-dark" name="begin" value="Gerer le questionnaire"/>
 				</form>
-				<form method="POST" action="index.php?controller=admin&amp;action=code">
+				<form method="POST" action="index.php?controller=admin&amp;action=admins">
 					<input type="submit" class="btn btn-lg btn-dark" name="begin" value="Gerer les administrateurs"/>
 				</form>
 			<?php } ?>
