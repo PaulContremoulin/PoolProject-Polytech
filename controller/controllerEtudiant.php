@@ -92,7 +92,7 @@ switch ($action) {
         }
 
         $pagetitle = "Votre profil";
-        $view = "profil";
+        $view = "accueil";
 
         require ("{$ROOT}{$DS}view{$DS}view.php");
 
