@@ -22,19 +22,16 @@
 			}
 		?>
 		<header id="top" class="header">
+			<?php
+				require_once("navbar.php");
+			?>
 			<div class="text-vertical-center">
-				<?php
-					require_once("header.php");
-					//require_once("header.php");
-					// Si $controleur='accueil' et $view='default',
-					// alors $filepath=".../view/accueil/"
-					//       $filename="viewDefaultAccueil.php";
-					// et on charge '.../view/accueil/viewDefaultAccueil.php'
-					$filepath = "{$ROOT}{$DS}view{$DS}{$controller}{$DS}";
-					$filename = "view".ucfirst($view) . ucfirst($controller) . '.php';
-					require "{$filepath}{$filename}";//vue concernée
-					require_once("footer.php");
-				?>
+			<?php
+				$filepath = "{$ROOT}{$DS}view{$DS}{$controller}{$DS}";
+				$filename = "view".ucfirst($view) . ucfirst($controller) . '.php';
+				require "{$filepath}{$filename}";//vue concernée
+				require_once("footer.php");
+			?>
 			</div>
 		</header>
     </body>
