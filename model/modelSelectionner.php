@@ -144,7 +144,7 @@ class ModelSelectionner extends Model {
       }
     }
 
-    /*public static function calcul_result_promo($id_promo){
+    public static function calcul_result_promo($id_promo){
       $liste_etudiants = ModelEtudiant::getEtud_by_promo($id_promo);
       $tab_resultats_promo = array("realiste"=>0 ,"investigatif"=>0 ,"artistique" => 0, "social" => 0, "entrepreneur" => 0, "conventionnel" => 0);
         foreach ($liste_etudiants as $etudiant) {
@@ -164,7 +164,7 @@ class ModelSelectionner extends Model {
       $tab_resultats_promo["entrepreneur"] = $tab_resultats_promo["entrepreneur"]/count($liste_etudiants);
       $tab_resultats_promo["conventionnel"] = $tab_resultats_promo["conventionnel"]/count($liste_etudiants);
       return $tab_resultats_promo;
-    }*/
+    }
       
 
    /* 
