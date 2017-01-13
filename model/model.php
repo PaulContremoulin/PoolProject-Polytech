@@ -94,7 +94,6 @@ class Model{
 
     public static function getAllOrder($att,$order){
 	    $SQL="SELECT * FROM ".static::$table." ORDER BY ".$att." ".$order.";";
->>>>>>> 01ed49a1451c8bb9b1189a751e19b4daa2032d3e
 	    try{
 	 		$rep = Model::$pdo->query($SQL);
 	    	$rep->setFetchMode(PDO::FETCH_CLASS, 'Model'.static::$table);
@@ -111,19 +110,19 @@ class Model{
 
 
 	function delete($para) {
-	$sql = "DELETE FROM ".static::$table." WHERE ".static::$primary."=:nom_var";
-	try{
-	  $req_prep = Model::$pdo->prepare($sql);
-	  $req_prep->bindParam(":nom_var", $para);
-	  $req_prep->execute();
-	  return 0;
-	} catch(PDOException $e) {
-	  if (Conf::getDebug()) {
-	    echo $e->getMessage(); // affiche un message d'erreur
-	  }
-	  return -1;
-	  die();
-	}
+		$sql = "DELETE FROM ".static::$table." WHERE ".static::$primary."=:nom_var";
+		try{
+		  $req_prep = Model::$pdo->prepare($sql);
+		  $req_prep->bindParam(":nom_var", $para);
+		  $req_prep->execute();
+		  return 0;
+		} catch(PDOException $e) {
+		  if (Conf::getDebug()) {
+		    echo $e->getMessage(); // affiche un message d'erreur
+		  }
+		  return -1;
+		  die();
+		}
 	}
 
 	function update($tab, $old) {
