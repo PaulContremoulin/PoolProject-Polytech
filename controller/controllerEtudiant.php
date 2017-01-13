@@ -25,7 +25,7 @@ switch ($action) {
             $_SESSION['nom'] = $account->getName();
             $_SESSION['admin'] = 0;
         }else{
-            $msgError = "Erreur de connexion, l'identifiant ou le mot de passe est incorect."
+            $msgError = "Erreur de connexion, l'identifiant ou le mot de passe est incorect.";
         }
 
 
