@@ -11,7 +11,7 @@ switch ($action) {
 
     case "connexion":
 
-	$mail = $_POST["login"]
+	    $mail = $_POST["login"];
         $login = ModelEtudiant::getINE($mail); //On récupère l'ine associé à l'e-mail
         $password = $_POST["password"];
         $cryptedPwd = Security::chiffrer($password);
