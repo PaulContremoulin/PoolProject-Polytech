@@ -20,7 +20,7 @@ switch ($action) {
         }
 
         $pagetitle = "Mon profil";
-        $view = "profil";
+        $view = "profilpromo";
 
         /* A garder pour la gestion des etudiants / admins / pas inscrits
         if(Session::is_admin()){
@@ -40,11 +40,9 @@ switch ($action) {
         $cryptedPwd = Security::chiffrer($password);
         $checkAccount = ModelAdmin::checkPassword($login,$cryptedPwd);
         if($checkAccount){
-            print("if");
             $account = ModelAdmin::select($login);
 
             $_SESSION['login']=$login;
-            //$_SESSION['nom'] = $account->getName();
             $_SESSION['admin'] = 1;
         }
 
@@ -63,7 +61,7 @@ switch ($action) {
         unset($_SESSION['idGroupe']);
 
         $pagetitle = "Votre profil";
-        $view = "profil";
+        $view = "profilpromo";
         require ("{$ROOT}{$DS}view{$DS}view.php");
         break;
 
@@ -112,7 +110,6 @@ switch ($action) {
     case "admins":
 
         if(isset($_SESSION['login']) && $_SESSION['admin']==1){
-            print("admins");
             $listeAdmin = ModelAdmin::getAdmins();
             $pagetitle = "Liste des admins";
             $view = "liste";
@@ -126,9 +123,9 @@ case "modif":
     $pwdAdmin = $_POST["mdp"];
     $nameAdmin = $_POST["nom"];
     $prenomAdmin = $_POST["prenom"];
-    $mailAdmin = $_POST["email"];
+    $mailAdmin = $_POST["email2"];
     $confirmPwd = $_POST["confirmPwd"];
-    $actuel_admin = $_SESSION["login"];
+    $ancien_email = $_POST["email1"];
 
     if(isset($_SESSION['login']) && $_SESSION['admin']==1){
         if(ModelAdmin::isMailFormat($mailAdmin)){
@@ -142,7 +139,7 @@ case "modif":
                      "mail_admin" => $mailAdmin,
                 );
 
-                    ModelAdmin::update($new_account,$actuel_admin);
+                    ModelAdmin::update($new_account,"mail_admin");
                 }
             }
         $listeAdmin = ModelAdmin::getAdmins();

@@ -109,7 +109,7 @@ class Model{
     }
 
 
-	function delete($para) {
+	public static function delete($para) {
 		$sql = "DELETE FROM ".static::$table." WHERE ".static::$primary."=:nom_var";
 		try{
 		  $req_prep = Model::$pdo->prepare($sql);
@@ -125,7 +125,7 @@ class Model{
 		}
 	}
 
-	function update($tab, $old) {
+	public  static function update($tab, $old) {
 		$sql = "UPDATE ".static::$table." SET";
 		foreach ($tab as $cle => $valeur){
 			$sql .=" ".$cle."=:new".$cle.",";

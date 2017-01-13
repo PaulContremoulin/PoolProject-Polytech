@@ -11,29 +11,33 @@
 
               <table id="mytable" class="table table-bordred table-striped">
                    <thead>
+                   <center>
                    <th><input type="checkbox" id="checkall" /></th>
                    <th>Nom</th>
-                    <th>Prenom</th>
-                     <th>EMail</th>
-                      <th>Modifier</th>
-                       <th>Supprimer</th>
+                   <th>Prenom</th>
+                   <th>EMail</th>
+                   <th>Modifier</th>
+                   <th>Supprimer</th>
+                  </center>
                    </thead>
-    
     <tbody>
     <?php foreach ($listeAdmin as $key => $value) { ?>
+    <center>
     <tr>
+
     <td><input type="checkbox" class="checkthis" /></td>
-    <td><?php if(isset($key['nom_admin'])){echo "$value[nom_admin]";}?></td>
-    <td><?php if(isset($value['prenom_admin'])){echo "$value[prenom_admin]";}?></td>
-    <td><?php if(isset($value['mail_admin'])){echo "$value[mail_admin]"; } ?></td>
+    <td><?php if(isset($value['nom_admin'])){echo $value["nom_admin"];}?></td>
+    <td><?php if(isset($value['prenom_admin'])){echo $value["prenom_admin"];} ?></td>
+    <td><?php if(isset($value['mail_admin'])){ ?><INPUT class="inputMail" type= "mail" name="email1" value="<?php echo $value["mail_admin"];?>" readonly="readonly" disabled ><?php } ?></td>
     <?php if ($_SESSION['login'] == $value["id_admin"]){ ?>
     <td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>	
     <td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" disabled><span class="glyphicon glyphicon-trash"></span></button></p></td>
     <?php }else{ ?>
-	<td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" disabled><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+	<td><p data-placement="top" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
 	<td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
     <?php } ?>
     </tr> 
+    </center>
      <?php  } ?>
     </tbody>
    
@@ -46,8 +50,6 @@
     </form>
 	</div>
 </div>
-
-
 <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
       <div class="modal-dialog">
     <div class="modal-content">
@@ -66,7 +68,7 @@
         <input class="form-control " type="text" placeholder="Prenom" name="prenom" id="prenom" required/>
         </div>
         <div class="form-group">
-        <input class="form-control " type="text" placeholder="E-mail" name="email" id="email" required/>
+        <input class="form-control " type="text" placeholder="E-mail" name="email2" id="email" required/>
         </div>
          <div class="form-group">
         <input class="form-control " type="password" placeholder="Mot de passe" name="mdp" id="mdp" required/>
