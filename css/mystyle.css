@@ -74,6 +74,43 @@ th{
 	font-size: 15%
 }*/
 
+#gauche{
+	float:left;
+	width:550px;
+	height:550px;
+}
+
+#droite{
+	float:right;
+	width:550px;
+	height:550px;
+
+}
+
+#premier{
+	width:100px;
+	height:100px;
+	border-width:2px;
+ 	border-style:solid;
+ 	border-color:black;
+ 	border-radius: 10px;
+ 	margin-top: 75px;
+ 	margin-bottom:25px;
+}
+
+#deuxieme, #troisieme{
+	width:100px;
+	height:100px;
+	border-width:2px;
+ 	border-style:solid;
+ 	border-color:black;
+	border-radius: 10px;
+ 	margin-top:25px;
+ 	margin-bottom:25px;
+}
+
+
+
 #mychart1{
 	width: 80%;
 	height: 60%;

@@ -11,7 +11,7 @@ switch ($action) {
 
     case "connexion":
 
-	    $mail = $_POST["login"];
+        $mail = $_POST["login"];
         $login = ModelEtudiant::getINE($mail); //On récupère l'ine associé à l'e-mail
         $password = $_POST["password"];
         $cryptedPwd = Security::chiffrer($password);
@@ -19,8 +19,8 @@ switch ($action) {
         if($checkAccount == true){
 
             $account = ModelEtudiant::select($login);
-		
-	    $_SESSION['mail']=$mail;
+        
+        $_SESSION['mail']=$mail;
             $_SESSION['login']=$login;
             $_SESSION['nom'] = $account->getName();
             $_SESSION['admin'] = 0;
@@ -49,6 +49,34 @@ switch ($action) {
                     array_push($labels, $key);
                     array_push($profil, $values);
                 }
+
+                $max1=0;
+                $max2=0;
+                $max3=0;
+                $key1=0;
+                $key2=0;
+                $key3=0;
+                foreach ($profil as $key => $value) {
+                    if($value>$max1){
+                        $max1=$value;
+                        $key1=$key;
+                    }
+                    elseif ($value>$max2) {
+                        $max2=$value;
+                        $key2=$key;                   
+                    }
+                    elseif ($value>$max3) {
+                        $max3=$value;
+                        $key3=$key;
+                    }
+                }
+                require_once("{$ROOT}{$DS}model{$DS}modelProfil.php");
+                $profil1=ModelProfil::select(ModelProfil::retrieve_id2($labels[$key1]));
+                $profil2=ModelProfil::select(ModelProfil::retrieve_id2($labels[$key2]));
+                $profil3=ModelProfil::select(ModelProfil::retrieve_id2($labels[$key3]));
+
+
+
             }elseif($nbQuestionsSave >= 1){ // Si il a commencé le test 
                 $_SESSION['idGroupe'] = $nbQuestionsSave+1; // Il a déjà fait $nbQuestion, donc on le renvoie à la nbQuestion + 1
             }
