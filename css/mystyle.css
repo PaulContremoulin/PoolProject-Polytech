@@ -76,30 +76,20 @@ th{
 
 #gauche{
 	float:left;
-	width:400px;
+	width:500px;
 	height:550px;
 }
 
 #droite{
-	margin-left:450px;
+	margin-left:550px;
 	width:400px;
 	height:550px;
 
 
 }
 
-#premier{
-	width:500px;
-	height:170px;
-	border-width:2px;
- 	border-style:solid;
- 	border-color:black;
- 	border-radius: 10px;
- 	margin-top: 75px;
- 	margin-bottom:25px;
-}
 
-#deuxieme, #troisieme{
+#premier, #deuxieme, #troisieme{
 	width:500px;
 	height:170px;
 	border-width:2px;
