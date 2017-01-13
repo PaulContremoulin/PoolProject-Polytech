@@ -70,10 +70,11 @@
 				</script>
 			</div>
 			<div id=droite>
-				<div id=premier>
+				<span4><div id=premier>
 					<h4> <?php echo $profil1->get_libelle();?> </h4>
 					<p> <?php echo $profil1->get_description();?> </p>
 				</div>
+				</span4>
 				<div id=deuxieme>
 					<h4> <?php echo $profil2->get_libelle();?> </h4>
 					<p> <?php echo $profil2->get_description();?> </p>
