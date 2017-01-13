@@ -22,7 +22,7 @@
 		    	<input type="password" name="confirmPwd" pattern="[0-9a-zA-Z.]{6,}" title="Your password must have at least 6 characters except special characters(; , - ...)" id="confirmPwd"  required/></br></br>
 		    	<label for="section"><h4> Section  </h4></label></br>
 		    	<select name="section" id="section" onchange="changePromo(tab, this.value);" required>
-		    		<option value="vide"> --- Choisissez votre section --- </option>
+		    		<option value=""> --- Choisissez votre section --- </option>
 		    		<?php
 		    		//$nbr = count($sections);
 		    		foreach ($sections as $id_section => $values) {
@@ -48,13 +48,13 @@
 <script type="text/javascript">
 	function changePromo(tab,ids)
 	{
-	    if(ids != "vide")
+	    if(ids != "")
 	    {
 	    /* On compte les départements de cette région */
 	    var nbp = tab[ids][1].length;
 
 	    var form_p  = '<label for="section"><h4> Année : </h4></label>';
-	    form_p += '<select name="promoEtudiant" id="promoEtudiant">';
+	    form_p += '<select name="promoEtudiant" id="promoEtudiant" required>';
 	    for(var j = 0;  j < nbp; j++)
 	    {
 	        form_p += '  <option value="'+ tab[ids][1][j] +'">'+ tab[ids][2][j] +'<\/option>';
