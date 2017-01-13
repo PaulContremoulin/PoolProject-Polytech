@@ -88,8 +88,8 @@ th{
 }
 
 #premier{
-	width:100px;
-	height:100px;
+	width:500px;
+	height:500px;
 	border-width:2px;
  	border-style:solid;
  	border-color:black;
@@ -99,8 +99,8 @@ th{
 }
 
 #deuxieme, #troisieme{
-	width:100px;
-	height:100px;
+	width:500px;
+	height:500px;
 	border-width:2px;
  	border-style:solid;
  	border-color:black;
