@@ -68,7 +68,7 @@
         <input class="form-control " type="text" placeholder="Prenom" name="prenom" id="prenom" required/>
         </div>
         <div class="form-group">
-        <input class="form-control " type="text" placeholder="E-mail" name="email2" id="email" required/>
+        <?php echo'<input class="form-control " type="text" placeholder="E-mail" name="email2" id="email" value="'.$value["mail_admin"].'" required/>'?>
         </div>
          <div class="form-group">
         <input class="form-control " type="password" placeholder="Mot de passe" name="mdp" id="mdp" required/>
