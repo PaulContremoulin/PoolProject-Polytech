@@ -20,6 +20,7 @@
 							echo "\"Résultats envoyés\" disable"; 
 						}else{ 
 							echo "\"Envoyer mes résultats par mail\"";
+						}?>
 				>
 			</form> 
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
