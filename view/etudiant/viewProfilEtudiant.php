@@ -21,7 +21,7 @@
 //$conventionnel
 
 */
-$mail = '' //Saisir le mail de destination
+$mail = 'test@hotmail.fr'; //Saisir le mail de destination
 if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn$*).[a-z]{2,4}$#", $mail))
 {
 		$passage_ligne = "\r\n";
@@ -53,8 +53,7 @@ $sujet = "Envoi des résultats de votre test RIASEC";
 $header = "From: ".$passage_ligne;
 $header .= "Reply-to: ".$mail.$passage_ligne;
 $header .= "MIME-Version: 1.0".$passage_ligne;
-$header .= "Content-Type: multipart/alternative;".$passage_ligne." 
-boundary=\"$boundary\"".$passage_ligne;
+$header .= "Content-Type: multipart/alternative;".$passage_ligne." boundary=\"$boundary\"".$passage_ligne;
 //==========
 
 
