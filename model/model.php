@@ -71,14 +71,11 @@ class Model{
 		}
   	}
 
-<<<<<<< HEAD
 
-    public static function getAllOrder($att,$order){
-	    $SQL="SELECT * FROM ".static::$table." ORDER BY ".$att." ".$order.";";
-=======
+
 	public static function getAll(){
 	    $SQL="SELECT * FROM ".static::$table.";";
->>>>>>> 01ed49a1451c8bb9b1189a751e19b4daa2032d3e
+
 	    try{
 	 		$rep = Model::$pdo->query($SQL);
 	    	$rep->setFetchMode(PDO::FETCH_CLASS, 'Model'.static::$table);
@@ -93,10 +90,8 @@ class Model{
 		}   
     }
 
-<<<<<<< HEAD
-	public static function getAll(){
-	    $SQL="SELECT * FROM ".static::$table.";";
-=======
+
+
     public static function getAllOrder($att,$order){
 	    $SQL="SELECT * FROM ".static::$table." ORDER BY ".$att." ".$order.";";
 >>>>>>> 01ed49a1451c8bb9b1189a751e19b4daa2032d3e
@@ -113,10 +108,7 @@ class Model{
 			die();
 		}   
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> 01ed49a1451c8bb9b1189a751e19b4daa2032d3e
 
 	function delete($para) {
 	$sql = "DELETE FROM ".static::$table." WHERE ".static::$primary."=:nom_var";
