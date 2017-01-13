@@ -6,8 +6,10 @@
 	-->
 	<center>
 	<div class="span6">
-			<h2>Votre test de personnalité à donné le résultat suivant</h2>		
-			<canvas id="myChart" width="60%" height="30%" ></canvas>
+			<h2>Votre test de personnalité à donné le résultat suivant</h2>
+			<div id=chart>		
+				<canvas id="myChart" width="60%" height="30%" ></canvas>
+				
 <!--Mail php test -->
 
 <?php
@@ -84,6 +86,7 @@ print_r($message);
 print_r($header);
 //==========
 ?>
+</div>
 
 
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
@@ -131,5 +134,7 @@ print_r($header);
 				});
 			</script>
 	</div>
+	<div id=first>
+		<h3> 
 	</center>
 </div>
