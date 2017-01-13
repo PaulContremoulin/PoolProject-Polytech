@@ -17,7 +17,7 @@
 				<input type="submit" class="btn btn-dark btn-lg" id="envoiMail" name="envoiMail" 
 					value=
 						<?php if(isset($_POST['envoiMail'])){ 
-							echo "\"Résultats envoyés\" disable"; 
+							echo "\"Résultats envoyés\" disabled"; 
 						}else{ 
 							echo "\"Envoyer mes résultats par mail\"";
 						}?>
