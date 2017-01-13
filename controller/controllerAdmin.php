@@ -15,6 +15,7 @@ switch ($action) {
     case "profil":
 
         if(isset($_SESSION['login'])){
+
             
         }
 
@@ -34,14 +35,10 @@ switch ($action) {
         break;
 
     case "connexion":
-        print($_POST["login"]);
-        print($_POST["password"]);
         $login = ModelAdmin::getID($_POST["login"]); //On récupère l'ine associé à l'e-mail
         $password = $_POST["password"];
         $cryptedPwd = Security::chiffrer($password);
-        print($cryptedPwd);
         $checkAccount = ModelAdmin::checkPassword($login,$cryptedPwd);
-        print($checkAccount);
         if($checkAccount){
             print("if");
             $account = ModelAdmin::select($login);
@@ -69,109 +66,106 @@ switch ($action) {
         $view = "profil";
         require ("{$ROOT}{$DS}view{$DS}view.php");
         break;
-   /* case "inscription":
 
-        $sections = ModelSection::listeSections();
-        $sectionsJS = htmlspecialchars(serialize($sections), ENT_QUOTES);
+
+    case "inscription":
+
         $pagetitle = "Inscription";
         $view = "inscription";
 
         require ("{$ROOT}{$DS}view{$DS}view.php");
         break; 
-*/
-    case "creation":
 
-        $id_admin = $_POST["id_admin"];
+    case "creation":
         $pwdAdmin = $_POST["pwdAdmin"];
         $nameAdmin = $_POST["nameAdmin"];
-        $prenomAdmin = $_POST["Admin"];
+        $prenomAdmin = $_POST["prenomAdmin"];
         $mailAdmin = $_POST["mailAdmin"];
         $confirmPwd = $_POST["confirmPwd"];
 
-        if(!ModelUser::mailExist($mailEtudiant)){
-            if(ModelUser::isMailFormat($mailEtudiant)){
+        if(!ModelAdmin::mailExist($mailAdmin)){
+            if(ModelAdmin::isMailFormat($mailAdmin)){
                 if($pwdAdmin == $confirmPwd){
                     $pwdAdmin = Security::chiffrer($pwdAdmin);
 
                     $new_account = array(
-                         "id_admin" => $id_admin,
+                        "id_admin" => $id_admin,
+                        "nom_admin" => $nameAdmin,
+                        "prenom_admin" => $prenomAdmin,
+                        "mail_admin" => $mailAdmin,
                          "mdp_admin" => $pwdAdmin,
-                         "nom_admin" => $nameAdmin,
-                         "prenom_admin" =>  $prenomAdmin,
-                         "mail_admin" => $mailAdmin,
+            
                     );
 
-                    ModelUser::insert($new_account);
+                    ModelAdmin::insert($new_account);
                 }
             }
         }
-
-        //Redirection vers la page d'accueil
-        $pagetitle = "Bienvenue";
-        $view = "AccueilAdmin";
+        $listeAdmin = ModelAdmin::getAdmins();
+        $pagetitle = "Liste des admins";
+        $view = "liste";
 
         require ("{$ROOT}{$DS}view{$DS}view.php");
         break;
-}
 
-        /*case "test":
 
-            //Si l'utilisateur est connecté
-            if(isset($_SESSION['login'])){
-                //si l'identifiant du groupe est envoyé par le formulaire
-                if(isset($_POST['idGroupe'])){
-                    //si tous les choix sont cochés
-                    if(isset($_POST['choix1']) && isset($_POST['choix2']) && isset($_POST['choix3'])){
-                        require_once("{$ROOT}{$DS}model{$DS}modelSelectionner.php");
-                        $new_result = array(
-                         "choix_1" => $_POST['choix1'],
-                         "choix_2" => $_POST['choix2'],
-                         "choix_3" => $_POST['choix3'],
-                         "id_groupe" => $_POST['idGroupe'],
-                         "id_etud" => $_SESSION['login'],
-                        );
+    case "admins":
 
-                        ModelSelectionner::insert($new_result);
-                        //si clic sur groupe precedent
-                        if(isset($_POST['Precedent'])){
-                            $idGroupe = intval($_POST['idGroupe']) - 1;
-                        //si clic sur groupe suivant
-                        }else if(isset($_POST['Suivant'])){
-                            $idGroupe = intval($_POST['idGroupe']) + 1;
-                        }else if(isset($_POST['Terminer'])){
-                            $pagetitle = "Mon Profil";
-                            $view = "profil";
-                            require ("{$ROOT}{$DS}view{$DS}view.php");
-                            break;
-                        }
-                    //si un choix n'est pas coché
-                    }else{
-                        $msgError = "Vous devez cocher 3 choix.";
-                        $idGroupe = $_POST['idGroupe'];
-                    }
-                    $_SESSION['idGroupe'] = $idGroupe;
-                //si la session avait deja un test commencé
-                }else if(isset($_SESSION['idGroupe'])){
-                    $idGroupe = intval($_SESSION['idGroupe']);
-                //si l'utilisateur commence le test
-                }else{
-                    $idGroupe = 1;
-                    $_SESSION['idGroupe'] = $idGroupe;
+        if(isset($_SESSION['login']) && $_SESSION['admin']==1){
+            print("admins");
+            $listeAdmin = ModelAdmin::getAdmins();
+            $pagetitle = "Liste des admins";
+            $view = "liste";
+        }
+        
+        require ("{$ROOT}{$DS}view{$DS}view.php");
+        break;
+
+
+case "modif":
+    $pwdAdmin = $_POST["mdp"];
+    $nameAdmin = $_POST["nom"];
+    $prenomAdmin = $_POST["prenom"];
+    $mailAdmin = $_POST["email"];
+    $confirmPwd = $_POST["confirmPwd"];
+    $actuel_admin = $_SESSION["login"];
+
+    if(isset($_SESSION['login']) && $_SESSION['admin']==1){
+        if(ModelAdmin::isMailFormat($mailAdmin)){
+            if($pwdAdmin == $confirmPwd){
+                $pwdAdmin = Security::chiffrer($pwdAdmin);
+
+                $new_account = array(
+                     "mdp_admin" => $pwdAdmin,
+                     "nom_admin" => $nameAdmin,
+                     "prenom_admin" => $prenomAdmin,
+                     "mail_admin" => $mailAdmin,
+                );
+
+                    ModelAdmin::update($new_account,$actuel_admin);
                 }
-
-                require_once("{$ROOT}{$DS}model{$DS}modelGroupe.php");
-                $groupe = modelGroupe::select($idGroupe);
-                $tab_answers = $groupe->getAnswers();
-
-                $pagetitle = "Test";
-                $view = "test";
-
-            //Si l'utilisateur n'est pas connecté
-            }else{
-                $pagetitle = "Erreur";
-                $view = "Erreur";
             }
-            require ("{$ROOT}{$DS}view{$DS}view.php");
-            break;
-}*/
+        $listeAdmin = ModelAdmin::getAdmins();
+        $pagetitle = "Liste des admins";
+        $view = "liste";
+    }
+    require ("{$ROOT}{$DS}view{$DS}view.php");
+    break;
+
+
+/*case "question":
+    print("a faire : afficher dans un tablea");
+
+
+case "promo":
+    print("a faire en 1ere position");
+
+case "departement":
+    print("a faire en 2e positions");
+
+ 
+
+ case "code":
+    print("facile a faire. Selection de la promo concernée, du departement, generation du code avec un random et insertion dans la base de donnee"); */    
+}
 ?>
