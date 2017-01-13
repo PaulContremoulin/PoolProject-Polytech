@@ -71,15 +71,21 @@
 			</div>
 			<div id=droite>
 				<div id=premier>
+					<center>
 					<h4> Votre premier trait de personnalité :<br/> <?php echo $profil1->get_libelle();?> </h4>
+					</center>
 					<p> <?php echo $profil1->get_description();?> </p>
 				</div>
 				<div id=deuxieme>
+					<center>
 					<h4>  Votre deuxième trait de personnalité :<br/> <?php echo $profil2->get_libelle();?> </h4>
+					</center>
 					<p> <?php echo $profil2->get_description();?> </p>
 				</div>
 				<div id=troisieme>
+					<center>
 					<h4> Votre troisième trait de personnalité :<br/> <?php echo $profil3->get_libelle();?> </h4>
+					</center>
 					<p> <?php echo $profil3->get_description();?> </p>
 				</div>
 			</div>
