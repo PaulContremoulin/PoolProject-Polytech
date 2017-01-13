@@ -176,11 +176,9 @@ class Model{
 		  return -1;
 		  die();
 		}
-	}
-
+	}
 
 }
 
 Model::Init();
-
 ?>
