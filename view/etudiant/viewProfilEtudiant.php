@@ -6,6 +6,7 @@
 	-->
 	<center>
 	<div class="span6">
+<<<<<<< HEAD
 			<h2>Votre test de personnalité à donné le résultat suivant</h2>
 			<div id=chart>		
 				<canvas id="myChart" width="60%" height="30%" ></canvas>
@@ -89,6 +90,25 @@ print_r($header);
 </div>
 
 
+=======
+			<h2>Votre test de personnalité à donné le résultat suivant</h2>		
+			<canvas id="myChart" width="60%" height="30%" ></canvas>
+			<?php
+				if(isset($_POST['envoiMail'])){
+					require_once("viewResultatmailEtudiant.php");
+				}
+			?>
+			<form method="POST" action="index.php?controller=etudiant&amp;action=profil">
+				<input type="submit" class="btn btn-dark btn-lg" id="envoiMail" name="envoiMail" 
+					value=
+						<?php if(isset($_POST['envoiMail'])){ 
+							echo "\"Résultats envoyés\" disabled"; 
+						}else{ 
+							echo "\"Envoyer mes résultats par mail\"";
+						}?>
+				>
+			</form> 
+>>>>>>> 529bf40e9f2ce5d4423c72bee92820696aa37f2e
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 			<script>
 				var var_labels = <?php echo json_encode($labels); ?>;

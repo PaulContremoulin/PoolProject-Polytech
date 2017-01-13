@@ -11,16 +11,14 @@ switch ($action) {
 
     case "connexion":
 
-	    $mail = $_POST["login"];
-        $login = ModelEtudiant::getINE($mail); //On récupère l'ine associé à l'e-mail
+        $login = ModelEtudiant::getINE($_POST["login"]); //On récupère l'ine associé à l'e-mail
         $password = $_POST["password"];
         $cryptedPwd = Security::chiffrer($password);
         $checkAccount = ModelEtudiant::checkPassword($login,$cryptedPwd);
         if($checkAccount == true){
 
             $account = ModelEtudiant::select($login);
-		
-	    $_SESSION['mail']=$mail;
+
             $_SESSION['login']=$login;
             $_SESSION['nom'] = $account->getName();
             $_SESSION['admin'] = 0;
