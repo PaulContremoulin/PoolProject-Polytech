@@ -75,6 +75,13 @@ class ModelEtudiant extends Model {
     return ($req_prep->rowCount()!=0);
   }
 
+  public static function ineExist($ineEtudiant){
+    $sql = "SELECT id_etudiant FROM Etudiant WHERE id_etudiant= :ine;";
+    $req_prep = Model::$pdo->prepare($sql);
+    $req_prep->execute(array(':ine'=>$ineEtudiant));
+    return ($req_prep->rowCount()!=0);
+  }
+
   public static function isMailFormat($mail){
     return preg_match("#^[a-z0-9._-]{1,}@[a-z0-9._-]{2,}\.[a-z]{2,4}$#",$mail);
   }

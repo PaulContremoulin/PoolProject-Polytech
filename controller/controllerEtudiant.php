@@ -111,7 +111,7 @@ switch ($action) {
         $confirmPwd = $_POST["confirmPwd"];
         $promoEtudiant = $_POST["promoEtudiant"];
 
-        if(!modelEtudiant::mailExist($mailEtudiant)){
+        if(!modelEtudiant::mailExist($mailEtudiant) && !modelEtudiant::ineExist($ineEtudiant)){
             if(modelEtudiant::isMailFormat($mailEtudiant)){
                 if($pwdEtudiant == $confirmPwd){
                     $pwdEtudiant = Security::chiffrer($pwdEtudiant);
@@ -126,13 +126,28 @@ switch ($action) {
                     );
 
                     ModelEtudiant::insert($new_account);
-                }
-            }
-        }
 
-        //Redirection vers la page d'accueil
-        $pagetitle = "Accueil";
-        $view = "acceuil";
+                    //Redirection vers la page d'accueil
+                    $pagetitle = "Accueil";
+                    $view = "acceuil";
+                }
+            }else{
+                $msgError = " Erreur : Le format de l'email est invalide.";
+                //Redirection vers la page d'inscription
+                $sections = ModelSection::listeSections();
+                $sectionsJS = htmlspecialchars(serialize($sections), ENT_QUOTES);
+                $pagetitle = "Inscription";
+                $view = "inscription";
+
+            }
+        }else{
+            $msgError = " Erreur : L'ine ou le mail existe déjà.";
+            //Redirection vers la page d'inscription
+            $sections = ModelSection::listeSections();
+            $sectionsJS = htmlspecialchars(serialize($sections), ENT_QUOTES);
+            $pagetitle = "Inscription";
+            $view = "inscription";
+        }
 
         require ("{$ROOT}{$DS}view{$DS}view.php");
         break;

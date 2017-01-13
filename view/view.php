@@ -17,7 +17,14 @@
 </head>
 	<body>
 		<header id="top" class="header">
-			<?php require_once("header.php");?>
+			<?php 
+				require_once("header.php");
+				if(isset($msgError)){
+					require_once("viewError.php");
+				}
+
+			?>
+
 			<div class="text-vertical-center">
 				<?php
 					//require_once("header.php");
