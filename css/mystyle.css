@@ -76,20 +76,20 @@ th{
 
 #gauche{
 	float:left;
-	width:550px;
+	width:500px;
 	height:550px;
 }
 
 #droite{
 	float:right;
-	width:550px;
+	width:500px;
 	height:550px;
 
 }
 
 #premier{
 	width:500px;
-	height:500px;
+	height:200px;
 	border-width:2px;
  	border-style:solid;
  	border-color:black;
@@ -100,7 +100,7 @@ th{
 
 #deuxieme, #troisieme{
 	width:500px;
-	height:500px;
+	height:200px;
 	border-width:2px;
  	border-style:solid;
  	border-color:black;
