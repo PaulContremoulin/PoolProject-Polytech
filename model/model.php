@@ -71,22 +71,6 @@ class Model{
 		}
   	}
 
-	public static function getAll(){
-	    $SQL="SELECT * FROM ".static::$table.";";
-	    try{
-	 		$rep = Model::$pdo->query($SQL);
-	    	$rep->setFetchMode(PDO::FETCH_CLASS, 'Model'.static::$table);
-	    	return $rep->fetchAll();
-	    } catch(PDOException $e) {
-			if (Conf::getDebug()) {
-				echo $e->getMessage(); // affiche un message d'erreur
-			} else {
-				echo 'Une erreur est survenue <a href="www.google.com"> retour a la page d\'accueil </a>';
-			}
-			die();
-		}   
-    }
-
 
     public static function getAllOrder($att,$order){
 	    $SQL="SELECT * FROM ".static::$table." ORDER BY ".$att." ".$order.";";
@@ -120,21 +104,6 @@ class Model{
 		}   
     }
 
-    public static function getAllOrder($att,$order){
-	    $SQL="SELECT * FROM ".static::$table." ORDER BY ".$att." ".$order.";";
-	    try{
-	 		$rep = Model::$pdo->query($SQL);
-	    	$rep->setFetchMode(PDO::FETCH_CLASS, 'Model'.static::$table);
-	    	return $rep->fetchAll();
-	    } catch(PDOException $e) {
-			if (Conf::getDebug()) {
-				echo $e->getMessage(); // affiche un message d'erreur
-			} else {
-				echo 'Une erreur est survenue <a href="www.google.com"> retour a la page d\'accueil </a>';
-			}
-			die();
-		}   
-    }
 
 	function delete($para) {
 	$sql = "DELETE FROM ".static::$table." WHERE ".static::$primary."=:nom_var";
