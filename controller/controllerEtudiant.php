@@ -243,7 +243,7 @@ switch ($action) {
                         array_push($profil, $values);
                     }
                     $pagetitle = "Accueil";
-                    $view = "acceuil";
+                    $view = "accueil";
 
                 }else{//Sinon, on continue sur le test
                     require_once("{$ROOT}{$DS}model{$DS}modelGroupe.php");
