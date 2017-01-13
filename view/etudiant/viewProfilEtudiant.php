@@ -71,16 +71,16 @@
 			</div>
 			<div id=droite>
 				<div id=premier>
-					<h4> <?php echo $profil1.get_libelle();?> </h4>
-					<p> <?php echo $profil1.get_description();?> </p>
+					<h4> <?php echo $profil1->get_libelle();?> </h4>
+					<p> <?php echo $profil1->get_description();?> </p>
 				</div>
 				<div id=deuxieme>
-					<h4> <?php echo $profil2.get_libelle();?> </h4>
-					<p> <?php echo $profil2.get_description();?> </p>
+					<h4> <?php echo $profil2->get_libelle();?> </h4>
+					<p> <?php echo $profil2->get_description();?> </p>
 				</div>
 				<div id=troisieme>
-					<h4> <?php echo $profil3.get_libelle();?> </h4>
-					<p> <?php echo $profil3.get_description();?> </p>
+					<h4> <?php echo $profil3->get_libelle();?> </h4>
+					<p> <?php echo $profil3->get_description();?> </p>
 				</div>
 			</div>
 	</div>
