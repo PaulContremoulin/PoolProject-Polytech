@@ -90,8 +90,8 @@ th{
 
 
 #premier, #deuxieme, #troisieme{
-	/*width:500px;
-	height:170px;*/
+	width:450px;
+	/*height:170px;*/
 	border-width:2px;
  	border-style:solid;
  	border-color:black;
