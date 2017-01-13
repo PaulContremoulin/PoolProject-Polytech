@@ -1,7 +1,7 @@
 /*This stylesheet contains some custom class rather than Bootstrap*/
 
-.erreur{
-	color : #cc0000;
+#error{
+	color : rgba(179, 0, 0, 0.5);
 }
 
 input[type="text"],input[type="password"]{
@@ -79,14 +79,26 @@ th{
 }
 
 
+<<<<<<< HEAD
+
 /*.boutonEtudiant{
+=======
+.boutonEtudiant{
+>>>>>>> 7d46f6e22beb03d5c82b7b57031eceff20ac311b
 	width : 40%;
-	font-weight: bolder;
 	font-size: 150%;
 }
 
 .boutonAdmin{
 	width : 40%;
-	font-weight: bolder;
 	font-size: 150%;
+<<<<<<< HEAD
 }*/
+=======
+}
+
+.inputMail{
+	height: 100%;
+	width : 100%;
+}
+>>>>>>> 7d46f6e22beb03d5c82b7b57031eceff20ac311b

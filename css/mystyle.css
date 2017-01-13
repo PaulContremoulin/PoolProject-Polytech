@@ -78,16 +78,17 @@ th{
 	height: 60%;
 }
 
-
-
-/*.boutonEtudiant{
+.boutonEtudiant{
 	width : 40%;
-	font-weight: bolder;
 	font-size: 150%;
 }
 
 .boutonAdmin{
 	width : 40%;
-	font-weight: bolder;
 	font-size: 150%;
-}*/
+}
+
+.inputMail{
+	height: 100%;
+	width : 100%;
+}
