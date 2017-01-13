@@ -1,10 +1,14 @@
 <div class="container">
+	
+	
+
 	<div class="row">
 		
         
         <div class="col-md-12">
         <h4>Voila la liste de tout les administrateurs de la plateforme</h4>
         <div class="table-responsive">
+
               <table id="mytable" class="table table-bordred table-striped">
                    <thead>
                    <th><input type="checkbox" id="checkall" /></th>
@@ -37,6 +41,9 @@
 </table>
             
         </div>
+        <form method="POST" action="index.php?controller=admin&amp;action=inscription">
+    <input id="submit" class="btn btn-dark btn-large" type="submit" value="Ajouter un administrateur" />
+    </form>
 	</div>
 </div>
 
@@ -98,6 +105,7 @@
         <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
       </div>
         </div>
+    
     <!-- /.modal-content --> 
   </div>
 <script>

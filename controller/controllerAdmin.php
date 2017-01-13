@@ -66,22 +66,20 @@ switch ($action) {
         $view = "profil";
         require ("{$ROOT}{$DS}view{$DS}view.php");
         break;
-   /* case "inscription":
 
-        $sections = ModelSection::listeSections();
-        $sectionsJS = htmlspecialchars(serialize($sections), ENT_QUOTES);
+
+    case "inscription":
+
         $pagetitle = "Inscription";
         $view = "inscription";
 
         require ("{$ROOT}{$DS}view{$DS}view.php");
         break; 
-*/
-    case "creation":
 
-        $id_admin = $_POST["id_admin"];
+    case "creation":
         $pwdAdmin = $_POST["pwdAdmin"];
         $nameAdmin = $_POST["nameAdmin"];
-        $prenomAdmin = $_POST["Admin"];
+        $prenomAdmin = $_POST["prenomAdmin"];
         $mailAdmin = $_POST["mailAdmin"];
         $confirmPwd = $_POST["confirmPwd"];
 
@@ -91,24 +89,25 @@ switch ($action) {
                     $pwdAdmin = Security::chiffrer($pwdAdmin);
 
                     $new_account = array(
-                         "id_admin" => $id_admin,
+                        "id_admin" => $id_admin,
+                        "nom_admin" => $nameAdmin,
+                        "prenom_admin" => $prenomAdmin,
+                        "mail_admin" => $mailAdmin,
                          "mdp_admin" => $pwdAdmin,
-                         "nom_admin" => $nameAdmin,
-                         "prenom_admin" => $prenomAdmin,
-                         "mail_admin" => $mailAdmin,
+            
                     );
 
                     ModelAdmin::insert($new_account);
                 }
             }
         }
-
-        //Redirection vers la page d'accueil
-        $pagetitle = "Bienvenue";
-        $view = "accueil";
+        $listeAdmin = ModelAdmin::getAdmins();
+        $pagetitle = "Liste des admins";
+        $view = "liste";
 
         require ("{$ROOT}{$DS}view{$DS}view.php");
         break;
+
 
     case "admins":
 
