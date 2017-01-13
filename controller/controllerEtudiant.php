@@ -213,6 +213,7 @@ switch ($action) {
                         //Le test est terminé
                         }else if(isset($_POST['Terminer'])){
                             $idGroupe = intval($_POST['idGroupe']);
+
                         }
                     //si un choix n'est pas coché
                     }else{
@@ -243,7 +244,7 @@ switch ($action) {
                         array_push($profil, $values);
                     }
                     $pagetitle = "Accueil";
-                    $view = "accueil";
+                    $view = "profil";
 
                 }else{//Sinon, on continue sur le test
                     require_once("{$ROOT}{$DS}model{$DS}modelGroupe.php");
