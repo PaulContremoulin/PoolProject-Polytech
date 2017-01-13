@@ -9,7 +9,7 @@
 		<form method="POST" action="index.php?controller=etudiant&amp;action=creation">
 			<fieldset>
 		  		<label for="ineEtudiant"><h4> INE </h4></label></fieldset>
-		    	<input type="text" placeholder="1234567890A" name="ineEtudiant" pattern="^[0-9]{10}[a-z]$" title="Veuillez verifier votre INE (10 chiffres une lettre à la fin)." id="ineEtudiant"  required/></br></br>
+		    	<input type="text" placeholder="1234567890A" name="ineEtudiant" pattern="^[0-9]{10}[a-zA-Z]$" title="Veuillez verifier votre INE (10 chiffres une lettre à la fin)." id="ineEtudiant"  required/></br></br>
 		    	<label for="mailEtudiant"><h4> E-mail </h4></label></br>
 		    	<input type="text" placeholder="prenom.nom@etu.umontpellier.fr" name="mailEtudiant" pattern="[a-z-]+[.][a-z-]+@etu.umontpellier.fr$" title="Votre email doit être de la forme :  prenom.nom@etu.umontpellier.fr ." id="mailEtudiant" required/></br></br>
 		    	<label for="nameEtudiant"><h4> Nom  </h4></label></br>
