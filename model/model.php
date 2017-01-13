@@ -71,25 +71,14 @@ class Model{
 		}
   	}
 
+<<<<<<< HEAD
 
     public static function getAllOrder($att,$order){
 	    $SQL="SELECT * FROM ".static::$table." ORDER BY ".$att." ".$order.";";
-	    try{
-	 		$rep = Model::$pdo->query($SQL);
-	    	$rep->setFetchMode(PDO::FETCH_CLASS, 'Model'.static::$table);
-	    	return $rep->fetchAll();
-	    } catch(PDOException $e) {
-			if (Conf::getDebug()) {
-				echo $e->getMessage(); // affiche un message d'erreur
-			} else {
-				echo 'Une erreur est survenue <a href="www.google.com"> retour a la page d\'accueil </a>';
-			}
-			die();
-		}   
-    }
-
+=======
 	public static function getAll(){
 	    $SQL="SELECT * FROM ".static::$table.";";
+>>>>>>> 01ed49a1451c8bb9b1189a751e19b4daa2032d3e
 	    try{
 	 		$rep = Model::$pdo->query($SQL);
 	    	$rep->setFetchMode(PDO::FETCH_CLASS, 'Model'.static::$table);
@@ -104,6 +93,30 @@ class Model{
 		}   
     }
 
+<<<<<<< HEAD
+	public static function getAll(){
+	    $SQL="SELECT * FROM ".static::$table.";";
+=======
+    public static function getAllOrder($att,$order){
+	    $SQL="SELECT * FROM ".static::$table." ORDER BY ".$att." ".$order.";";
+>>>>>>> 01ed49a1451c8bb9b1189a751e19b4daa2032d3e
+	    try{
+	 		$rep = Model::$pdo->query($SQL);
+	    	$rep->setFetchMode(PDO::FETCH_CLASS, 'Model'.static::$table);
+	    	return $rep->fetchAll();
+	    } catch(PDOException $e) {
+			if (Conf::getDebug()) {
+				echo $e->getMessage(); // affiche un message d'erreur
+			} else {
+				echo 'Une erreur est survenue <a href="www.google.com"> retour a la page d\'accueil </a>';
+			}
+			die();
+		}   
+    }
+<<<<<<< HEAD
+
+=======
+>>>>>>> 01ed49a1451c8bb9b1189a751e19b4daa2032d3e
 
 	function delete($para) {
 	$sql = "DELETE FROM ".static::$table." WHERE ".static::$primary."=:nom_var";

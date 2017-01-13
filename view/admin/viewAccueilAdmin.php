@@ -6,7 +6,7 @@
 				<h2>Bienvenue sur la plateforme du test de personnalité de Polytech Montpellier</h2></br>
 				<h4>Que voulez vous faire ?</h4></br>
 				<form method="POST" action="index.php?controller=admin&amp;action=promo">
-					<input type="submit" class="btn btn-lg btn-dark" name="begin" value="Gerer les Promos/Departement"/>
+					<input type="submit" class="btn btn-lg btn-dark" name="begin" value="Voir des résultats des élèves"/>
 				</form>
 				<form method="POST" action="index.php?controller=admin&amp;action=question">
 					<input type="submit" class="btn btn-lg btn-dark" name="begin" value="Gerer le questionnaire"/>
