@@ -81,7 +81,7 @@ th{
 }
 
 #droite{
-	float:right;
+	margin-left:450px;
 	width:400px;
 	height:550px;
 
