@@ -91,8 +91,8 @@ switch ($action) {
 
         }
 
-        $pagetitle = "Accueil";
-        $view = "acceuil";
+        $pagetitle = "Votre profil";
+        $view = "profil";
 
         require ("{$ROOT}{$DS}view{$DS}view.php");
 
@@ -159,7 +159,7 @@ switch ($action) {
 
                     //Redirection vers la page d'accueil
                     $pagetitle = "Accueil";
-                    $view = "acceuil";
+                    $view = "accueil";
                 }
             }else{
                 $msgError = " Erreur : Le format de l'email est invalide.";
