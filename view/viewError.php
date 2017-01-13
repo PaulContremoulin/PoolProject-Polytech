@@ -1,3 +1,1 @@
-
-
-<div id="error"> <?php echo $msgError; ?> </div>
+<div id="error"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>  Erreur : L'ine ou le mail existe déjà.</div>
