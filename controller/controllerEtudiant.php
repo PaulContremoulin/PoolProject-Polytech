@@ -116,7 +116,7 @@ switch ($action) {
         unset($_SESSION['idGroupe']);
 
         $pagetitle = "Accueil";
-        $view = "acceuil";
+        $view = "accueil";
 
         require ("{$ROOT}{$DS}view{$DS}view.php");
         break;
