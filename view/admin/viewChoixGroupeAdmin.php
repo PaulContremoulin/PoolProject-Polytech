@@ -7,7 +7,8 @@
 				
 				<form method="POST" action="index.php?controller=admin&amp;action=modif_g1">
 					<input type="submit" class="btn btn-lg btn-dark" name="g1" value="Groupe 1 "/>
-				</form><form method="POST" action="index.php?controller=admin&amp;action=modif_g2">
+				</form></br>
+				<form method="POST" action="index.php?controller=admin&amp;action=modif_g2">
 					<input type="submit" class="btn btn-lg btn-dark" name="g2" value="Groupe 2 "/>
 				</form></br>
 				<form method="POST" action="index.php?controller=admin&amp;action=modif_g3">
