@@ -125,7 +125,6 @@ case "modif":
     $prenomAdmin = $_POST["prenom"];
     $mailAdmin = $_POST["email2"];
     $confirmPwd = $_POST["confirmPwd"];
-    $ancien_email = $_POST["email1"];
 
     if(isset($_SESSION['login']) && $_SESSION['admin']==1){
         if(ModelAdmin::isMailFormat($mailAdmin)){
@@ -139,7 +138,7 @@ case "modif":
                      "mail_admin" => $mailAdmin,
                 );
 
-                    ModelAdmin::update($new_account,"mail_admin");
+                    ModelAdmin::insert($new_account);
                 }
             }
         $listeAdmin = ModelAdmin::getAdmins();
@@ -150,10 +149,15 @@ case "modif":
     break;
 
 
-/*case "question":
-    print("a faire : afficher dans un tablea");
+case "questionnaire":
+    $pagetitle = "Liste des admins";
+    $view = "choixgroupe";
 
+    require ("{$ROOT}{$DS}view{$DS}view.php");
+    break;
+    
 
+/*
 case "promo":
     print("a faire en 1ere position");
 
