@@ -2,6 +2,7 @@
 
 require_once("{$ROOT}{$DS}model{$DS}modelEtudiant.php");
 require_once("{$ROOT}{$DS}model{$DS}modelSection.php");
+require_once("{$ROOT}{$DS}model{$DS}modelPromo.php");
 
 $action = $_GET['action'];// recupère l'action passée dans l'URL
 
@@ -182,13 +183,38 @@ switch ($action) {
         require ("{$ROOT}{$DS}view{$DS}view.php");
         break;
 
-
+        case "code":
+            
+            if(isset($_SESSION['login'])){
+                 if(isset($_POST['pwdTest'])){
+                    print($_POST['pwdTest']);
+                    $promoEtudiant = ModelEtudiant::getPromo($_SESSION['login']);
+                    $mdpTest = $_POST['pwdTest'];
+                    $mdppromo = ModelPromo::recupMDP($promoEtudiant);
+                    if($mdppromo[0] == $mdpTest){
+                        $_GET['action'] = "test";
+                        require ("{$ROOT}{$DS}controller{$DS}controller".ucfirst($controller).".php");
+                        break;
+                    }
+                    else{
+                        $pagetitle = "Code erroné";
+                        $view = "code";
+                    }
+                }else{
+                    $pagetitle = "Code pour l'accès au test";
+                    $view = "code";
+                }
+            }else{
+                 $pagetitle = "Erreur";
+                $view = "connexion";
+            }
+            require ("{$ROOT}{$DS}view{$DS}view.php");
+            break;
+                
         case "test":
 
             //Si l'utilisateur est connecté
             if(isset($_SESSION['login'])){
-
-
                 //si l'identifiant du groupe est envoyé par le formulaire
                 if(isset($_POST['idGroupe'])){
                     //si tous les choix sont cochés
@@ -243,8 +269,9 @@ switch ($action) {
                         array_push($labels, $key);
                         array_push($profil, $values);
                     }
-                    $pagetitle = "Accueil";
-                    $view = "profil";
+                    $_GET['action'] = "profil";
+                    require ("{$ROOT}{$DS}controller{$DS}controller".ucfirst($controller).".php");
+                    break;
 
                 }else{//Sinon, on continue sur le test
                     require_once("{$ROOT}{$DS}model{$DS}modelGroupe.php");

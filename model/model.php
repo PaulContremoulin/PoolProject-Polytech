@@ -151,6 +151,18 @@ class Model{
 		}
 	}
 
+	public static function update2($para,$val){
+		$sql = "UPDATE ".static::$table." SET :para = :val ;";
+		try{
+			 $req_prep = Model::$pdo->prepare($sql);
+			 $req_prep->bindParam(":para", $para);
+		  	$req_prep->bindParam(":val", $val);
+		}catch(PDOException $e) {
+			echo 'Set failed: ' . $e->getMessage();
+	  	}
+
+	}
+
 }
 
 Model::Init();
