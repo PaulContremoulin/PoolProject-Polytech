@@ -23,7 +23,7 @@
 							}?>
 					>
 				</form> 
-
+				<a type="button" class="btn btn-dark btn-lg" href="../attribut.pdf"  value="Plus de détails" target="_blank"></a>
 				<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 				<script>
 					var var_labels = <?php echo json_encode($labels); ?>;
