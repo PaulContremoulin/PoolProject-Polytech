@@ -42,16 +42,21 @@ switch ($action) {
 
             if($nbQuestionsSave==12){// Test terminé
                 $tab_calculer = ModelSelectionner::calcul_result_etud($tab_reponses);
-
+            $tab_calculer_promo = ModelSelectionner::calcul_result_promo(ModelEtudiant::getPromo($_SESSION['login']));
 
                 $labels = array(); //Tableau contenant les titres des personnalités
                 $profil = array(); //Tableau contenant les valeurs des personnalités
-                
+                $profil_promo = array();
                 //Affectation des valeurs aux deux tableaux
                 foreach($tab_calculer as $key => $values){
                     array_push($labels, $key);
                     array_push($profil, $values);
                 }
+
+                foreach($tab_calculer_promo as $key => $values){
+                    array_push($profil_promo, $values);
+                }
+                print_r($profil_promo);
 
                 $max1=0;
                 $max2=0;
