@@ -115,8 +115,7 @@ class ModelEtudiant extends Model {
             "WHERE id_promo = :promo";
      $req_prep = Model::$pdo->prepare($sql);
      $req_prep->execute(array(':promo'=>$id_promo));
-     $result = $req_prep->fetch(PDO::FETCH_ASSOC);
-     return $result;
+     return $req_prep;
   } 
 
   public static function getEtud_by_section($id_section){
