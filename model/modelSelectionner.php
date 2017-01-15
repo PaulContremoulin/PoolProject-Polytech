@@ -150,7 +150,6 @@ class ModelSelectionner extends Model {
         foreach ($liste_etudiants as $etudiant) {
           $tab_reponse = ModelSelectionner::select_by_num_user($etudiant['id_etudiant']);
           $tab_intermediaire =  ModelSelectionner::calcul_result_etud($tab_reponse);
-          print_r($tab_intermediaire);
           $tab_resultats_promo["REALISTE"] = $tab_resultats_promo["REALISTE"] + $tab_intermediaire["REALISTE"];
           $tab_resultats_promo["INVESTIGATIF"] = $tab_resultats_promo["INVESTIGATIF"] + $tab_intermediaire["INVESTIGATIF"];
           $tab_resultats_promo["ARTISTIQUE"] = $tab_resultats_promo["ARTISTIQUE"] + $tab_intermediaire["ARTISTIQUE"];
@@ -164,7 +163,6 @@ class ModelSelectionner extends Model {
       $tab_resultats_promo["SOCIAL"] = $tab_resultats_promo["SOCIAL"]/count($liste_etudiants);
       $tab_resultats_promo["ENTREPRENEUR"] = $tab_resultats_promo["ENTREPRENEUR"]/count($liste_etudiants);
       $tab_resultats_promo["CONVENTIONNEL"] = $tab_resultats_promo["CONVENTIONNEL"]/count($liste_etudiants);
-      print_r($tab_resultats_promo);
       return $tab_resultats_promo;
     }
       

@@ -28,7 +28,7 @@
 				<script>
 					var var_labels = <?php echo json_encode($labels); ?>;
 					var var_profil = <?php echo json_encode($profil, JSON_NUMERIC_CHECK); ?>;
-					//var var_profil_promo = <?php //echo json_encode($profil_promo, JSON_NUMERIC_CHECK); ?>;
+					var var_profil_promo = <?php echo json_encode($profil_promo, JSON_NUMERIC_CHECK); ?>;
 					var ctx = document.getElementById("myChart");
 					var data = {
 					    labels: var_labels,
@@ -42,8 +42,8 @@
 					            pointHoverBackgroundColor: "#fff",
 					            pointHoverBorderColor: "rgba(0,0,0,1)",
 					            data: var_profil
-					        }
-					       /* {
+					        },
+					       	{
 					            label: "Personnalité de ma promo",
 					            backgroundColor: "rgba(255,99,132,0.2)",
 					            borderColor: "rgba(255,99,132,1)",
@@ -52,7 +52,7 @@
 					            pointHoverBackgroundColor: "#fff",
 					            pointHoverBorderColor: "rgba(255,99,132,1)",
 					            data: var_profil_promo
-					        }*/
+					        }
 					    ]
 					};
 					var myChart = new Chart(ctx, {
