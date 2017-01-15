@@ -30,10 +30,9 @@ class ModelSelectionner extends Model {
   * @return Array Les reponses pour chaque groupes de reponse du user
   **/
   public static function select_by_num_user($ine){
-     $sql = 'SELECT id_groupe, choix_1, choix_2, choix_3 FROM '.static::$table.' WHERE id_etud = :idetud;';
+     $sql = 'SELECT id_groupe, choix_1, choix_2, choix_3 FROM '.static::$table.' WHERE id_etud = "'.$ine.'";';
     try{  
       $req_prep = Model::$pdo->prepare($sql);
-      $req_prep->bindParam(":idetud", $ine);
       $req_prep->execute();
       $result = $req_prep->fetchAll();
       return $result;
@@ -147,12 +146,9 @@ class ModelSelectionner extends Model {
 
     public static function calcul_result_promo($id_promo){
       $liste_etudiants = ModelEtudiant::getEtud_by_promo($id_promo);
-      print($id_promo);
-      print_r($liste_etudiants);
       $tab_resultats_promo = array("realiste"=>0 ,"investigatif"=>0 ,"artistique" => 0, "social" => 0, "entrepreneur" => 0, "conventionnel" => 0);
         foreach ($liste_etudiants as $etudiant) {
-          $tab_reponse = ModelSelectionner::select_by_num_user($etudiant['id_etudiant']);
-          print($tab_reponse);
+          $tab_reponse = ModelSelectionner::select_by_num_user($etudiant);
           $tab_intermediaire =  ModelSelectionner::calcul_result_etud($tab_reponse);
           $tab_resultats_promo["realiste"] = $tab_resultats_promo["realiste"] + $tab_intermediaire["realiste"];
           $tab_resultats_promo["investigatif"] = $tab_resultats_promo["investigatif"] + $tab_intermediaire["investigatif"];
