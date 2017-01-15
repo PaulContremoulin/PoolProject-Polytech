@@ -23,7 +23,7 @@
 							}?>
 					>
 				</form> 
-				<a type="button" class="btn btn-dark btn-lg" href="../attributs.pdf"  value="Plus de détails" target="_blank"></a>
+				<input type="submit" class="btn btn-dark btn-lg" id="affichepdf" name="affichepdf" value="Plus de details" href="../attribut.pdf" target="_blank">
 				<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 				<script>
 					var var_labels = <?php echo json_encode($labels); ?>;
