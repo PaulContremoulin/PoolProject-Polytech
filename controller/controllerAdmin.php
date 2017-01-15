@@ -157,10 +157,16 @@ case "questionnaire":
     break;
     
 
-/*
-case "promo":
-    print("a faire en 1ere position");
 
+case "promo":
+    $promotion = ModelPromo::getall();
+    $pagetitle = "Informations sur les promos";
+    $view = "listepromo";
+
+    require ("{$ROOT}{$DS}view{$DS}view.php");
+    break;
+    
+/*
 case "departement":
     print("a faire en 2e positions");
 

@@ -50,6 +50,23 @@ class ModelPromo extends Model {
 
 	}
 
+	public static function getall(){
+		$sql = "SELECT * FROM ".static::$table.";" ;
+
+		try{
+
+	      $req_prep = Model::$pdo->prepare($sql);
+	      $req_prep->execute();
+	      $result =  $req_prep->fetch();
+	      return $result;
+
+	  	}catch(PDOException $e) {
+		  echo 'Get failed: ' . $e->getMessage();
+	  }
+
+	}
+
+
 	public static function recupMDP($idpromo){
  		$sql = "SELECT mdp_test FROM ".static::$table." WHERE id_promo = :idpromo ;";
 
@@ -95,5 +112,5 @@ class ModelPromo extends Model {
 	}
 
 }
-ModelPromo::set_mdp_test("moi",1);
+print_r(ModelPromo::getall());
 ?>
