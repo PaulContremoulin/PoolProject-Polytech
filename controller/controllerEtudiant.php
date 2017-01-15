@@ -56,7 +56,6 @@ switch ($action) {
                 foreach($tab_calculer_promo as $key => $values){
                     array_push($profil_promo, $values);
                 }
-                print_r($profil_promo);
 
                 $max1=0;
                 $max2=0;
