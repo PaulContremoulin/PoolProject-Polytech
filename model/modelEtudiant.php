@@ -113,8 +113,8 @@ class ModelEtudiant extends Model {
      $sql = "SELECT id_etudiant FROM ".static::$table.", Promo WHERE Etudiant.id_promo = Promo.id_promo AND Promo.id_promo = :idpromo; ";
      $req_prep = Model::$pdo->prepare($sql);
      $req_prep->execute(array(':idpromo'=>$id_promo));
-     $result = $req_prep->fetch(PDO::FETCH_ASSOC);
-     return $req_prep;
+     $result = $req_prep->fetchAll();
+     return $result;
   } 
 
   public static function getEtud_by_section($id_section){
