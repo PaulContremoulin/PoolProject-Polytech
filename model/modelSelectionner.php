@@ -157,12 +157,9 @@ class ModelSelectionner extends Model {
           $tab_resultats_promo["ENTREPRENEUR"] = $tab_resultats_promo["ENTREPRENEUR"] + $tab_intermediaire["ENTREPRENEUR"];
           $tab_resultats_promo["CONVENTIONNEL"] = $tab_resultats_promo["CONVENTIONNEL"] + $tab_intermediaire["CONVENTIONNEL"];
         }
-      $tab_resultats_promo["REALISTE"] = $tab_resultats_promo["REALISTE"]/count($liste_etudiants);
-      $tab_resultats_promo["INVESTIGATIF"] = $tab_resultats_promo["INVESTIGATIF"]/count($liste_etudiants);
-      $tab_resultats_promo["ARTISTIQUE"] = $tab_resultats_promo["ARTISTIQUE"]/count($liste_etudiants);
-      $tab_resultats_promo["SOCIAL"] = $tab_resultats_promo["SOCIAL"]/count($liste_etudiants);
-      $tab_resultats_promo["ENTREPRENEUR"] = $tab_resultats_promo["ENTREPRENEUR"]/count($liste_etudiants);
-      $tab_resultats_promo["CONVENTIONNEL"] = $tab_resultats_promo["CONVENTIONNEL"]/count($liste_etudiants);
+        foreach($tab_resultats_promo as $key => &$values){
+          $tab_resultats_promo[$key] = round($tab_resultats_promo[$key]/count($liste_etudiants),PHP_ROUND_HALF_UP);
+       }
       return $tab_resultats_promo;
     }
       
