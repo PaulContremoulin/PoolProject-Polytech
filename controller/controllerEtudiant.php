@@ -187,7 +187,6 @@ switch ($action) {
             
             if(isset($_SESSION['login'])){
                  if(isset($_POST['pwdTest'])){
-                    print($_POST['pwdTest']);
                     $promoEtudiant = ModelEtudiant::getPromo($_SESSION['login']);
                     $mdpTest = $_POST['pwdTest'];
                     $mdppromo = ModelPromo::recupMDP($promoEtudiant);

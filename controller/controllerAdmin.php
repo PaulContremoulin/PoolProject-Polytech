@@ -178,7 +178,6 @@ case "departement":
     //print($_POST["promoEtudiant"]);
     //print(isset($_POST["promoEtudiant"]));
     if(isset($_POST["promoEtudiant"])){
-        print("if");
         $characts    = 'abcdefghijklmnopqrstuvwxyz';
         $characts   .= 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';    
         $characts   .= '1234567890'; 

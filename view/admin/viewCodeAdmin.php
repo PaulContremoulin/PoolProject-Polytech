@@ -5,6 +5,7 @@
 		<h1>Générateur</h1>
 	<?php if(isset($code_aleatoire)){ ?>
 		<h3>Voici le code généré</h3></br>
+		<h4> Si vous l'oubliez il est accessible dans l'onglet Gestion Promo</h4>
 		<h2><?php echo $code_aleatoire ?><h2></br>
 		<form method="POST" action="index.php?controller=admin&amp;action=code">
 		<input id="submit" class="btn btn-dark btn-lg" type="submit" value="Générer un autre code !" />
