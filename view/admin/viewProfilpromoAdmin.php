@@ -2,8 +2,8 @@
 <canvas id="chartMEA" width="100%" height="100%" ></canvas>
 <canvas id="chartSTE" width="100%" height="100%" ></canvas>
 <canvas id="chartGBA" width="100%" height="100%" ></canvas>
-<canvas id="charMAT" width="100%" height="100%" ></canvas>
-<canvas id="charMI" width="100%" height="100%" ></canvas>
+<canvas id="chartMAT" width="100%" height="100%" ></canvas>
+<canvas id="chartMI" width="100%" height="100%" ></canvas>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <script>
@@ -49,10 +49,10 @@
 
 	installChart("chartIG", var_profil_ig, var_labels, "IG");
 	installChart("chartMEA", var_profil_mea, var_labels, "MEA");
-	installChart("charSTE", var_profil_ste, var_labels, "STE");
-	installChart("charGBA", var_profil_gba, var_labels, "GBA");
-	installChart("charMAT", var_profil_mat, var_labels, "MAT");
-	installChart("charMI", var_profil_mi, var_labels, "MI");
+	installChart("chartSTE", var_profil_ste, var_labels, "STE");
+	installChart("chartGBA", var_profil_gba, var_labels, "GBA");
+	installChart("chartMAT", var_profil_mat, var_labels, "MAT");
+	installChart("chartMI", var_profil_mi, var_labels, "MI");
 
 
 
