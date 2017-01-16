@@ -24,7 +24,7 @@ switch ($action) {
         }
 
     case "profil":
-
+        require_once("{$ROOT}{$DS}model{$DS}modelSelectionner.php");
 
         $tab_ig = ModelSelectionner::calcul_result_departement("IG");
         $tab_mea = ModelSelectionner::calcul_result_departement("MEA");
