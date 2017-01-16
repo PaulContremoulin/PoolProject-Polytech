@@ -215,7 +215,7 @@ th{
 }
 
 .diagramme li {
-	display : list-item;
+	display : inline-block;
 	float:left;
 	list-style-position:outside;
 	margin-right:25px;
