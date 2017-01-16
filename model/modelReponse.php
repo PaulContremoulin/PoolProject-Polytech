@@ -67,7 +67,6 @@ class ModelReponse extends Model {
     $sql_rlts = "SELECT id_reponse AS idr, id_group AS idg, text_reponse AS txt ";
     $sql_rlts .= "FROM ".static::$table." ";
     $sql_rlts .= "WHERE id_group = :idgroupe ";
-    $sql_rlts .= "ORDER BY id_reponse ASC;"
 
 	  try{
 
