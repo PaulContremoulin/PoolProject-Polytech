@@ -150,8 +150,14 @@ case "modif":
 
 
 case "questionnaire":
-    $pagetitle = "Liste des admins";
-    $view = "choixgroupe";
+
+    require_once("{$ROOT}{$DS}model{$DS}modelReponse.php");
+    $tab_grps = ModelReponse::get_all_reponse();
+    print_r($tab_grps);
+
+
+    $pagetitle = "Modification du questionnaire";
+    $view = "questionnaire";
 
     require ("{$ROOT}{$DS}view{$DS}view.php");
     break;
