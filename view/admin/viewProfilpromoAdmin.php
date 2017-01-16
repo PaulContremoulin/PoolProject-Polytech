@@ -46,12 +46,12 @@
 		});
 	}
 
-	installChart("chartIG", var_porfil_ig, var_labels, "IG");
-	installChart("chartMEA", var_porfil_mea, var_labels, "MEA");
-	installChart("charSTE", var_porfil_ste, var_labels, "STE");
-	installChart("charGBA", var_porfil_gba, var_labels, "GBA");
-	installChart("charMAT", var_porfil_mat, var_labels, "MAT");
-	installChart("charMI", var_porfil_mi, var_labels, "MI");
+	installChart("chartIG", var_profil_ig, var_labels, "IG");
+	installChart("chartMEA", var_profil_mea, var_labels, "MEA");
+	installChart("charSTE", var_profil_ste, var_labels, "STE");
+	installChart("charGBA", var_profil_gba, var_labels, "GBA");
+	installChart("charMAT", var_profil_mat, var_labels, "MAT");
+	installChart("charMI", var_profil_mi, var_labels, "MI");
 
 
 
