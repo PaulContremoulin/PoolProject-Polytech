@@ -20,6 +20,9 @@
 			if(isset($msgError)){
 				require_once("viewError.php");
 			}
+			if(isset($msgValid)){
+				require_once("viewValid.php");
+			}
 		?>
 		<header id="top" class="header">
 			<?php

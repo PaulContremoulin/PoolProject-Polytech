@@ -11,7 +11,7 @@
 			?>
 		</ul>
 	</div>
-		</br></br>
+    </br></br>
 	<div id="formReponse"></div>
 </div>
 
@@ -21,15 +21,16 @@
 	function changerGroupe(val){
 		var tab_reps = tab_grps[val];
 
-		var form = '<form method="POST" action="index.php?controller=admin&amp;action=updateQuestionnaire">';
+		var form = '<form method="POST" action="index.php?controller=admin&amp;action=questionnaire">';
 		for(var i = 0; i < tab_reps.length; i++){
 			num_rep = i+1;
-			form += '<label class="btn btn-dark btn-lg">'+num_rep+'</label><input name="'+tab_reps[i]["idr"]+'" type="text" value="'+tab_reps[i]["txt"]+'" /></br></br>';
+			form += '<label class="btn btn-dark btn-lg">'+num_rep+'</label><input type="hidden" name="idr_'+num_rep+'" value="'+tab_reps[i]["idr"]+'"><input name="text_'+num_rep+'" type="text" value="'+tab_reps[i]["txt"]+'" /></br></br>';
 		}
-		form += '<input id="submit" class="btn btn-dark btn-lg" type="submit" value="Mettre à jour" />';
+		form += '<input type="hidden" name="idGroupe" value="'+val+'">';
+		form += '<input id="submit" name="MaJ" class="btn btn-dark btn-lg" type="submit" value="Mettre à jour" />';
 		form += '</form>';
 		document.getElementById("formReponse").innerHTML = form;
 	}
-	changerGroupe(1);
+	changerGroupe(<?php echo $idGroupe; ?>);
 
 </script>
