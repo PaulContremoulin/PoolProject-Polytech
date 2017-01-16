@@ -3,7 +3,7 @@
 <ul>
 	<?php
 		foreach ($tab_grps as $key => $value) {
-		echo '<li><button onclick="changerGroupe({$key});"> {$key} </button></li>';
+		echo '<li><button onclick="changerGroupe($key);"> $key </button></li>';
 		}
 	?>
 </ul>
