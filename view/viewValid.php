@@ -1,0 +1,1 @@
+<div id="valid"><i class="fa fa-chevron-down" aria-hidden="true"></i><?php echo $msgValid; ?></div>

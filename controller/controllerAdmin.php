@@ -19,7 +19,19 @@ switch ($action) {
 
             $_SESSION['login']=$login;
             $_SESSION['admin'] = 1;
+        }else{
+            $msgError = "Erreur de connexion, l'identifiant ou le mot de passe est incorect.";
         }
+
+    case "profil":
+
+        if(isset($_SESSION['login'])){
+
+            
+        }
+        /* la vue profil promo sera visualisée a l'interreur de la vue accueil*/
+        $pagetitle = "Mon profil";
+        $view = "profilpromo";
 
         $pagetitle = "Accueil";
         $view = "accueil";
@@ -31,15 +43,13 @@ switch ($action) {
     case "deconnexion":
 
         unset($_SESSION['login']);
-        unset($_SESSION['nom']);
         unset($_SESSION['admin']);
-        unset($_SESSION['idGroupe']);
 
-        $pagetitle = "Votre profil";
-        $view = "profilpromo";
+        $pagetitle = "Accueil";
+        $view = "accueil";
+
         require ("{$ROOT}{$DS}view{$DS}view.php");
         break;
-
 
     case "inscription":
 
@@ -125,8 +135,28 @@ case "modif":
 
 
 case "questionnaire":
-    $pagetitle = "Liste des admins";
-    $view = "choixgroupe";
+
+    require_once("{$ROOT}{$DS}model{$DS}modelReponse.php");
+
+    $idGroupe = 1;
+
+    //si une mise a jour des informations est détecté
+    if(isset($_POST["MaJ"])){
+        $idGroupe = $_POST["idGroupe"];
+        ModelReponse::update(array("text_reponse" => $_POST["text_1"]), $_POST["idr_1"]);
+        ModelReponse::update(array("text_reponse" => $_POST["text_2"]), $_POST["idr_2"]);
+        ModelReponse::update(array("text_reponse" => $_POST["text_3"]), $_POST["idr_3"]);
+        ModelReponse::update(array("text_reponse" => $_POST["text_4"]), $_POST["idr_4"]);
+        ModelReponse::update(array("text_reponse" => $_POST["text_5"]), $_POST["idr_5"]);
+        ModelReponse::update(array("text_reponse" => $_POST["text_6"]), $_POST["idr_6"]);
+        $msgValid = "La mise à jour a été effectuée.";
+    }
+
+    $tab_grps = ModelReponse::get_all_reponse();
+
+
+    $pagetitle = "Modification du questionnaire";
+    $view = "questionnaire";
 
     require ("{$ROOT}{$DS}view{$DS}view.php");
     break;

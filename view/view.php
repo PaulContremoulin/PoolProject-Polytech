@@ -16,14 +16,19 @@
 	<!--<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>-->
 </head>
 	<body>
-		<?php 
+		<?php
 			if(isset($msgError)){
 				require_once("viewError.php");
+			}
+			if(isset($msgValid)){
+				require_once("viewValid.php");
 			}
 		?>
 		<header id="top" class="header">
 			<?php
-				require_once("navbar.php");
+				if(isset($_SESSION['login'])){
+					require_once("navbar.php");
+				}
 			?>
 			<div class="text-vertical-center">
 			<?php

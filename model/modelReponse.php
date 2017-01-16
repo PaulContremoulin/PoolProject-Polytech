@@ -27,22 +27,53 @@ class ModelReponse extends Model {
     return $this->$id_group;
   }
 
-  public function __construct($num_reponse,$num_profil,$text,$num_group){
-    $this->$id_reponse = $num_reponse;
-    $this->$id_profil = $num_profil;
-    $this->$text_rep = $text;
-    $this->$id_group = $num_group;
+  public function __construct($num_reponse = NULL,$num_profil = NULL,$text = NULL,$num_group = NULL){
+    if (!is_null($num_reponse) && !is_null($num_profil) && !is_null($text) && !is_null($num_group)){
+      $this->$id_reponse = $num_reponse;
+      $this->$id_profil = $num_profil;
+      $this->$text_rep = $text;
+      $this->$id_group = $num_group;
+    }
   }
 
-  public static function get_all_reponse_Groupe($num_group){
-    $sql = "SELECT * FROM Reponse WHERE id_group = :idGroup";
+  public static function get_all_reponse(){
+    //Retourne un tableau contenant toutes les réponses rangées en tableau
+
+    try{
+      //Récupère le nomrbre de groupe de question
+      $sql_grps = "SELECT * FROM Groupe;";
+      $req_grps = Model::$pdo->prepare($sql_grps);
+      $req_grps->execute();
+      $nb_grps = $req_grps->rowCount();
+
+      $tab_grps = array();
+      //Pour le nombre de groupe, on récupère toutes les réponses
+      for ($i=1; $i <= $nb_grps; $i++) { 
+
+        $tab_rlts = self::get_all_reponse_Groupe($i);
+        $tab_grps[$i] = $tab_rlts;
+      }
+
+      return $tab_grps;
+
+    }catch(PDOException $e) {
+      echo 'Get failed: ' . $e->getMessage();
+    }
+  }
+
+
+  public static function get_all_reponse_Groupe($num_groupe){
+
+    $sql_rlts = "SELECT id_reponse AS idr, id_group AS idg, text_reponse AS txt ";
+    $sql_rlts .= "FROM ".static::$table." ";
+    $sql_rlts .= "WHERE id_group = :idgroupe ";
 
 	  try{
 
-		  $req_prep = Model::$pdo->prepare($sql);
-		  $req_prep->bindParam(":idGroup", $num_group);
+		  $req_prep = Model::$pdo->prepare($sql_rlts);
+		  $req_prep->bindParam(":idgroupe", $num_groupe);
 		  $req_prep->execute();
-      $result = $req_prep->fetch(PDO::FETCH_ASSOC);
+      $result = $req_prep->fetchAll();
       return $result;
 
 	  } catch(PDOException $e) {

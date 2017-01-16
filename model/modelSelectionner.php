@@ -145,20 +145,25 @@ class ModelSelectionner extends Model {
     }
 
     public static function calcul_result_promo($id_promo){
+      $nb_etudiant=0;
       $liste_etudiants = ModelEtudiant::getEtud_by_promo($id_promo);
       $tab_resultats_promo = array("REALISTE"=>0 ,"INVESTIGATIF"=>0 ,"ARTISTIQUE" => 0, "SOCIAL" => 0, "ENTREPRENEUR" => 0, "CONVENTIONNEL" => 0);
         foreach ($liste_etudiants as $etudiant) {
           $tab_reponse = ModelSelectionner::select_by_num_user($etudiant['id_etudiant']);
-          $tab_intermediaire =  ModelSelectionner::calcul_result_etud($tab_reponse);
-          $tab_resultats_promo["REALISTE"] = $tab_resultats_promo["REALISTE"] + $tab_intermediaire["REALISTE"];
-          $tab_resultats_promo["INVESTIGATIF"] = $tab_resultats_promo["INVESTIGATIF"] + $tab_intermediaire["INVESTIGATIF"];
-          $tab_resultats_promo["ARTISTIQUE"] = $tab_resultats_promo["ARTISTIQUE"] + $tab_intermediaire["ARTISTIQUE"];
-          $tab_resultats_promo["SOCIAL"] = $tab_resultats_promo["SOCIAL"] + $tab_intermediaire["SOCIAL"];
-          $tab_resultats_promo["ENTREPRENEUR"] = $tab_resultats_promo["ENTREPRENEUR"] + $tab_intermediaire["ENTREPRENEUR"];
-          $tab_resultats_promo["CONVENTIONNEL"] = $tab_resultats_promo["CONVENTIONNEL"] + $tab_intermediaire["CONVENTIONNEL"];
+          if (count($tab_reponse)==12){
+            $nb_etudiant=$nb_etudiant+1;
+            $tab_intermediaire =  ModelSelectionner::calcul_result_etud($tab_reponse);
+            $tab_resultats_promo["REALISTE"] = $tab_resultats_promo["REALISTE"] + $tab_intermediaire["REALISTE"];
+            $tab_resultats_promo["INVESTIGATIF"] = $tab_resultats_promo["INVESTIGATIF"] + $tab_intermediaire["INVESTIGATIF"];
+            $tab_resultats_promo["ARTISTIQUE"] = $tab_resultats_promo["ARTISTIQUE"] + $tab_intermediaire["ARTISTIQUE"];
+            $tab_resultats_promo["SOCIAL"] = $tab_resultats_promo["SOCIAL"] + $tab_intermediaire["SOCIAL"];
+            $tab_resultats_promo["ENTREPRENEUR"] = $tab_resultats_promo["ENTREPRENEUR"] + $tab_intermediaire["ENTREPRENEUR"];
+            $tab_resultats_promo["CONVENTIONNEL"] = $tab_resultats_promo["CONVENTIONNEL"] + $tab_intermediaire["CONVENTIONNEL"];
+          }
+          
         }
         foreach($tab_resultats_promo as $key => &$values){
-          $tab_resultats_promo[$key] = round($tab_resultats_promo[$key]/count($liste_etudiants),PHP_ROUND_HALF_UP);
+          $tab_resultats_promo[$key] = round($tab_resultats_promo[$key]/$nb_etudiant,PHP_ROUND_HALF_UP);
        }
       return $tab_resultats_promo;
     }

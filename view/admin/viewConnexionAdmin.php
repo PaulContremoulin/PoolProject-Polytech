@@ -9,3 +9,11 @@
 			<input id="submit" class="btn btn-dark btn-large" type="submit" value="Connexion" /></br></br>
 		</fieldset> 
 	</form>
+
+	<p>
+		<form  method="POST" action="index.php">
+			<h4>
+				<input id="submit" class="btn btn-dark btn-small" type="submit" value="Retour à la page d'accueil" />
+			</h4>
+		</form>
+	</p>

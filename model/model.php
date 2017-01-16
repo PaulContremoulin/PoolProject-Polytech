@@ -125,7 +125,7 @@ class Model{
 		}
 	}
 
-	public  static function update($tab, $old) {
+	public static function update($tab, $old) {
 		$sql = "UPDATE ".static::$table." SET";
 		foreach ($tab as $cle => $valeur){
 			$sql .=" ".$cle."=:new".$cle.",";
@@ -140,8 +140,8 @@ class Model{
 		  }
 		  $values[":oldid"] = $old;
 		  $req_prep->execute($values);
-		  $obj = Model::select($tab[static::$primary]);
-		  return $obj;
+		  //$obj = Model::select($tab[static::$primary]);
+		  return 1;
 		} catch(PDOException $e) {
 		  if (Conf::getDebug()) {
 		    echo "PROBLEME"; // affiche un message d'erreur
