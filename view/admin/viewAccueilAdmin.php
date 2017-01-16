@@ -5,15 +5,17 @@
 			}else{ ?>
 				<h2>Bienvenue sur la plateforme du test de personnalité de Polytech Montpellier</h2></br>
 				<h4>Que voulez vous faire ?</h4></br>
-				<form method="POST" action="index.php?controller=admin&amp;action=promo">
-					<input type="submit" class="btn btn-lg btn-dark" name="begin" value="Voir des résultats des élèves"/>
-				</form>
-				<form method="POST" action="index.php?controller=admin&amp;action=questionnaire">
-					<input type="submit" class="btn btn-lg btn-dark" name="begin" value="Gerer le questionnaire"/>
-				</form>
-				<form method="POST" action="index.php?controller=admin&amp;action=admins">
-					<input type="submit" class="btn btn-lg btn-dark" name="begin" value="Gerer les administrateurs"/>
-				</form>
+					<div class="accueil">
+						<form method="POST" action="index.php?controller=admin&amp;action=promo">
+							<input type="submit" class="btn btn-lg btn-dark" name="begin" value="Voir des résultats des élèves"/>
+						</form>
+						<form method="POST" action="index.php?controller=admin&amp;action=questionnaire">
+							<input type="submit" class="btn btn-lg btn-dark" name="begin" value="Gerer le questionnaire"/>
+						</form>
+						<form method="POST" action="index.php?controller=admin&amp;action=admins">
+							<input type="submit" class="btn btn-lg btn-dark" name="begin" value="Gerer les administrateurs"/>
+						</form>
+					</div>
 			<?php } ?>
 		</div>
 
