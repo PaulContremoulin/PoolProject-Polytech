@@ -12,7 +12,6 @@
               <table id="mytable" class="table table-bordred table-striped">
                    <thead>
                    <center>
-                   <th><input type="checkbox" id="checkall" /></th>
                    <th>Nom</th>
                    <th>Prenom</th>
                    <th>EMail</th>
