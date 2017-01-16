@@ -221,5 +221,6 @@ th{
 .diagramme li ul {
 	 float:left;   
  	 width:100px;
+ 	 height: 100px;
 }
 
