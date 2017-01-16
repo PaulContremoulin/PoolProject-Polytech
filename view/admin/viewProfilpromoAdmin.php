@@ -28,7 +28,7 @@
 		            pointBorderColor: "rgba(0,0,0,0)",
 		            pointHoverBackgroundColor: "#fff",
 		            pointHoverBorderColor: "rgba(0,0,0,1)",
-		            data: tab_section;
+		            data: tab_section
 		        }
 		    ]
 		};
