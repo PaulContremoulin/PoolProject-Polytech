@@ -189,7 +189,7 @@ th{
 
 	#droite{
 		width:60%;
-		
+		float:left;
 	}
 
 	#premier, #deuxieme, #troisieme{
