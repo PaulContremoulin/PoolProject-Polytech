@@ -10,9 +10,8 @@
 				}
 			?>
 		</ul>
-	</br></br>
 	</div>
-
+		</br></br>
 	<div id="formReponse"></div>
 </div>
 
