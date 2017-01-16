@@ -20,9 +20,10 @@
                    <th>Supprimer</th>
                   </center>
                    </thead>
+    <center>               
     <tbody>
     <?php foreach ($listeAdmin as $key => $value) { ?>
-    <center>
+    
     <tr>
 
     <td><?php if(isset($value['nom_admin'])){echo $value["nom_admin"];}?></td>
@@ -36,10 +37,9 @@
 	<td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
     <?php } ?>
     </tr> 
-    </center>
      <?php } ?>
     </tbody>
-   
+   </center>
         
 </table>
             
