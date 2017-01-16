@@ -175,4 +175,15 @@ th{
 	margin-bottom: 4%;
 }
 
+@media (max-width: 1024px){
+	
+	#droite{
+	margin-left: 1050px;
+	}
+
+	#gauche{
+	float:left;
+	}
+
+}
 
