@@ -171,6 +171,7 @@ class ModelSelectionner extends Model {
 
   public function calcul_result_departement($id_section){
     $liste_etudiants = ModelEtudiant::getEtud_by_section($id_section);
+    $nb_etudiant = count($liste_etudiants);
     $tab_resultats_section = array("REALISTE"=>0 ,"INVESTIGATIF"=>0 ,"ARTISTIQUE" => 0, "SOCIAL" => 0, "ENTREPRENEUR" => 0, "CONVENTIONNEL" => 0);
     foreach ($liste_etudiants as $etudiant){
       if (count($tab_reponse)==12){
@@ -185,6 +186,7 @@ class ModelSelectionner extends Model {
       }
     }
     foreach($tab_resultats_section as $key => &$values){
+
         $tab_resultats_promo[$key] = round($tab_resultats_promo[$key]/$nb_etudiant,PHP_ROUND_HALF_UP);
      }
     return $tab_resultats_section;
