@@ -152,7 +152,7 @@ th{
  list-style-type:none;
  }
 .listGroupe li {
- margin-left: 15%;
+ margin-left: 5%;
  float:left; /*pour IE*/
  }
 .listGroupe ul li a {
