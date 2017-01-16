@@ -174,9 +174,10 @@ class ModelSelectionner extends Model {
       $liste_etudiants = ModelEtudiant::getEtud_by_section($id_section);
       $tab_resultats_section = array("REALISTE"=>0 ,"INVESTIGATIF"=>0 ,"ARTISTIQUE" => 0, "SOCIAL" => 0, "ENTREPRENEUR" => 0, "CONVENTIONNEL" => 0);
       foreach ($liste_etudiants as $etudiant){
+        $tab_reponse =  ModelSelectionner::select_by_num_user($etudiant['id_etudiant']);
         if (count($tab_reponse)==12){
-          $tab_intermediaire = calcul_result_etud($tab_reponse);
-          $tab_reponse = select_by_num_user($etudiant["[id_etudiant"]);
+          $nb_etudiant=$nb_etudiant+1;
+          $tab_intermediaire = ModelSelectionner::calcul_result_etud($tab_reponse);
           $tab_resultats_section["REALISTE"] = $tab_resultats_section["REALISTE"] + $tab_intermediaire["REALISTE"];
           $tab_resultats_section["INVESTIGATIF"] = $tab_resultats_section["INVESTIGATIF"] + $tab_intermediaire["INVESTIGATIF"];
           $tab_resultats_section["ARTISTIQUE"] = $tab_resultats_section["ARTISTIQUE"] + $tab_intermediaire["ARTISTIQUE"];
