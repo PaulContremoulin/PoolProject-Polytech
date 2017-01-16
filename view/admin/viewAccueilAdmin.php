@@ -8,7 +8,7 @@
 				<form method="POST" action="index.php?controller=admin&amp;action=promo">
 					<input type="submit" class="btn btn-lg btn-dark" name="begin" value="Voir des résultats des élèves"/>
 				</form>
-				<form method="POST" action="index.php?controller=admin&amp;action=question">
+				<form method="POST" action="index.php?controller=admin&amp;action=questionnaire">
 					<input type="submit" class="btn btn-lg btn-dark" name="begin" value="Gerer le questionnaire"/>
 				</form>
 				<form method="POST" action="index.php?controller=admin&amp;action=admins">

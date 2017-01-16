@@ -21,7 +21,7 @@ switch ($action) {
 
             $account = ModelEtudiant::select($login);
         
-        $_SESSION['mail']=$mail;
+            $_SESSION['mail']=$mail;
             $_SESSION['login']=$login;
             $_SESSION['nom'] = $account->getName();
             $_SESSION['admin'] = 0;
@@ -95,10 +95,10 @@ switch ($action) {
 
         }
 
-        $pagetitle = "Votre profil";
-        $view = "accueil";
+            $pagetitle = "Votre profil";
+            $view = "accueil";
 
-        require ("{$ROOT}{$DS}view{$DS}view.php");
+            require ("{$ROOT}{$DS}view{$DS}view.php");
 
         break;
 

@@ -26,7 +26,9 @@
 		?>
 		<header id="top" class="header">
 			<?php
-				require_once("navbar.php");
+				if(isset($_SESSION['login'])){
+					require_once("navbar.php");
+				}
 			?>
 			<div class="text-vertical-center">
 			<?php

@@ -11,29 +11,6 @@ $action = $_GET['action'];// recupère l'action passée dans l'URL
 
 switch ($action) {
 
-    
-    case "profil":
-
-        if(isset($_SESSION['login'])){
-
-            
-        }
-
-        $pagetitle = "Mon profil";
-        $view = "profilpromo";
-
-        /* A garder pour la gestion des etudiants / admins / pas inscrits
-        if(Session::is_admin()){
-
-        }else if(Session::is_user()){
-
-        }else{
-
-        }
-        */
-        require ("{$ROOT}{$DS}view{$DS}view.php");
-        break;
-
     case "connexion":
         $login = ModelAdmin::getID($_POST["login"]); //On récupère l'ine associé à l'e-mail
         $password = $_POST["password"];
@@ -44,7 +21,19 @@ switch ($action) {
 
             $_SESSION['login']=$login;
             $_SESSION['admin'] = 1;
+        }else{
+            $msgError = "Erreur de connexion, l'identifiant ou le mot de passe est incorect.";
         }
+
+    case "profil":
+
+        if(isset($_SESSION['login'])){
+
+            
+        }
+        /* la vue profil promo sera visualisée a l'interreur de la vue accueil*/
+        $pagetitle = "Mon profil";
+        $view = "profilpromo";
 
         $pagetitle = "Accueil";
         $view = "accueil";
@@ -56,15 +45,13 @@ switch ($action) {
     case "deconnexion":
 
         unset($_SESSION['login']);
-        unset($_SESSION['nom']);
         unset($_SESSION['admin']);
-        unset($_SESSION['idGroupe']);
 
-        $pagetitle = "Votre profil";
-        $view = "profilpromo";
+        $pagetitle = "Accueil";
+        $view = "accueil";
+
         require ("{$ROOT}{$DS}view{$DS}view.php");
         break;
-
 
     case "inscription":
 

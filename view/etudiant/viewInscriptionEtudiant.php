@@ -36,6 +36,14 @@
 		    	<input id="submit" class="btn btn-dark btn-lg" type="submit" value="Je m'inscris" />
 			</fieldset> 
 		</form>
+
+		<p>
+			<form  method="POST" action="index.php?controller=etudiant&amp;action=accueil">
+				<h4>
+					<input id="submit" class="btn btn-dark btn-small" type="submit" value="Retour à la connexion" />
+				</h4>
+			</form>
+		</p>
 	</div>
 	</div>
 </div>

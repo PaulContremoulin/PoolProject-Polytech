@@ -9,7 +9,16 @@ require_once ("{$ROOT}{$DS}config{$DS}security.php");
 
 // On initialise le controlleur à appeler
 if(!isset($_GET['controller'])){
-	$controller="who";
+	if(isset($_SESSION['login'])){
+		if($_SESSION['admin'] == 0){
+			$controller="etudiant";
+		}
+		else{
+			$controller="admin";
+		}
+	}else{
+		$controller="who";
+	}
 }else{
 	$controller = $_GET['controller'];
 }
