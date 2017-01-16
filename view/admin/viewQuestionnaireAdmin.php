@@ -1,5 +1,5 @@
 
-<h1> Modification du questionnaire </h2>
+<h1> Modification du questionnaire </h1>
 
 	<div class="listGroupe">
 		<h2> Selectionner le groupe que vous souhaitez modifier : </h2>
@@ -13,7 +13,7 @@
 	</div>
     </br></br></br>
 	<div id="formReponse"></div>
-</div>
+
 
 <script type="text/javascript">
 	var tab_grps = <?php echo json_encode($tab_grps); ?>;

@@ -152,7 +152,7 @@ th{
  list-style-type:none;
  }
 .listGroupe li {
- margin-left:2px;
+ margin-left: 15%;
  float:left; /*pour IE*/
  }
 .listGroupe ul li a {
@@ -163,4 +163,8 @@ th{
  text-align:center;
  padding:5px;
  border:2px solid;
+}
+
+.formReponse{
+	margin-bottom: 20%;
 }
