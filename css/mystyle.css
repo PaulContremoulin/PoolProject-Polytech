@@ -216,14 +216,14 @@ th{
 
 .diagramme li {
 	display : list-item;
-float:left;
-list-style-position:outside;
-margin-right:25px;
+	float:left;
+	list-style-position:outside;
+	margin-right:25px;
 }
 
 .diagramme ul li {
 	 float:left;   
- 	 width:100px;
- 	 height: 100px;
+ 	 width:250px;
+ 	 height: 250px;
 }
 
