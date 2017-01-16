@@ -38,7 +38,7 @@
 		</form>
 
 		<p>
-			<form  method="POST" action="index.php?controller=etudiant&amp;action=accueil">
+			<form  method="POST" action="index.php?controller=etudiant&amp;action=profil">
 				<h4>
 					<input id="submit" class="btn btn-dark btn-small" type="submit" value="Retour à la connexion" />
 				</h4>
