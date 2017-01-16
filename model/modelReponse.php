@@ -28,7 +28,7 @@ class ModelReponse extends Model {
   }
 
   public function __construct($num_reponse = NULL,$num_profil = NULL,$text = NULL,$num_group = NULL){
-    if (!is_null($num_reponse) !is_null($num_profil) && !is_null($text) && !is_null($num_group)){
+    if (!is_null($num_reponse) && !is_null($num_profil) && !is_null($text) && !is_null($num_group)){
       $this->$id_reponse = $num_reponse;
       $this->$id_profil = $num_profil;
       $this->$text_rep = $text;
