@@ -210,18 +210,8 @@ th{
 
 }
 
-.diagramme ul {
-	list-style-type:none;
-}
-
-.diagramme li {
-
-	margin-right:25px;
-}
-
 .diagramme ul li {
-	display: inline;
-	 float:left;   
+	display: inline;   
  	 width:250px;
  	 height: 250px;
 }
