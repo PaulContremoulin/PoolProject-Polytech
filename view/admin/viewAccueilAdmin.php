@@ -6,11 +6,13 @@
 				<h2>Bienvenue sur la plateforme du test de personnalité de Polytech Montpellier</h2></br>
 				<h4>Résultats des différentes sections</h4></br>
 				<div class="diagramme">
-					<li>
-						<?php 
-							require_once("viewProfilpromoAdmin.php");
-						} ?>
-					</li>
+					<ul>
+						<li>
+							<?php 
+								require_once("viewProfilpromoAdmin.php");
+							} ?>
+						</li>
+					</ul>
 				</div>
 
 </div>

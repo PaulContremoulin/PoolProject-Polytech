@@ -210,9 +210,9 @@ th{
 
 }
 
-.diagramme li {
-	width: 150px;
-	height: 100px;
+.diagramme ul li {
+	width: 300px;
+	height: 300px;
 }
 
 
