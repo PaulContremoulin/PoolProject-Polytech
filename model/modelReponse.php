@@ -41,7 +41,7 @@ class ModelReponse extends Model {
 
     try{
       //Récupère le nomrbre de groupe de question
-      $sql_grps = "SELECT * FROM Groupes;";
+      $sql_grps = "SELECT * FROM Groupe;";
       $req_grps = Model::$pdo->prepare($sql_grps);
       $req_grps->execute();
       $nb_grps = $req_grps->rowCount();
