@@ -7,32 +7,7 @@ require_once("{$ROOT}{$DS}model{$DS}modelPromo.php");
 
 $action = $_GET['action'];// recupère l'action passée dans l'URL
 
-//require_once ("{$ROOT}{$DS}model{$DS}ModelQuelconque.php"); // chargement du modèle
-
 switch ($action) {
-
-    
-    case "profil":
-
-        if(isset($_SESSION['login'])){
-
-            
-        }
-
-        $pagetitle = "Mon profil";
-        $view = "profilpromo";
-
-        /* A garder pour la gestion des etudiants / admins / pas inscrits
-        if(Session::is_admin()){
-
-        }else if(Session::is_user()){
-
-        }else{
-
-        }
-        */
-        require ("{$ROOT}{$DS}view{$DS}view.php");
-        break;
 
     case "connexion":
         $login = ModelAdmin::getID($_POST["login"]); //On récupère l'ine associé à l'e-mail
@@ -175,8 +150,6 @@ case "departement":
  case "code":
     $sections = ModelSection::listeSections();
     $sectionsJS = htmlspecialchars(serialize($sections), ENT_QUOTES);
-    //print($_POST["promoEtudiant"]);
-    //print(isset($_POST["promoEtudiant"]));
     if(isset($_POST["promoEtudiant"])){
         $characts    = 'abcdefghijklmnopqrstuvwxyz';
         $characts   .= 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';    
