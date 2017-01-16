@@ -1,18 +1,20 @@
 
 <h1> Modification du questionnaire </h2>
 
-<div class="listGroupe fils">
-	<h2> Selectionner le groupe que vous souhaitez modifier : </h2>
-	<ul>
-		<?php
-			foreach ($tab_grps as $key => $value) {
-			echo '<li><button class="btn btn-dark btn-lg" onclick="changerGroupe('.$key.');">'.$key.'</button></li>';
-			}
-		?>
-	</ul>
-</div>
+<div class="hcontainer">
+	<main>
+		<div class="listGroupe">
+			<h2> Selectionner le groupe que vous souhaitez modifier : </h2>
+			<ul>
+				<?php
+					foreach ($tab_grps as $key => $value) {
+					echo '<li><button class="btn btn-dark btn-lg" onclick="changerGroupe('.$key.');">'.$key.'</button></li>';
+					}
+				?>
+			</ul>
+		</div>
+	</main>
 
-<div class="fils">
 	<div id="formReponse"></div>
 </div>
 
