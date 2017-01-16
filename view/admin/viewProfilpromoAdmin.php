@@ -14,7 +14,7 @@
 	var var_profil_mat = <?php echo json_encode($profil_mat, JSON_NUMERIC_CHECK); ?>;
 	var var_profil_mi = <?php echo json_encode($profil_mi, JSON_NUMERIC_CHECK); ?>;
 
-	function installChart(idhtml, tab_section, labels, nom_sec)
+	function installChart(idhtml, tab_section, labels, nom_sec){
 
 		var ctx = document.getElementById(idhtml);
 		var data = {
@@ -29,7 +29,7 @@
 		            pointHoverBackgroundColor: "#fff",
 		            pointHoverBorderColor: "rgba(0,0,0,1)",
 		            data: tab_section;
-		        
+		        }
 		    ]
 		};
 		var myChart = new Chart(ctx, {
