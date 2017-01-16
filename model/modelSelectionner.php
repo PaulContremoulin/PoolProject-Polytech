@@ -190,8 +190,8 @@ class ModelSelectionner extends Model {
         $tab_resultats_section[$key] = round($tab_resultats_section[$key]/$nb_etudiant,PHP_ROUND_HALF_UP);
       }
     }
-  }
-  return $tab_resultats_section;
+
+    return $tab_resultats_section;
   }
 }
 ?>
