@@ -9,7 +9,7 @@
         <li class="<?php if ($view=="test") {echo "active"; }?>"><a href="index.php?controller=etudiant&amp;action=code"><i class="fa fa-file-text-o" aria-hidden="true"></i>  Test de personnalité</a></li>
         <li><a href="index.php?controller=etudiant&amp;action=deconnexion"><i class="fa fa-power-off" aria-hidden="true"></i>  Se déconnecter</a></li>
         <?php } else if (isset($_SESSION['login']) && $_SESSION['admin'] == 1){ ?>
-        <li><a href="index.php?controller=admin&amp;action=resultats"><i class="fa fa-bar-chart" aria-hidden="true"></i>  Statistiques </a></li>
+        <li><a href="index.php?controller=admin&amp;action=profil"><i class="fa fa-bar-chart" aria-hidden="true"></i>  Statistiques </a></li>
         <li><a href="index.php?controller=admin&amp;action=questionnaire"><i class="fa fa-file-text-o" aria-hidden="true"></i>  Gestion Questionnaire</a></li>
         <li><a href="index.php?controller=admin&amp;action=code"><i class="fa fa-key" aria-hidden="true"></i>  Code Test</a></li>
         <li><a href="index.php?controller=admin&amp;action=admins"><i class="fa fa-users" aria-hidden="true"></i>  Gestion Administrateur</a></li>
