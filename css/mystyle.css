@@ -141,12 +141,13 @@ th{
 	width : 100%;
 }
 
-.parent {
-  display: flex; /* contexte sur le parent */
-}
-
 .fils {
-  margin: auto; /* eh oui, tout bêtement */
+width:400px;
+height:200px;
+position:absolute;
+left:50%;
+top:50%;
+margin:-100px 0 0 -200px;
 }
 
 .listGroupe ul {
