@@ -3,7 +3,7 @@
 <ul>
 	<?php
 		foreach ($tab_grps as $key => $value) {
-		echo '<li><button onclick="changerGroupe('.$key.');">'.$key.'</button></li>';
+		echo '<li><button class="btn btn-dark btn-lg" onclick="changerGroupe('.$key.');">'.$key.'</button></li>';
 		}
 	?>
 </ul>
@@ -18,7 +18,7 @@
 		var form = '<form method="POST" action="index.php?controller=admin&amp;action=updateQuestionnaire">';
 		for(var i = 0; i < tab_reps.length; i++){
 			num_rep = i+1;
-			form += '<label>'+num_rep+'</label><input name="'+tab_reps[i]["idr"]+'" type="text" value="'+tab_reps[i]["txt"]+'" />';
+			form += '<label class="btn btn-dark btn-lg">'+num_rep+'</label><input name="'+tab_reps[i]["idr"]+'" type="text" value="'+tab_reps[i]["txt"]+'" /></br></br>';
 		}
 		form += '<input id="submit" class="btn btn-dark btn-lg" type="submit" value="Mettre à jour" />';
 		form += '</form>';
