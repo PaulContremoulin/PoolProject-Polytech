@@ -69,6 +69,7 @@
 					});
 				</script>
 			</div>
+			</br>
 			<div id="droite">
 				<div id="premier">
 					<center>
