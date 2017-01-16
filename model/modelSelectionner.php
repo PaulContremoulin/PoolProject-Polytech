@@ -146,23 +146,20 @@ class ModelSelectionner extends Model {
 
     public static function calcul_result_promo($id_promo){
       $liste_etudiants = ModelEtudiant::getEtud_by_promo($id_promo);
-      $tab_resultats_promo = array("realiste"=>0 ,"investigatif"=>0 ,"artistique" => 0, "social" => 0, "entrepreneur" => 0, "conventionnel" => 0);
+      $tab_resultats_promo = array("REALISTE"=>0 ,"INVESTIGATIF"=>0 ,"ARTISTIQUE" => 0, "SOCIAL" => 0, "ENTREPRENEUR" => 0, "CONVENTIONNEL" => 0);
         foreach ($liste_etudiants as $etudiant) {
-          $tab_reponse = ModelSelectionner::select_by_num_user($etudiant);
+          $tab_reponse = ModelSelectionner::select_by_num_user($etudiant['id_etudiant']);
           $tab_intermediaire =  ModelSelectionner::calcul_result_etud($tab_reponse);
-          $tab_resultats_promo["realiste"] = $tab_resultats_promo["realiste"] + $tab_intermediaire["realiste"];
-          $tab_resultats_promo["investigatif"] = $tab_resultats_promo["investigatif"] + $tab_intermediaire["investigatif"];
-          $tab_resultats_promo["artistique"] = $tab_resultats_promo["artistique"] + $tab_intermediaire["artistique"];
-          $tab_resultats_promo["social"] = $tab_resultats_promo["social"] + $tab_intermediaire["social"];
-          $tab_resultats_promo["entrepreneur"] = $tab_resultats_promo["entrepreneur"] + $tab_intermediaire["entrepreneur"];
-          $tab_resultats_promo["conventionnel"] = $tab_resultats_promo["conventionnel"] + $tab_intermediaire["conventionnel"];
+          $tab_resultats_promo["REALISTE"] = $tab_resultats_promo["REALISTE"] + $tab_intermediaire["REALISTE"];
+          $tab_resultats_promo["INVESTIGATIF"] = $tab_resultats_promo["INVESTIGATIF"] + $tab_intermediaire["INVESTIGATIF"];
+          $tab_resultats_promo["ARTISTIQUE"] = $tab_resultats_promo["ARTISTIQUE"] + $tab_intermediaire["ARTISTIQUE"];
+          $tab_resultats_promo["SOCIAL"] = $tab_resultats_promo["SOCIAL"] + $tab_intermediaire["SOCIAL"];
+          $tab_resultats_promo["ENTREPRENEUR"] = $tab_resultats_promo["ENTREPRENEUR"] + $tab_intermediaire["ENTREPRENEUR"];
+          $tab_resultats_promo["CONVENTIONNEL"] = $tab_resultats_promo["CONVENTIONNEL"] + $tab_intermediaire["CONVENTIONNEL"];
         }
-      $tab_resultats_promo["realiste"] = $tab_resultats_promo["realiste"]/count($liste_etudiants);
-      $tab_resultats_promo["investigatif"] = $tab_resultats_promo["investigatif"]/count($liste_etudiants);
-      $tab_resultats_promo["artistique"] = $tab_resultats_promo["artistique"]/count($liste_etudiants);
-      $tab_resultats_promo["social"] = $tab_resultats_promo["social"]/count($liste_etudiants);
-      $tab_resultats_promo["entrepreneur"] = $tab_resultats_promo["entrepreneur"]/count($liste_etudiants);
-      $tab_resultats_promo["conventionnel"] = $tab_resultats_promo["conventionnel"]/count($liste_etudiants);
+        foreach($tab_resultats_promo as $key => &$values){
+          $tab_resultats_promo[$key] = round($tab_resultats_promo[$key]/count($liste_etudiants),PHP_ROUND_HALF_UP);
+       }
       return $tab_resultats_promo;
     }
       
@@ -170,23 +167,23 @@ class ModelSelectionner extends Model {
    /* 
     public function calcul_result_departement($id_section){
       $liste_etudiants = ModelEtudiant::getEtud_by_section($id_section);
-      $tab_resultats_section = array("realiste"=>0 ,"investigatif"=>0 ,"artistique" => 0, "social" => 0, "entrepreneur" => 0, "conventionnel" => 0);
+      $tab_resultats_section = array("REALISTE"=>0 ,"INVESTIGATIF"=>0 ,"ARTISTIQUE" => 0, "SOCIAL" => 0, "ENTREPRENEUR" => 0, "CONVENTIONNEL" => 0);
       foreach ($liste_etudiants as $etudiant){
         $tab_intermediaire = calcul_result_etud($tab_reponse);
         $tab_reponse = select_by_num_user($etudiant["[id_etudiant"]);
-        $tab_resultats_section["realiste"] = $tab_resultats_section["realiste"] + $tab_intermediaire["realiste"];
-        $tab_resultats_section["investigatif"] = $tab_resultats_section["investigatif"] + $tab_intermediaire["investigatif"];
-        $tab_resultats_section["artistique"] = $tab_resultats_section["artistique"] + $tab_intermediaire["artistique"];
-        $tab_resultats_secton["social"] = $tab_resultats_section["social"] + $tab_intermediaire["social"];
-        $tab_resultats_section["entrepreneur"] = $tab_resultats_section["entrepreneur"] + $tab_intermediaire["entrepreneur"];
-        $tab_resultats_section["conventionnel"] = $tab_resultats_section["conventionnel"] + $tab_intermediaire["conventionnel"];
+        $tab_resultats_section["REALISTE"] = $tab_resultats_section["REALISTE"] + $tab_intermediaire["REALISTE"];
+        $tab_resultats_section["INVESTIGATIF"] = $tab_resultats_section["INVESTIGATIF"] + $tab_intermediaire["INVESTIGATIF"];
+        $tab_resultats_section["ARTISTIQUE"] = $tab_resultats_section["ARTISTIQUE"] + $tab_intermediaire["ARTISTIQUE"];
+        $tab_resultats_secton["SOCIAL"] = $tab_resultats_section["SOCIAL"] + $tab_intermediaire["SOCIAL"];
+        $tab_resultats_section["ENTREPRENEUR"] = $tab_resultats_section["ENTREPRENEUR"] + $tab_intermediaire["ENTREPRENEUR"];
+        $tab_resultats_section["CONVENTIONNEL"] = $tab_resultats_section["CONVENTIONNEL"] + $tab_intermediaire["CONVENTIONNEL"];
       }
-      $tab_resultats_section["realiste"] = $tab_resultats_section["realiste"]/count($liste_etudiants);
-      $tab_resultats_section["investigatif"] = $tab_resultats_section["investigatif"]/count($liste_etudiants);
-      $tab_resultats_section["artistique"] = $tab_resultats_section["artistique"]/count($liste_etudiants);
-      $tab_resultats_section["social"] = $tab_resultats_section["social"]/count($liste_etudiants);
-      $tab_resultats_section["entrepreneur"] = $tab_resultats_section["entrepreneur"]/count($liste_etudiants);
-      $tab_resultats_section["conventionnel"] = $tab_resultats_section["conventionnel"]/count($liste_etudiants);
+      $tab_resultats_section["REALISTE"] = $tab_resultats_section["REALISTE"]/count($liste_etudiants);
+      $tab_resultats_section["INVESTIGATIF"] = $tab_resultats_section["INVESTIGATIF"]/count($liste_etudiants);
+      $tab_resultats_section["ARTISTIQUE"] = $tab_resultats_section["ARTISTIQUE"]/count($liste_etudiants);
+      $tab_resultats_section["SOCIAL"] = $tab_resultats_section["SOCIAL"]/count($liste_etudiants);
+      $tab_resultats_section["ENTREPRENEUR"] = $tab_resultats_section["ENTREPRENEUR"]/count($liste_etudiants);
+      $tab_resultats_section["CONVENTIONNEL"] = $tab_resultats_section["CONVENTIONNEL"]/count($liste_etudiants);
       return $tab_resultats_section;
       }*/
   }

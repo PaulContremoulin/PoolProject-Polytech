@@ -114,8 +114,4 @@ class ModelAdmin extends Model {
   */
 }
 
-//print(ModelAdmin::getEmail(ModelAdmin::getID("yves.alain@etu.umontpellier.fr")));
-print(ModelAdmin::checkPassword("yves.alain@etu.umontpellier.fr","4c163f8c62b749d8b8fa3be0e3c0c6b2fdc276bcf7c1827a9a975a8679943dd5"));
-print_r(ModelAdmin::select("yves.alain@etu.umontpellier.fr"));
-
 ?>

@@ -27,7 +27,7 @@
 
 		case "resultat_promo":
 			$pagetitle = "Resultat de la promo";
-			$etud_promo = ModelEtudiant::getEtud_bypromo($id_promo); //Comment obtenir la promo de l'étudiant?
+			$etud_promo = ModelEtudiant::getPromo($_SESSION['login']); //Comment obtenir la promo de l'étudiant?
 			foreach ($etud_promo as $etudiant) {
 				$tab_rep = ModelSelectionner::select_by_num_user($etudiant["id_etudiant"]);
 				$result_realiste = calculresult_realiste($tab_rep);

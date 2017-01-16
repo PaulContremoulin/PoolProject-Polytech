@@ -50,15 +50,32 @@ class ModelPromo extends Model {
 
 	}
 
-	public static function recupMDP($idpromo,$idsection){
- 		$sql = "SELECT mdp_test FROM ".static::$table." WHERE $id_promo = ".$idpromo."AND".$id_section."= $idsection";
+	public static function getall(){
+		$sql = "SELECT Promo.id_section,Promo.mdp_test, Promo.annee, Section.libelle_section FROM ".static::$table.", Section WHERE Promo.id_section = Section.id_section ;" ;
 
 		try{
 
 	      $req_prep = Model::$pdo->prepare($sql);
 	      $req_prep->execute();
-
 	      return $req_prep;
+
+	  	}catch(PDOException $e) {
+		  echo 'Get failed: ' . $e->getMessage();
+	  }
+
+	}
+
+
+	public static function recupMDP($idpromo){
+ 		$sql = "SELECT mdp_test FROM ".static::$table." WHERE id_promo = :idpromo ;";
+
+		try{
+
+	      $req_prep = Model::$pdo->prepare($sql);
+	      $req_prep->bindParam(':idpromo',$idpromo);
+	      $req_prep->execute();
+	      $result =  $req_prep->fetch();
+	      return $result;
 
 	  	} catch(PDOException $e) {
 		  echo 'Get failed: ' . $e->getMessage();
@@ -66,11 +83,24 @@ class ModelPromo extends Model {
 
 	}
 
-	public static function set_mdp_test($mdp,$idpromo,$idsection){
-		$sql = "UPDATE ".static::$table." SET mdp_test =".$mdp." WHERE $id_promo = ".$idpromo."AND".$id_section."= $idsection"
+	public static function set_mdp_test($mdp,$idpromo){
+		$sql = "UPDATE ".static::$table." SET mdp_test = :mdp WHERE id_promo = :idpromo ;";
 
 		try{
 
+	      $req_prep = Model::$pdo->prepare($sql);
+	      $req_prep->bindParam(':mdp',$mdp);
+	      $req_prep->bindParam(':idpromo',$idpromo);
+	      $req_prep->execute();
+
+	  	} catch(PDOException $e) {
+		  echo 'Set failed: ' . $e->getMessage();
+	  }
+	}
+
+	public static function get_id_section($id_promo){
+		$sql = "SELECT id_section FROM ".static::$table." WHERE id_promo = ".$id_promo.";";
+		try{
 	      $req_prep = Model::$pdo->prepare($sql);
 	      $req_prep->execute();
 
@@ -80,5 +110,4 @@ class ModelPromo extends Model {
 	}
 
 }
-
 ?>

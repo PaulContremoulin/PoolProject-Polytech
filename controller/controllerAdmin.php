@@ -3,7 +3,7 @@
 require_once("{$ROOT}{$DS}model{$DS}modelEtudiant.php");
 require_once("{$ROOT}{$DS}model{$DS}modelSection.php");
 require_once("{$ROOT}{$DS}model{$DS}modelAdmin.php");
-
+require_once("{$ROOT}{$DS}model{$DS}modelPromo.php");
 
 $action = $_GET['action'];// recupère l'action passée dans l'URL
 
@@ -125,7 +125,6 @@ case "modif":
     $prenomAdmin = $_POST["prenom"];
     $mailAdmin = $_POST["email2"];
     $confirmPwd = $_POST["confirmPwd"];
-    $ancien_email = $_POST["email1"];
 
     if(isset($_SESSION['login']) && $_SESSION['admin']==1){
         if(ModelAdmin::isMailFormat($mailAdmin)){
@@ -139,7 +138,7 @@ case "modif":
                      "mail_admin" => $mailAdmin,
                 );
 
-                    ModelAdmin::update($new_account,"mail_admin");
+                    ModelAdmin::insert($new_account);
                 }
             }
         $listeAdmin = ModelAdmin::getAdmins();
@@ -150,19 +149,53 @@ case "modif":
     break;
 
 
-/*case "question":
-    print("a faire : afficher dans un tablea");
+case "questionnaire":
+    $pagetitle = "Liste des admins";
+    $view = "choixgroupe";
+
+    require ("{$ROOT}{$DS}view{$DS}view.php");
+    break;
+    
 
 
 case "promo":
-    print("a faire en 1ere position");
+    $promotion = ModelPromo::getall();
+    $pagetitle = "Informations sur les promos";
+    $view = "listepromo";
 
+    require ("{$ROOT}{$DS}view{$DS}view.php");
+    break;
+    
+/*
 case "departement":
     print("a faire en 2e positions");
 
- 
+*/ 
 
  case "code":
-    print("facile a faire. Selection de la promo concernée, du departement, generation du code avec un random et insertion dans la base de donnee"); */    
+    $sections = ModelSection::listeSections();
+    $sectionsJS = htmlspecialchars(serialize($sections), ENT_QUOTES);
+    //print($_POST["promoEtudiant"]);
+    //print(isset($_POST["promoEtudiant"]));
+    if(isset($_POST["promoEtudiant"])){
+        $characts    = 'abcdefghijklmnopqrstuvwxyz';
+        $characts   .= 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';    
+        $characts   .= '1234567890'; 
+        $code_aleatoire      = ''; 
+
+        for($i=0;$i < 5;$i++)    //10 est le nombre de caractères
+        { 
+            $code_aleatoire .= substr($characts,rand()%(strlen($characts)),1); 
+        }
+        $promo = $_POST["promoEtudiant"];
+        ModelPromo::set_mdp_test($code_aleatoire,$promo);
+        
+    }
+    $pagetitle = "Generateur de code";
+    $view = "code";
+
+    require ("{$ROOT}{$DS}view{$DS}view.php");
+    break;
+    
 }
 ?>
