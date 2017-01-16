@@ -137,6 +137,4 @@ class ModelEtudiant extends Model {
   }
   */
 }
-//$tab = ModelEtudiant::getEtud_by_promo(1);
-//print_r($tab);
 ?>
