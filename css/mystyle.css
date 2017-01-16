@@ -220,7 +220,7 @@ th{
 }
 
 .diagramme ul li {
-	display: inline; 
+	/*display: inline; */
  	 width:250px;
  	 height: 250px;
 }
