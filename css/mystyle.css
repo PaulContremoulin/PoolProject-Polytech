@@ -146,6 +146,10 @@ th{
 	width : 100%;
 }
 
+.listGroupe{
+	margin-left: 10%;
+}
+
 .listGroupe ul {
  padding:0;
  margin:0;
@@ -165,6 +169,4 @@ th{
  border:2px solid;
 }
 
-.formReponse{
-	margin-top:20%;
-}
+
