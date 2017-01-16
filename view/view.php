@@ -16,11 +16,7 @@
 	<!--<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>-->
 </head>
 	<body>
-		<header id="top" class="header">
 		<?php
-			if(isset($_SESSION['login'])){
-				require_once("navbar.php");
-			}
 			if(isset($msgError)){
 				require_once("viewError.php");
 			}
@@ -28,6 +24,12 @@
 				require_once("viewValid.php");
 			}
 		?>
+		<header id="top" class="header">
+			<?php
+				if(isset($_SESSION['login'])){
+					require_once("navbar.php");
+				}
+			?>
 			<div class="text-vertical-center">
 			<?php
 				$filepath = "{$ROOT}{$DS}view{$DS}{$controller}{$DS}";
