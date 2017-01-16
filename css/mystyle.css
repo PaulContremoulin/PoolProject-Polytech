@@ -106,7 +106,7 @@ th{
 }
 
 #premier, #deuxieme, #troisieme{
-	width: 65%;
+	width: 100%;
 	/*height:170px;*/
 	border-width:2px;
  	border-style:solid;
