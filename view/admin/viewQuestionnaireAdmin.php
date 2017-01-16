@@ -1,8 +1,9 @@
 
-<h3> Modification du questionnaire </h3>
+<h1> Modification du questionnaire </h2>
 
 <div class"parent">
 	<div class="listGroupe fils">
+		<h2> Selectionner le groupe que vous souhaitez modifier : </h2>
 		<ul>
 			<?php
 				foreach ($tab_grps as $key => $value) {
@@ -12,8 +13,9 @@
 		</ul>
 	</div>
 
-
-	<div id="formReponse fils"></div>
+	<div class="fils">
+		<div id="formReponse"></div>
+	</div>
 </div>
 
 <script type="text/javascript">
