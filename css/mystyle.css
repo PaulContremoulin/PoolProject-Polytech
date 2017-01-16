@@ -10,10 +10,6 @@
     padding-left: 1%;
 }
 
-body {
-    margin-top: 2%
-}
-
 input[type="text"],input[type="password"]{
 
 	color: #000000;
@@ -176,3 +172,7 @@ th{
 }
 
 
+html, body{
+  margin:0;
+  padding:0;
+}
