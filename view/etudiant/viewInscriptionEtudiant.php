@@ -50,7 +50,7 @@
 	{
 	    if(ids != "")
 	    {
-	    /* On compte les départements de cette région */
+
 	    var nbp = tab[ids][1].length;
 
 	    var form_p  = '<label for="section"><h4> Année : </h4></label>';

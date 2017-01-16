@@ -153,7 +153,6 @@ case "questionnaire":
 
     require_once("{$ROOT}{$DS}model{$DS}modelReponse.php");
     $tab_grps = ModelReponse::get_all_reponse();
-    print_r($tab_grps);
 
 
     $pagetitle = "Modification du questionnaire";

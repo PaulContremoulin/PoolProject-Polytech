@@ -6,7 +6,7 @@
 	-->
 	<div class="span6">
 
-			<div id= gauche>	
+			<div id="gauche">	
 				<canvas id="myChart" width="100%" height="100%" ></canvas>
 				<?php
 					if(isset($_POST['envoiMail'])){
@@ -69,20 +69,20 @@
 					});
 				</script>
 			</div>
-			<div id=droite>
-				<div id=premier>
+			<div id="droite">
+				<div id="premier">
 					<center>
 					<h4> Votre premier trait de personnalité :<br/> <?php echo $profil1->get_libelle();?> </h4>
 					</center>
 					<p> <?php echo $profil1->get_description();?> </p>
 				</div>
-				<div id=deuxieme>
+				<div id="deuxieme">
 					<center>
 					<h4>  Votre deuxième trait de personnalité :<br/> <?php echo $profil2->get_libelle();?> </h4>
 					</center>
 					<p> <?php echo $profil2->get_description();?> </p>
 				</div>
-				<div id=troisieme>
+				<div id="troisieme">
 					<center>
 					<h4> Votre troisième trait de personnalité :<br/> <?php echo $profil3->get_libelle();?> </h4>
 					</center>
