@@ -18,7 +18,7 @@
 		var form = '<form method="POST" action="index.php?controller=admin&amp;action=updateQuestionnaire">';
 		for(var i = 0; i < tab_reps.length; i = i++){
 			num_rep = i+1;
-			form += '<label>'+num_rep+'</label><input name="'+tab_reps[i]["idr"]+'" type="text" value="'+tab_reps["txt"]+'" />';
+			form += '<label>'+num_rep+'</label><input name="'+tab_reps[i]["idr"]+'" type="text" value="'+tab_reps[i]["txt"]+'" />';
 		}
 		form += '<input id="submit" class="btn btn-dark btn-lg" type="submit" value="Mettre à jour" />';
 		form += '</form>';
