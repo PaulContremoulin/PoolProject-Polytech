@@ -5,10 +5,13 @@
 			}else{ ?>
 				<h2>Bienvenue sur la plateforme du test de personnalité de Polytech Montpellier</h2></br>
 				<h4>Résultats des différentes sections</h4></br>
-			<?php 
-				require_once("viewProfilpromoAdmin.php");
-			} ?>
-		</div>
+				<div class="diagramme">
+					<ul>
+						<?php 
+							require_once("viewProfilpromoAdmin.php");
+						} ?>
+					</ul>
+				</div>
 
 </div>
 
