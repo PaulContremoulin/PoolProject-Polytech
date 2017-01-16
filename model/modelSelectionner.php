@@ -173,7 +173,7 @@ class ModelSelectionner extends Model {
     $liste_etudiants = ModelEtudiant::getEtud_by_section($id_section);
     $nb_etudiant = count($liste_etudiants);
     $tab_resultats_section = array("REALISTE"=>0 ,"INVESTIGATIF"=>0 ,"ARTISTIQUE" => 0, "SOCIAL" => 0, "ENTREPRENEUR" => 0, "CONVENTIONNEL" => 0);
-    if(count($liste_etudiants)>0){
+    if($nb_etudiant>0){
       foreach ($liste_etudiants as $etudiant){
         $tab_reponses = self::select_by_num_user($etudiant["id_etudiant"]);
         if (count($tab_reponses)==12){
@@ -188,7 +188,7 @@ class ModelSelectionner extends Model {
       }
       foreach($tab_resultats_section as $key => &$values){
 
-          $tab_resultats_promo[$key] = round($tab_resultats_section[$key]/$nb_etudiant,PHP_ROUND_HALF_UP);
+          $tab_resultats_section[$key] = round($tab_resultats_section[$key]/$nb_etudiant,PHP_ROUND_HALF_UP);
        }
     }
     return $tab_resultats_section;
