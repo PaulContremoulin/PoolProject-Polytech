@@ -74,20 +74,27 @@ th{
 	font-size: 15%
 }*/
 
-#gauche{
+/*#gauche{
 	float:left;
 	width:500px;
 	height:550px;
-}
+}*/
 
-#droite{
+/*#droite{
 	margin-left:550px;
 	width:400px;
 	height:550px;
 
 
+}*/
+
+#droite{
+	margin-left:25%;
 }
 
+#gauche{
+	float:left;
+}
 
 #premier, #deuxieme, #troisieme{
 	width:550px;
