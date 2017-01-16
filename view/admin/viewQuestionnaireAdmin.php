@@ -1,8 +1,10 @@
 
 <h1> Modification du questionnaire </h1>
 
+	<center>
+	<h2> Selectionner le groupe que vous souhaitez modifier : </h2>
+	</center>
 	<div class="listGroupe">
-		<h2> Selectionner le groupe que vous souhaitez modifier : </h2>
 		<ul>
 			<?php
 				foreach ($tab_grps as $key => $value) {
