@@ -215,13 +215,12 @@ th{
 }
 
 .diagramme li {
-	display : inline-block;
-	float:left;
-	list-style-position:outside;
+
 	margin-right:25px;
 }
 
 .diagramme ul li {
+	display: inline;
 	 float:left;   
  	 width:250px;
  	 height: 250px;
