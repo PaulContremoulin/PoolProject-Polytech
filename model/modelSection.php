@@ -6,15 +6,18 @@ class ModelSection extends Model {
 
   private $id_section;
   private $libelle_section;
+  private $num_section;
 
   protected static $table = 'Section';
   protected static $primary = 'id_section';
+  protected static $annee= "annee";
    
 
-  public function __construct($section = NULL, $libelle = NULL) {
+  public function __construct($section = NULL, $libelle = NULL, $annee = NULL) {
     if (!is_null($section) && !is_null($libelle)) {
       $this->$id_section = $section;
       $this->$libelle_section = $libelle;
+      $this->$num_section = $annee;
       /*
       $this->tabAtt = array (
 					"mail"  => $this->mailUser,
@@ -26,7 +29,7 @@ class ModelSection extends Model {
   }
 
   public static function listeSections(){
-    $sql =  "SELECT id_promo, annee, Section.id_section AS id_section, libelle_section ".
+    $sql =  "SELECT id_promo, annee Section.id_section AS id_section, libelle_section ".
             "FROM ".static::$table.", Promo ".
             "WHERE Section.id_section = Promo.id_section ".
             "ORDER BY Section.id_section ASC, annee ASC;";
