@@ -23,7 +23,7 @@
 							}?>
 					>
 				</form> 
-				<input type="button" class="button_active" onclick="location.href='../attributes.pdf';" target="_blank" />
+				<input type="button" class="button_active" onclick="location.href='../attributs.pdf';" target="_blank" />
 				<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 				<script>
 					var var_labels = <?php echo json_encode($labels); ?>;

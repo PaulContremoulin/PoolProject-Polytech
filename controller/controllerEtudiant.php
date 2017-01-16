@@ -43,7 +43,6 @@ switch ($action) {
             if($nbQuestionsSave==12){// Test terminé
                 $tab_calculer = ModelSelectionner::calcul_result_etud($tab_reponses);
                 $tab_calculer_promo = ModelSelectionner::calcul_result_promo(ModelEtudiant::getPromo($_SESSION['login']));
-                print_r($tab_calculer_promo);
                 $labels = array(); //Tableau contenant les titres des personnalités
                 $profil = array(); //Tableau contenant les valeurs des personnalités
                 $profil_promo = array();
