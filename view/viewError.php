@@ -1,1 +1,1 @@
-<div id="error"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i><?php echo $msgError; ?></div>
+<!--<div id="error"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i><?php echo $msgError; ?></div>-->
