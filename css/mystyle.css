@@ -94,7 +94,7 @@ th{
 
 #droite{
 	margin-left: 55%;
-	width:37%;
+	width: 45%;
 	height:50%;
 }
 
@@ -106,7 +106,7 @@ th{
 }
 
 #premier, #deuxieme, #troisieme{
-	width:550px;
+	width:45%;
 	/*height:170px;*/
 	border-width:2px;
  	border-style:solid;
