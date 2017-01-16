@@ -27,10 +27,48 @@ switch ($action) {
 
     case "profil":
 
-        if(isset($_SESSION['login'])){
 
-            
+        $tab_ig = ModelSelectionner::calcul_result_departement("IG");
+        $tab_mea = ModelSelectionner::calcul_result_departement("MEA");
+        $tab_ste = ModelSelectionner::calcul_result_departement("STE");
+        $tab_gba = ModelSelectionner::calcul_result_departement("GBA");
+        $tab_mat = ModelSelectionner::calcul_result_departement("MAT");
+        $tab_mi = ModelSelectionner::calcul_result_departement("MI");
+
+        $labels = array(); //Tableau contenant les titres des personnalités
+        $profil_ig = array(); //Tableau contenant les valeurs des personnalités
+        $profil_mea = array(); 
+        $profil_ste = array(); 
+        $profil_gba = array(); 
+        $profil_mat = array(); 
+        $profil_mi = array(); 
+
+        //Affectation des valeurs aux deux tableaux
+        foreach($tab_ig as $key => $values){
+            array_push($labels, $key);
+            array_push($profil_ig, $values);
         }
+
+        foreach($tab_mea as $key => $values){
+            array_push($profil_mea, $values);
+        }
+
+        foreach($tab_ste as $key => $values){
+            array_push($profil_ste, $values);
+        }
+
+        foreach($tab_gba as $key => $values){
+            array_push($profil_gba, $values);
+        }
+
+        foreach($tab_mat as $key => $values){
+            array_push($profil_mat, $values);
+        }
+
+        foreach($tab_mi as $key => $values){
+            array_push($profil_mi, $values);
+        }
+
         /* la vue profil promo sera visualisée a l'interreur de la vue accueil*/
         $pagetitle = "Mon profil";
         $view = "profilpromo";
