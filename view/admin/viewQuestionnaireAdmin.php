@@ -1,13 +1,20 @@
 
+<h3> Modification du questionnaire </h3>
 
-<ul>
-	<?php
-		foreach ($tab_grps as $key => $value) {
-		echo '<li><button class="btn btn-dark btn-lg" onclick="changerGroupe('.$key.');">'.$key.'</button></li>';
-		}
-	?>
-</ul>
-<div id="formReponse"></div>
+<div class"parent">
+	<div class="listGroupe fils">
+		<ul>
+			<?php
+				foreach ($tab_grps as $key => $value) {
+				echo '<li><button class="btn btn-dark btn-lg" onclick="changerGroupe('.$key.');">'.$key.'</button></li>';
+				}
+			?>
+		</ul>
+	</div>
+
+
+	<div id="formReponse fils"></div>
+</div>
 
 <script type="text/javascript">
 	var tab_grps = <?php echo json_encode($tab_grps); ?>;
