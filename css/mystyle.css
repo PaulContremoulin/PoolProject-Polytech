@@ -184,13 +184,12 @@ th{
 	#gauche{
 		width:90%;
 		height:70%;
+		margin-bottom: 30%;
 	}
 
 	#droite{
-		width:65%;
+		width:60%;
 		margin-top:75%;
-		float:left;
-		margin-right: 40%;
 	}
 }
 
