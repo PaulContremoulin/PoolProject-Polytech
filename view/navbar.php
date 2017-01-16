@@ -18,13 +18,3 @@
         <?php } ?> 
     </ul>
 </nav>
-
-        <?php /*}else if($_GET["controller"]=="etudiant"){ ?>
-        <li><a href="index.php?controller=etudiant&amp;action=profil"><i class="icon-user"></i> Connexion</a></li>
-        <li><a href="index.php?controller=etudiant&amp;action=inscription"><i class="icon-doc-text"></i> Inscription</a></li>
-        <li><a href="index.php"><i class="icon-doc-text"></i>Etudiant/Admin</a></li>
-        <?php }else{ ?>
-          <li><a href="index.php?controller=admin&amp;action=profil"><i class="icon-user"></i> Connexion</a></li>
-          <li><a href="index.php"><i class="icon-doc-text"></i>Etudiant/Admin</a></li>
-        <?php }*/ ?> 
-
