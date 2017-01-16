@@ -215,7 +215,10 @@ th{
 }
 
 .diagramme li {
-	margin-left:2px;
+	display : list-item;
+float:left;
+list-style-position:outside;
+margin-right:25px;
 }
 
 .diagramme ul li {
