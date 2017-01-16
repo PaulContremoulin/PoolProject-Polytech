@@ -214,14 +214,12 @@ th{
 	list-style-type:none;
 }
 
-.diagramme li {
 
-	margin-right:25px;
-}
 
-.diagramme ul li {
-	/*display: inline; */
+.diagramme ul ol {
+	display: inline
  	 width:250px;
  	 height: 250px;
+ 	 margin-right: 25px;
 }
 
