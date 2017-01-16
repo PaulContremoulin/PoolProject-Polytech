@@ -4,7 +4,7 @@
 <nav id="sidebar-wrapper">
     <ul class="sidebar-nav">
         <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
-        <li class="sidebar-brand">Votre compte</li>
+        <li class="sidebar-brand"><a>Votre compte</a></li>
         <?php if(!empty($_SESSION['login']) && isset($_SESSION['login']) && $_SESSION['admin'] == 0){ ?>
         <li class="<?php if ($view=="profil") {echo "active"; }?>"><a href="index.php?controller=etudiant&amp;action=profil"><i class="fa fa-user" aria-hidden="true"></i>  Mon Profil</a></li>
         <li class="<?php if ($view=="test") {echo "active"; }?>"><a href="index.php?controller=etudiant&amp;action=code"><i class="fa fa-file-text-o" aria-hidden="true"></i>  Test de personnalité</a></li>
