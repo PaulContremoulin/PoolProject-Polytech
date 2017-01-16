@@ -8,18 +8,15 @@
         <div class="col-md-12">
         <h4>Voila la liste de tout les administrateurs de la plateforme</h4>
         <div class="table-responsive">
-
+          <center>
               <table id="mytable" class="table table-bordred table-striped">
                    <thead>
-                   <center>
                    <th>Nom</th>
                    <th>Prenom</th>
                    <th>EMail</th>
                    <th>Modifier</th>
                    <th>Supprimer</th>
-                  </center>
-                   </thead>
-    <center>               
+                   </thead>            
     <tbody>
     <?php foreach ($listeAdmin as $key => $value) { ?>
     
