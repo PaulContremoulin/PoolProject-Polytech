@@ -118,11 +118,11 @@ class ModelEtudiant extends Model {
   } 
 
   public static function getEtud_by_section($id_section){
-    $sql = "SELECT * FROM ".static::$table." e, Promo p WHERE e.id_promo = p.id_promo and p.id_section =".$id_section.";";
+    $sql = "SELECT * FROM ".static::$table.", Promo WHERE Etudiant.id_promo = Promo.id_promo and Promo.id_section = :idsection;";
     try{
       $req_prep = Model::$pdo->prepare($sql);
-      $req_prep->execute();
-      $result = $req_prep->fetch(PDO::FETCH_ASSOC);
+      $req_prep->execute(array(':idsection'=>$id_section));
+      $result = $req_prep->fetchAll();
       return $result;
     } catch(PDOException $e) {
         echo ' Echec recupération: ' . $e->getMessage();     

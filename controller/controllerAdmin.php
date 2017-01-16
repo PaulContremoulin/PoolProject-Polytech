@@ -7,8 +7,6 @@ require_once("{$ROOT}{$DS}model{$DS}modelPromo.php");
 
 $action = $_GET['action'];// recupère l'action passée dans l'URL
 
-//require_once ("{$ROOT}{$DS}model{$DS}ModelQuelconque.php"); // chargement du modèle
-
 switch ($action) {
 
     case "connexion":
@@ -220,8 +218,6 @@ case "departement":
  case "code":
     $sections = ModelSection::listeSections();
     $sectionsJS = htmlspecialchars(serialize($sections), ENT_QUOTES);
-    //print($_POST["promoEtudiant"]);
-    //print(isset($_POST["promoEtudiant"]));
     if(isset($_POST["promoEtudiant"])){
         $characts    = 'abcdefghijklmnopqrstuvwxyz';
         $characts   .= 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';    

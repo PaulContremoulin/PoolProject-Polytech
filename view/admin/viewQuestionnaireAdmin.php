@@ -1,8 +1,10 @@
 
-<h1> Modification du questionnaire </h2>
+<h1> Modification du questionnaire </h1>
 
+	<center>
+	<h2> Selectionner le groupe que vous souhaitez modifier : </h2>
+	</center>
 	<div class="listGroupe">
-		<h2> Selectionner le groupe que vous souhaitez modifier : </h2>
 		<ul>
 			<?php
 				foreach ($tab_grps as $key => $value) {
@@ -13,7 +15,7 @@
 	</div>
     </br></br></br>
 	<div id="formReponse"></div>
-</div>
+
 
 <script type="text/javascript">
 	var tab_grps = <?php echo json_encode($tab_grps); ?>;

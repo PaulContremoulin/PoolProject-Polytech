@@ -8,21 +8,18 @@
         <div class="col-md-12">
         <h4>Voila la liste de tout les administrateurs de la plateforme</h4>
         <div class="table-responsive">
-
+          <center>
               <table id="mytable" class="table table-bordred table-striped">
                    <thead>
-                   <center>
-                   <th><input type="checkbox" id="checkall" /></th>
                    <th>Nom</th>
                    <th>Prenom</th>
                    <th>EMail</th>
                    <th>Modifier</th>
                    <th>Supprimer</th>
-                  </center>
-                   </thead>
+                   </thead>            
     <tbody>
     <?php foreach ($listeAdmin as $key => $value) { ?>
-    <center>
+    
     <tr>
 
     <td><?php if(isset($value['nom_admin'])){echo $value["nom_admin"];}?></td>
@@ -36,10 +33,9 @@
 	<td><p data-placement="top" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
     <?php } ?>
     </tr> 
-    </center>
      <?php } ?>
     </tbody>
-   
+   </center>
         
 </table>
             
