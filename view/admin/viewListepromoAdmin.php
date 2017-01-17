@@ -8,7 +8,7 @@
 
                 
               <table id="mytable" class="table table-bordred table-striped">
-                   
+                   <center>
                    <thead>
                    
                    <th>Code Département</th>
@@ -16,6 +16,7 @@
                      <th>Année</th>
                      <th>Code test</th>
                    </thead>
+                  </center>
     <tbody>
     <?php foreach($promotion as $info=>$value){ ?>
         <tr>
