@@ -37,9 +37,17 @@ switch ($controller) {
 		require ("{$ROOT}{$DS}controller{$DS}controller".ucfirst($controller).".php"); //ucfirst met la premiere lettre de la chaine en MAJ
 		break;
 	case "admin":
-		if(!isset($_GET['action'])){
-			$_GET['action'] = "profil";
+		if (isset($_SESSION["admin"]) and $_SESSION["admin"]==1){
+			if(!isset($_GET['action'])){
+
+				$_GET['action'] = "profil";
+			}
+				
 		}
+		else{
+			$_GET['action'] = "connexion";
+		}
+
 		require ("{$ROOT}{$DS}controller{$DS}controller".ucfirst($controller).".php"); //ucfirst met la premiere lettre de la chaine en MAJ
 		break;
 
