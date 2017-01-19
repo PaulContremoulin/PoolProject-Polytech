@@ -38,6 +38,7 @@ switch ($action) {
             foreach ($id_section as $key => $value) {
                 $profils[$value['id_section']] = ModelSelectionner::calcul_result_departement($id);
             }
+            print_r($profils);
 /*
             $tab_ig = ModelSelectionner::calcul_result_departement("IG"); // Les fonctions qui suivent servent au calcul des    resultatas de chaque promo
             $tab_mea = ModelSelectionner::calcul_result_departement("MEA");
