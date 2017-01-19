@@ -66,7 +66,9 @@ class ModelAdmin extends Model {
     }
   }
 
-  /** Permet de verifier si le mail passé en paramètre existe bien dans la table des administrateurs de la base de données **/
+  /** Permet de verifier si le mail passé en paramètre existe bien dans la table des administrateurs de la base de données 
+  * 
+  **/
   public static function mailExist($mail){
     $sql = "SELECT mail_admin FROM Admin WHERE mail_admin= :mail;";
     $req_prep = Model::$pdo->prepare($sql);
