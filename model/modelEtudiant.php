@@ -132,7 +132,7 @@ class ModelEtudiant extends Model {
   }
 
 //Fonction qui permet de recuperer la liste des étudiants qui ont le meme identifiant de promo
-//getEtud_by_promo : INT -> 
+//getEtud_by_promo : INT -> [etudiant] * Int
   public static function getEtud_by_promo($id_promo){
      $sql = "SELECT id_etudiant FROM ".static::$table.", Promo WHERE Etudiant.id_promo = Promo.id_promo AND Promo.id_promo = :idpromo; ";
      $req_prep = Model::$pdo->prepare($sql);
@@ -142,7 +142,7 @@ class ModelEtudiant extends Model {
   } 
 
 //Fonction qui permet de recuperer la liste des étudiants qui ont le meme identifiant de section
-// getEtud_by_section : VARCHAR -> 
+// getEtud_by_section : VARCHAR -> [etudiants] * Int
   public static function getEtud_by_section($id_section){
     $sql = "SELECT * FROM ".static::$table.", Promo WHERE Etudiant.id_promo = Promo.id_promo and Promo.id_section = :idsection;";
     try{
@@ -156,11 +156,5 @@ class ModelEtudiant extends Model {
 
 
   }
-
-/*
-  function delete(){
-    Model::delete($this->modele);
-  }
-  */
 }
 ?>

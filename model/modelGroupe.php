@@ -16,11 +16,13 @@ class ModelGroupe extends Model {
     }
   }
   //récupère l'id du groupe de questions
+  // getIdGroupe : -> VARCHAR
   public function getIdGroupe(){
     return $this->id_group;
   }
 
   //Recupère les réponses et leurs ids associé à l'object group courant
+  // getAnswer : -> [VARCHAR * VARCHAR * TEXT] * Int
   public function getAnswers(){
 
       $sql =  "SELECT id_reponse AS idr, id_profil AS idp, text_reponse AS libelle ".
