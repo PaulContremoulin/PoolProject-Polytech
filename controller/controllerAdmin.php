@@ -31,14 +31,14 @@ switch ($action) {
             require_once("{$ROOT}{$DS}model{$DS}modelSelectionner.php");
 
             $id_section = modelSection::ids_sections();
-            print_r($id_section);
+
             $profils = array();
 
 
             foreach ($id_section as $key => $value) {
                 $profils[$value['id_section']] = ModelSelectionner::calcul_result_departement($id);
+                print_r($profils[$value['id_section']]);
             }
-            print_r($profils);
 /*
             $tab_ig = ModelSelectionner::calcul_result_departement("IG"); // Les fonctions qui suivent servent au calcul des    resultatas de chaque promo
             $tab_mea = ModelSelectionner::calcul_result_departement("MEA");
