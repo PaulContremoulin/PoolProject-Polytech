@@ -30,6 +30,13 @@ switch ($action) {
         if(isset($_SESSION['login']) && ($_SESSION['admin'] == 1)){//On verifie bien que l'utilisateur est le bon et que c'est un admin
             require_once("{$ROOT}{$DS}model{$DS}modelSelectionner.php");
 
+            $name_section = modelSection::noms_sections();
+            $profils = array();
+
+            foreach ($name_section as $key => $value) {
+                $profils[$value] = ModelSelectionner::calcul_result_departement($value);
+            }
+/*
             $tab_ig = ModelSelectionner::calcul_result_departement("IG"); // Les fonctions qui suivent servent au calcul des    resultatas de chaque promo
             $tab_mea = ModelSelectionner::calcul_result_departement("MEA");
             $tab_ste = ModelSelectionner::calcul_result_departement("STE");
@@ -70,6 +77,7 @@ switch ($action) {
             foreach($tab_mi as $key => $values){
                 array_push($profil_mi, $values);
             }
+*/
         }
 
         /* la vue profil promo sera visualisée a l'interreur de la vue accueil*/
