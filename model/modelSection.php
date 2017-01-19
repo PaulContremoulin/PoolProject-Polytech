@@ -26,7 +26,7 @@ class ModelSection extends Model {
   * noms_sections() Retourne le noms de toutes les sections contenues dans la base de données
   *
   */
-  public function noms_sections(){
+  public static function noms_sections(){
 
     $sql = "SELECT libelle_section FROM ".static::$table.";";
 
