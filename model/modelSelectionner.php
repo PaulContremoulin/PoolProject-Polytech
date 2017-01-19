@@ -182,7 +182,7 @@ class ModelSelectionner extends Model {
           $tab_resultats_section["REALISTE"] = $tab_resultats_section["REALISTE"] + $tab_intermediaire["REALISTE"];
           $tab_resultats_section["INVESTIGATIF"] = $tab_resultats_section["INVESTIGATIF"] + $tab_intermediaire["INVESTIGATIF"];
           $tab_resultats_section["ARTISTIQUE"] = $tab_resultats_section["ARTISTIQUE"] + $tab_intermediaire["ARTISTIQUE"];
-          $tab_resultats_secton["SOCIAL"] = $tab_resultats_section["SOCIAL"] + $tab_intermediaire["SOCIAL"];
+          $tab_resultats_section["SOCIAL"] = $tab_resultats_section["SOCIAL"] + $tab_intermediaire["SOCIAL"];
           $tab_resultats_section["ENTREPRENEUR"] = $tab_resultats_section["ENTREPRENEUR"] + $tab_intermediaire["ENTREPRENEUR"];
           $tab_resultats_section["CONVENTIONNEL"] = $tab_resultats_section["CONVENTIONNEL"] + $tab_intermediaire["CONVENTIONNEL"];
         }

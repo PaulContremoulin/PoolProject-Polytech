@@ -31,7 +31,7 @@ switch ($action) {
             require_once("{$ROOT}{$DS}model{$DS}modelSelectionner.php");
 
             $id_section = modelSection::ids_sections();
-            print_r($ids_sections);
+            print_r($id_section);
             $profils = array();
 
             foreach ($id_section as $id) {
