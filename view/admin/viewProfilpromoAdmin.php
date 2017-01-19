@@ -16,11 +16,9 @@
 	var profils_sections = <?php echo json_encode($profils, JSON_NUMERIC_CHECK); ?>;
 
 	function createChartArea(id){
-		var canvas = document.createElement('canvas');
-		canvas.id     = id;
-		canvas.width  = "100%";
-		canvas.height = "100%";
-		document.getElementById("charts").appendChild(canvas);
+		var div = document.createElement('div');
+		div.innerHTML =  '<canvas id="'+id+'" width="100%" height="100%"></canvas>';
+		document.getElementById("charts").appendChild(div);
 	}
 
 	function installChart(idhtml, tab_section, labels, nom_sec){
