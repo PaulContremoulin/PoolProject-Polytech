@@ -22,6 +22,39 @@ class ModelSection extends Model {
   }
 
 
+  /*
+  * noms_sections() Retourne le noms de toutes les sections contenues dans la base de données
+  *
+  */
+  public static function ids_sections(){
+
+    $sql = "SELECT id_section FROM ".static::$table.";";
+
+    try{
+
+      $req_prep = Model::$pdo->prepare($sql);
+      $req_prep->execute();
+      return $req_prep->fetchAll(PDO::FETCH_ASSOC);
+
+    } catch(PDOException $e) {
+
+      echo $e->getMessage();
+
+    }
+
+  }
+
+
+  /*
+  * listeSection() : Liste toutes les sections contenues dans la base de données
+  *
+  * return : Tableau de tableaux contenant les promos et l'année de la promo rangés par sections
+  *  
+  * $section[$ids][0] -> nom de la section
+  * $section[$ids][1] -> nom de la promo
+  * $section[$ids][2] -> année de la promo
+  * où $ids correspond à l'identifiant de la section
+  */
   public static function listeSections(){
     $sql =  "SELECT id_promo, annee, Section.id_section AS id_section, libelle_section ".
             "FROM ".static::$table.", Promo ".

@@ -169,7 +169,7 @@ class ModelSelectionner extends Model {
     }
       
 
-
+/*
   public static function calcul_result_departement($id_section){
     $liste_etudiants = ModelEtudiant::getEtud_by_section($id_section);
     $nb_etudiant = count($liste_etudiants);
@@ -182,9 +182,36 @@ class ModelSelectionner extends Model {
           $tab_resultats_section["REALISTE"] = $tab_resultats_section["REALISTE"] + $tab_intermediaire["REALISTE"];
           $tab_resultats_section["INVESTIGATIF"] = $tab_resultats_section["INVESTIGATIF"] + $tab_intermediaire["INVESTIGATIF"];
           $tab_resultats_section["ARTISTIQUE"] = $tab_resultats_section["ARTISTIQUE"] + $tab_intermediaire["ARTISTIQUE"];
-          $tab_resultats_secton["SOCIAL"] = $tab_resultats_section["SOCIAL"] + $tab_intermediaire["SOCIAL"];
+          $tab_resultats_section["SOCIAL"] = $tab_resultats_section["SOCIAL"] + $tab_intermediaire["SOCIAL"];
           $tab_resultats_section["ENTREPRENEUR"] = $tab_resultats_section["ENTREPRENEUR"] + $tab_intermediaire["ENTREPRENEUR"];
           $tab_resultats_section["CONVENTIONNEL"] = $tab_resultats_section["CONVENTIONNEL"] + $tab_intermediaire["CONVENTIONNEL"];
+        }
+      }
+      foreach($tab_resultats_section as $key => &$values){
+        $tab_resultats_section[$key] = round($tab_resultats_section[$key]/$nb_etudiant,PHP_ROUND_HALF_UP);
+      }
+    }
+
+    return $tab_resultats_section;
+  }
+  */
+  public static function calcul_result_departement($id_section){
+    $liste_etudiants = ModelEtudiant::getEtud_by_section($id_section);
+    $nb_etudiant = count($liste_etudiants);
+    $tab_resultats_section = array("REALISTE"=>0 ,"INVESTIGATIF"=>0 ,"ARTISTIQUE" => 0, "SOCIAL" => 0, "ENTREPRENEUR" => 0, "CONVENTIONNEL" => 0);
+    if($nb_etudiant>0){
+      $nb_etudiant = 0;
+      foreach ($liste_etudiants as $etudiant){
+        $tab_reponse =  ModelSelectionner::select_by_num_user($etudiant['id_etudiant']);
+        if (count($tab_reponse)==12){
+          $tab_intermediaire = ModelSelectionner::calcul_result_etud($tab_reponse);
+          $tab_resultats_section["REALISTE"] = $tab_resultats_section["REALISTE"] + $tab_intermediaire["REALISTE"];
+          $tab_resultats_section["INVESTIGATIF"] = $tab_resultats_section["INVESTIGATIF"] + $tab_intermediaire["INVESTIGATIF"];
+          $tab_resultats_section["ARTISTIQUE"] = $tab_resultats_section["ARTISTIQUE"] + $tab_intermediaire["ARTISTIQUE"];
+          $tab_resultats_section["SOCIAL"] = $tab_resultats_section["SOCIAL"] + $tab_intermediaire["SOCIAL"];
+          $tab_resultats_section["ENTREPRENEUR"] = $tab_resultats_section["ENTREPRENEUR"] + $tab_intermediaire["ENTREPRENEUR"];
+          $tab_resultats_section["CONVENTIONNEL"] = $tab_resultats_section["CONVENTIONNEL"] + $tab_intermediaire["CONVENTIONNEL"];
+          $nb_etudiant++;
         }
       }
       foreach($tab_resultats_section as $key => &$values){
