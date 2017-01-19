@@ -34,7 +34,7 @@ class ModelSection extends Model {
 
       $req_prep = Model::$pdo->prepare($sql);
       $req_prep->execute();
-      return $req_prep->fetchAll(PDO::FETCH_ASSOC);
+      return $req_prep->fetch(PDO::FETCH_ASSOC);
 
     } catch(PDOException $e) {
 
