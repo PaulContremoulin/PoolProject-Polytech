@@ -6,23 +6,22 @@ require_once("{$ROOT}{$DS}model{$DS}modelPromo.php");
 
 $action = $_GET['action'];// recupère l'action passée dans l'URL
 
-//require_once ("{$ROOT}{$DS}model{$DS}ModelQuelconque.php"); // chargement du modèle
-
 switch ($action) {
 
-    case "connexion":
+    case "connexion": /* Dans le cas ou l'etudiant demande une connexion on fais toutes les vérif relatives a celle ci (verification du mail entré, controle des mot de passes, vérification de presence en base de données) */
 
         $mail = $_POST["login"];
         $login = ModelEtudiant::getINE($mail); //On récupère l'ine associé à l'e-mail
         $password = $_POST["password"];
         $cryptedPwd = Security::chiffrer($password);
-        $checkAccount = ModelEtudiant::checkPassword($login,$cryptedPwd);
-        if($checkAccount == true){
+        $checkAccount = ModelEtudiant::checkPassword($login,$cryptedPwd); // on appel la fonction de comparaison de mots de passe du moodel etudiant. On lui passe en parametre l'ine de l'utilisateur et le password entré pour la comparaison
 
-            $account = ModelEtudiant::select($login);
+        if($checkAccount == true){ // il y'a un booléen dans le checkAccount: si le mot de passe est bon True sinon false
+
+            $account = ModelEtudiant::select($login); // on recupère les information de ce compte
         
             $_SESSION['mail']=$mail;
-            $_SESSION['login']=$login;
+            $_SESSION['login']=$login;// Le login est sauvegarder pour des besoin systeme : la connexion automatique, la sauvegarde des actions, etc.....
             $_SESSION['nom'] = $account->getName();
             $_SESSION['admin'] = 0;
         }else{
@@ -32,12 +31,11 @@ switch ($action) {
 
         //break; Le break saute car une fois connecté, on veut exécuter le code de profil pour etre redirigée vers la page d'accueil de l'étudiant
 
-    case "profil":
+    case "profil": /* L'etudiant accède a son compte, il obtient ses resultats si il a deja passé le test de sa promo sinon il dois obligatoirement réaliser le test */
 
         if(isset($_SESSION['login'])){
             require_once("{$ROOT}{$DS}model{$DS}modelSelectionner.php");
-            //$promo = ModelEtudiant::getPromo($_SESSION['login']);
-            $tab_reponses = ModelSelectionner::select_by_num_user($_SESSION['login']);
+            $tab_reponses = ModelSelectionner::select_by_num_user($_SESSION['login']); //On recupere l'ensemble des reponse de l'utilisateurs dans la table Selectionner
             $nbQuestionsSave = count($tab_reponses);
 
             if($nbQuestionsSave==12){// Test terminé
@@ -96,24 +94,15 @@ switch ($action) {
 
         break;
 
-        /* A garder pour la gestion des etudiants / admins / pas inscrits
-        if(Session::is_admin()){
 
-        }else if(Session::is_user()){
+    case "deconnexion": /** Dans le cas ou l'utilisateur souhaite se deconnecter **/
 
-        }else{
-
-        }
-        */
-
-    case "deconnexion":
-
-        unset($_SESSION['login']);
+        unset($_SESSION['login']); /** On lui retire tout ce qu'on sait de lui sur le serveur. ça permet d'éviter les connexion automatiques dans le cas ou ce n'est pas le bon utilisateur **/
         unset($_SESSION['nom']);
         unset($_SESSION['admin']);
         unset($_SESSION['idGroupe']);
 
-        $pagetitle = "Accueil";
+        $pagetitle = "Accueil"; /* On appel cette page pour rediriger l'utilisateur vers sa page d'accueil */
         $view = "accueil";
 
         require ("{$ROOT}{$DS}view{$DS}view.php");
@@ -129,22 +118,22 @@ switch ($action) {
         require ("{$ROOT}{$DS}view{$DS}view.php");
         break; 
 
-    case "creation":
+    case "creation": /** Lorqu'un administrateur veut en créer un autre, l'action passée dans l'url est celle-ci */
 
-        $ineEtudiant = $_POST["ineEtudiant"];
-        $pwdEtudiant = $_POST["pwdEtudiant"];
-        $nameEtudiant = $_POST["nameEtudiant"];
-        $prenomEtudiant = $_POST["prenomEtudiant"];
-        $mailEtudiant = $_POST["mailEtudiant"];
-        $confirmPwd = $_POST["confirmPwd"];
+        $ineEtudiant = $_POST["ineEtudiant"];  // Le password passé dans le formulaire
+        $pwdEtudiant = $_POST["pwdEtudiant"]; // Le nom passé dans le formulaire
+        $nameEtudiant = $_POST["nameEtudiant"]; // Le prenom passé dans le formulaire
+        $prenomEtudiant = $_POST["prenomEtudiant"]; // Le mail passé dans le formulaire
+        $mailEtudiant = $_POST["mailEtudiant"]; // La confirmation du password passé dans le formulaire
+        $confirmPwd = $_POST["confirmPwd"]; 
         $promoEtudiant = $_POST["promoEtudiant"];
 
-        if(!modelEtudiant::mailExist($mailEtudiant) && !modelEtudiant::ineExist($ineEtudiant)){
-            if(modelEtudiant::isMailFormat($mailEtudiant)){
-                if($pwdEtudiant == $confirmPwd){
-                    $pwdEtudiant = Security::chiffrer($pwdEtudiant);
+        if(!modelEtudiant::mailExist($mailEtudiant) && !modelEtudiant::ineExist($ineEtudiant)){ // on vérifie que le mail n'exite pas deja en bd ou si l'ine n'est pas deja en bd
+            if(modelEtudiant::isMailFormat($mailEtudiant)){// et qu'il est sou forme de mail
+                if($pwdEtudiant == $confirmPwd){// On verifie que le password est bien celui confirmé par l'utilisateur
+                    $pwdEtudiant = Security::chiffrer($pwdEtudiant);  // on chiffre le mot de passe a notre sauce, voir security.php
 
-                    $new_account = array(
+                    $new_account = array(  //Toutes les infos du nouvel eleve
                          "id_etudiant" => $ineEtudiant,
                          "pwd_etud" => $pwdEtudiant,
                          "nom_etud" => $nameEtudiant,
@@ -153,7 +142,7 @@ switch ($action) {
                          "id_promo" => $promoEtudiant,
                     );
 
-                    ModelEtudiant::insert($new_account);
+                    ModelEtudiant::insert($new_account); // on insère le nouvel admin en base de données
 
                     //Redirection vers la page d'accueil
                     $pagetitle = "Accueil";
@@ -180,15 +169,15 @@ switch ($action) {
         require ("{$ROOT}{$DS}view{$DS}view.php");
         break;
 
-        case "code":
+        case "code": // Permet de controler le code entré par l'utilisateur pour accéder a un test.
             
             if(isset($_SESSION['login'])){
                  if(isset($_POST['pwdTest'])){
-                    $promoEtudiant = ModelEtudiant::getPromo($_SESSION['login']);
+                    $promoEtudiant = ModelEtudiant::getPromo($_SESSION['login']); // On récupere la promo de l'étudiant
                     $mdpTest = $_POST['pwdTest'];
-                    $mdppromo = ModelPromo::recupMDP($promoEtudiant);
-                    if($mdppromo[0] == $mdpTest){
-                        $_GET['action'] = "test";
+                    $mdppromo = ModelPromo::recupMDP($promoEtudiant); // On recupere le mdp de la promo de l'étudiant
+                    if($mdppromo[0] == $mdpTest){ // On vérifie que le mot de passe entré par l'étudiant est conforme a celui de sa promo
+                        $_GET['action'] = "test"; //On fait appel a l'action test pour afficher le questionnaire
                         require ("{$ROOT}{$DS}controller{$DS}controller".ucfirst($controller).".php");
                         break;
                     }
@@ -207,7 +196,7 @@ switch ($action) {
             require ("{$ROOT}{$DS}view{$DS}view.php");
             break;
                 
-        case "test":
+        case "test": //L'utilisateur veut passer le test, on récupere les question et on les envoi a la vue pour affichage
 
             //Si l'utilisateur est connecté
             if(isset($_SESSION['login'])){
