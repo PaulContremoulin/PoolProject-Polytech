@@ -63,7 +63,7 @@
 			labels.push(profil);
 			results.push(profils_sections[sections][profil])
 		}
-		installChart(key, results, labels, key);
+		installChart(sections, results, labels, sections);
 	};
 /*
 	installChart("chartIG", var_profil_ig, var_labels, "IG");
