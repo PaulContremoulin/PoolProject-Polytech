@@ -7,19 +7,21 @@
 	<div class="span6">
 
 			<div id="gauche">	
+			<!--Sur la partie gauche de l'écran affiche le graphique ainsi que le bouton pour envoyer resultat et le bouton pour avoir plus de détails -->
 				<canvas id="myChart" width="100%" height="100%" ></canvas>
 				<?php
 					if(isset($_POST['envoiMail'])){
 						require_once("viewResultatmailEtudiant.php");
 					}
 				?>
+				<!-- recupere les informations de l'étudiant en envoyant les informations du formulaire au serveur -->
 				<form method="POST" action="index.php?controller=etudiant&amp;action=profil">
 					<input type="submit" class="btn btn-dark btn-lg" id="envoiMail" name="envoiMail" 
-						value=
-							<?php if(isset($_POST['envoiMail'])){ 
+						value= 
+							<?php if(isset($_POST['envoiMail'])){                       //Si on a appuyé sur le bouton affiche "resulat envoyés"
 								echo "\"Résultats envoyés\" disabled"; 
 							}else{ 
-								echo "\"Envoyer mes résultats par mail\"";
+								echo "\"Envoyer mes résultats par mail\"";              //Sinon ne change rien
 							}?>
 					>
 				</form></br>
@@ -71,9 +73,11 @@
 			</div>
 			</br>
 			<div id="droite">
+			<!-- Sur la partie droite de la page affiche les 3 premières traits de personnalité de l'étudiant --> 
 				<div id="premier">
+				<!-- Recupere les informations sur le trait de personnalité grace a la fonction get_libelle() dans le modelProfil.php -->
 					<center>
-					<h4> Votre premier trait de personnalité :<br/> <?php echo $profil1->get_libelle();?> </h4>
+					<h4> Votre premier trait de personnalité :<br/> <?php echo $profil1->get_libelle();?> </h4>   
 					</center>
 					<p> <?php echo $profil1->get_description();?> </p>
 				</div>
