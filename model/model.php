@@ -6,12 +6,12 @@ if (getenv("HTTP_HOST") == "localhost" || getenv("HTTP_HOST") == "127.0.0.1") {
 	require_once "{$ROOT}{$DS}config{$DS}conf.php"; //ne jamais modifier
 }
 
-/**Classe générique des modèles. Les fonctions qui y sont peuvent être appelées ar tous les modèles**/
+/**Classe générique des modèles. Model est une super classe. Les fonctions qui y sont peuvent être appelées ar tous les modèles**/
 class Model{
 
 	public static $pdo; /** On declare une variable qui est une instance de notre base de données**/
 
-	/** Initialisation de la connexion a la base de donnée **/
+	/** Initialisation de la connexion a la base de donnée. Voir fichier conf pour tout les paramètres relatifs a la connexion a la bd.**/
 	public static function Init(){
 		$host = Conf::getHostname();
 		$dbname = Conf::getDatabase();
