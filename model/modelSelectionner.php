@@ -200,6 +200,7 @@ class ModelSelectionner extends Model {
     $nb_etudiant = count($liste_etudiants);
     $tab_resultats_section = array("REALISTE"=>0 ,"INVESTIGATIF"=>0 ,"ARTISTIQUE" => 0, "SOCIAL" => 0, "ENTREPRENEUR" => 0, "CONVENTIONNEL" => 0);
     if($nb_etudiant>0){
+      $nb_etudiant = 0;
       foreach ($liste_etudiants as $etudiant){
         $tab_reponse =  ModelSelectionner::select_by_num_user($etudiant['id_etudiant']);
         if (count($tab_reponse)==12){
@@ -210,6 +211,7 @@ class ModelSelectionner extends Model {
           $tab_resultats_section["SOCIAL"] = $tab_resultats_section["SOCIAL"] + $tab_intermediaire["SOCIAL"];
           $tab_resultats_section["ENTREPRENEUR"] = $tab_resultats_section["ENTREPRENEUR"] + $tab_intermediaire["ENTREPRENEUR"];
           $tab_resultats_section["CONVENTIONNEL"] = $tab_resultats_section["CONVENTIONNEL"] + $tab_intermediaire["CONVENTIONNEL"];
+          $nb_etudiant++;
         }
       }
       foreach($tab_resultats_section as $key => &$values){
