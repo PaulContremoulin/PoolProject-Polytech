@@ -18,13 +18,6 @@ class ModelSection extends Model {
       $this->$id_section = $section;
       $this->$libelle_section = $libelle;
       $this->$num_section = $annee;
-      /*
-      $this->tabAtt = array (
-					"mail"  => $this->mailUser,
-					"name" => $this->nameUser,
-					"pwd" => $this->pwdUser,
-				);
-      */
     }
   }
 
