@@ -34,8 +34,9 @@ switch ($action) {
             print_r($id_section);
             $profils = array();
 
-            foreach ($id_section as $id) {
-                $profils[$id] = ModelSelectionner::calcul_result_departement($id);
+
+            foreach ($id_section as $key => $value) {
+                $profils[$value[ModelSelectionner::$primary]] = ModelSelectionner::calcul_result_departement($id);
             }
 /*
             $tab_ig = ModelSelectionner::calcul_result_departement("IG"); // Les fonctions qui suivent servent au calcul des    resultatas de chaque promo
