@@ -144,6 +144,9 @@ class ModelSelectionner extends Model {
       }
     }
 
+
+/** Donnée : id_promo
+    Résultat : tableau contenu le pourcentage de tous les profils des étudiants(qui ont fini le test) de la promo dont l'id_promo est passé en paramètre **/
     public static function calcul_result_promo($id_promo){
       $nb_etudiant=0;
       $liste_etudiants = ModelEtudiant::getEtud_by_promo($id_promo);
@@ -195,6 +198,11 @@ class ModelSelectionner extends Model {
     return $tab_resultats_section;
   }
   */
+
+
+
+  /** Donnée : id_section
+    Résultat : tableau contenant les résulats des étudiants qui ont terminé le test et qui appartiennent au même département dont l'id_section est celui passé en paramètre de la fonction **/
   public static function calcul_result_departement($id_section){
     $liste_etudiants = ModelEtudiant::getEtud_by_section($id_section);
     $nb_etudiant = count($liste_etudiants);
@@ -204,6 +212,7 @@ class ModelSelectionner extends Model {
       foreach ($liste_etudiants as $etudiant){
         $tab_reponse =  ModelSelectionner::select_by_num_user($etudiant['id_etudiant']);
         if (count($tab_reponse)==12){
+          $nb_etudiant = $nb_etudiant+1;
           $tab_intermediaire = ModelSelectionner::calcul_result_etud($tab_reponse);
           $tab_resultats_section["REALISTE"] = $tab_resultats_section["REALISTE"] + $tab_intermediaire["REALISTE"];
           $tab_resultats_section["INVESTIGATIF"] = $tab_resultats_section["INVESTIGATIF"] + $tab_intermediaire["INVESTIGATIF"];
