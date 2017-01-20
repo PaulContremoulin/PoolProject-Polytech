@@ -11,7 +11,7 @@ class ModelProfil extends Model {
 	protected static $table = 'Profil';
   	protected static $primary = 'id_profil';
 
-  	public function __construct($idp = NULL, $lib = NULL, $descrip = NULL){
+  	public function __construct($idp = NULL, $lib = NULL, $descrip = NULL){ //constructeur de ModelProfil
       if (!is_null($idp) && !is_null($lib) && !is_null($descrip)){
         $this->id_profil = $idp;
         $this->libelle_profil = $lib;
@@ -19,6 +19,7 @@ class ModelProfil extends Model {
       }
   	}
 
+//Getteurs : 
   	public function get_idprofil(){
   		return $this->id_profil;
   	}
@@ -31,6 +32,7 @@ class ModelProfil extends Model {
       return $this->description_profil;
     }
 
+//à partir d'un libellé , retourne son id_profil
     public static function retrieve_id2($libelle){
       $sql = "SELECT id_profil FROM ".static::$table." WHERE libelle_profil LIKE '".$libelle."';";
       try{

@@ -120,16 +120,16 @@ switch ($action) {
 
     case "creation": /** Lorqu'un administrateur veut en créer un autre, l'action passée dans l'url est celle-ci */
 
-        $ineEtudiant = $_POST["ineEtudiant"];  // Le password passé dans le formulaire
-        $pwdEtudiant = $_POST["pwdEtudiant"]; // Le nom passé dans le formulaire
-        $nameEtudiant = $_POST["nameEtudiant"]; // Le prenom passé dans le formulaire
-        $prenomEtudiant = $_POST["prenomEtudiant"]; // Le mail passé dans le formulaire
-        $mailEtudiant = $_POST["mailEtudiant"]; // La confirmation du password passé dans le formulaire
-        $confirmPwd = $_POST["confirmPwd"]; 
+        $ineEtudiant = $_POST["ineEtudiant"];  // Le num INE passé dans le formulaire
+        $pwdEtudiant = $_POST["pwdEtudiant"]; // Le mdp passé dans le formulaire
+        $nameEtudiant = $_POST["nameEtudiant"]; // Le nom passé dans le formulaire
+        $prenomEtudiant = $_POST["prenomEtudiant"]; // Le prenom passé dans le formulaire
+        $mailEtudiant = $_POST["mailEtudiant"]; // Le mail passé dans le formulaire
+        $confirmPwd = $_POST["confirmPwd"]; //la confirmation de mot de passe passé dans le formulaire
         $promoEtudiant = $_POST["promoEtudiant"];
 
         if(!modelEtudiant::mailExist($mailEtudiant) && !modelEtudiant::ineExist($ineEtudiant)){ // on vérifie que le mail n'exite pas deja en bd ou si l'ine n'est pas deja en bd
-            if(modelEtudiant::isMailFormat($mailEtudiant)){// et qu'il est sou forme de mail
+            if(modelEtudiant::isMailFormat($mailEtudiant)){// et qu'il est sous forme de mail
                 if($pwdEtudiant == $confirmPwd){// On verifie que le password est bien celui confirmé par l'utilisateur
                     $pwdEtudiant = Security::chiffrer($pwdEtudiant);  // on chiffre le mot de passe a notre sauce, voir security.php
 
