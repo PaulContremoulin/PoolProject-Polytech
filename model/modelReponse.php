@@ -11,6 +11,7 @@ class ModelReponse extends Model {
   protected static $table = 'Reponse';
   protected static $primary = 'id_reponse';
 
+//Getteurs : 
   public static function get_id_reponse(){
     return $this->$id_reponse;
   }
@@ -27,6 +28,7 @@ class ModelReponse extends Model {
     return $this->$id_group;
   }
 
+//Constructeur : 
   public function __construct($num_reponse = NULL,$num_profil = NULL,$text = NULL,$num_group = NULL){
     if (!is_null($num_reponse) && !is_null($num_profil) && !is_null($text) && !is_null($num_group)){
       $this->$id_reponse = $num_reponse;
@@ -62,6 +64,8 @@ class ModelReponse extends Model {
   }
 
 
+/** Donnée : numgroup
+  Résultat : tableau contenant idreponse, idgroupe et textreponse correspondant au numéro de groupe passé en paramètre**/
   public static function get_all_reponse_Groupe($num_groupe){
 
     $sql_rlts = "SELECT id_reponse AS idr, id_group AS idg, text_reponse AS txt ";
@@ -81,6 +85,8 @@ class ModelReponse extends Model {
 	  }
   }
 
+/** Donnée : numprofil
+    Résulat : retourne les éléments de la table réponse dont l'idProfil correspond au num_profil passé en paramètre de la fonction**/
   public static function get_all_reponse_Profil($num_profil){
     $sql = "SELECT * FROM Reponse WHERE id_profil = :idProfil";
 
